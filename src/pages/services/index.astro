@@ -1,0 +1,83 @@
+---
+import CTASection from '../../components/CTASection.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { availabilityNote, callToAction, processSteps, services } from '../../data/site';
+---
+
+<BaseLayout
+  title="Services"
+  description="Services for Odoo customization, Django + React fullstack delivery, business automation, and platform hardening."
+>
+  <section class="mx-auto w-full max-w-6xl px-6 pb-18 pt-16 lg:px-8 lg:pb-24 lg:pt-22">
+    <div class="max-w-4xl space-y-6">
+      <span class="eyebrow">Services</span>
+      <h1 class="text-5xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-6xl">
+        Development support for CRM, automation, and business platforms
+      </h1>
+      <p class="max-w-3xl text-lg leading-9 text-[var(--color-muted)]">
+        I work with companies that need custom systems, cleaner workflows, or a dependable fullstack partner who can move from product thinking to implementation.
+      </p>
+      <p class="text-sm leading-7 text-[var(--color-muted)]">{availabilityNote}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-4 lg:px-8 lg:py-8">
+    <div class="grid gap-5 lg:grid-cols-2">
+      {
+        services.map((service) => (
+          <ServiceCard service={service} />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
+    <SectionIntro
+      eyebrow="Engagement model"
+      title="A straightforward path from problem to shipped solution"
+      description="Useful for new builds, focused improvements, or embedded collaboration inside an existing product team."
+    />
+    <div class="mt-10 grid gap-5 lg:grid-cols-4">
+      {
+        processSteps.map((step) => (
+          <article class="panel rounded-[1.75rem] p-6" data-reveal>
+            <h3 class="text-xl font-bold text-[var(--color-text)]">{step.title}</h3>
+            <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">{step.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
+    <SectionIntro
+      eyebrow="Best fit"
+      title="Ideal collaboration scenarios"
+      description="A strong match tends to look like one of these situations."
+    />
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">You need a custom CRM flow</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Your business process does not fit off-the-shelf stages, forms, or reporting and needs tailored logic.
+        </p>
+      </article>
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">Your team is stuck with manual work</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Important follow-up, document handling, or validation steps are still happening in scattered spreadsheets and inboxes.
+        </p>
+      </article>
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">You need a builder who can own delivery</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          The work spans UI, backend, integrations, and deployment, so handing it across multiple silos would slow everything down.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <CTASection {...callToAction} />
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import CTASection from '../../components/CTASection.astro';
+import FeaturedCaseStudy from '../../components/FeaturedCaseStudy.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { callToAction, projects } from '../../data/site';
+
+const caseStudies = await getCollection('case-studies');
+const featuredCaseStudy = caseStudies.find((entry) => entry.data.featured) ?? caseStudies[0];
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected projects in CRM customization, Django + React delivery, business automation, and deployment-ready software."
+>
+  <section class="mx-auto w-full max-w-6xl px-6 pb-18 pt-16 lg:px-8 lg:pb-24 lg:pt-22">
+    <div class="max-w-4xl space-y-6">
+      <span class="eyebrow">Projects</span>
+      <h1 class="text-5xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-6xl">
+        Selected product, CRM, and automation work
+      </h1>
+      <p class="max-w-3xl text-lg leading-9 text-[var(--color-muted)]">
+        The strongest fit is usually where product design, fullstack implementation, and operational thinking all need to work together.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-4 lg:px-8 lg:py-8">
+    <FeaturedCaseStudy entry={featuredCaseStudy} />
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
+    <SectionIntro
+      eyebrow="Additional examples"
+      title="Projects aligned with operational software and delivery ownership"
+      description="Representative project directions that match the kind of work I help companies ship."
+    />
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {
+        projects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
+    <SectionIntro
+      eyebrow="What these projects share"
+      title="Built for teams that need software to support real work"
+      description="The through-line is not a single framework. It is solving complex workflow needs with software that is clear, maintainable, and deployable."
+    />
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">Workflow visibility</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Clear status transitions, lead history, document handoffs, and communication context so teams are not guessing what happens next.
+        </p>
+      </article>
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">Business logic depth</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Custom rules, validation, reporting, duplicate handling, and automation that match real processes instead of generic templates.
+        </p>
+      </article>
+      <article class="panel rounded-[1.75rem] p-6" data-reveal>
+        <h3 class="text-xl font-bold text-[var(--color-text)]">Production readiness</h3>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Good projects do not stop at implementation. They also need deployment clarity, maintainable structure, and confidence after launch.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <CTASection {...callToAction} />
+</BaseLayout>

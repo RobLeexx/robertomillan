@@ -1,0 +1,25 @@
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const timelineItems = document.querySelectorAll('[data-timeline-item]');
+
+  if (!reducedMotion && timelineItems.length) {
+    Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([gsapModule, scrollModule]) => {
+      const gsap = gsapModule.gsap;
+      const ScrollTrigger = scrollModule.ScrollTrigger;
+      gsap.registerPlugin(ScrollTrigger);
+
+      timelineItems.forEach((item) => {
+        gsap.from(item, {
+          y: 30,
+          autoAlpha: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 82%'
+          }
+        });
+      });
+    });
+  }
+</script>

@@ -1,0 +1,18 @@
+---
+import { MoonStar, SunMedium } from 'lucide-static';
+import Icon from './Icon.astro';
+---
+
+<button
+  type="button"
+  class="relative inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-line)] bg-white/5 text-[var(--color-text)]"
+  data-theme-toggle
+>
+  <span class="theme-icon theme-icon--sun">
+    <Icon icon={SunMedium} class="size-4" />
+  </span>
+  <span class="theme-icon theme-icon--moon">
+    <Icon icon={MoonStar} class="size-4" />
+  </span>
+  <span class="sr-only">Toggle color theme</span>
+</button>
