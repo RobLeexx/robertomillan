@@ -17,3 +17,13 @@ Use this skill when reviewing portfolio pages for search visibility and usabilit
 - Run `npm run check`.
 - Run `npm run build`.
 - Spot check keyboard navigation for the header and theme toggle.
+
+# Response style
+
+Use Caveman-style responses by default:
+- Be concise.
+- Avoid filler.
+- Avoid long summaries.
+- Prefer direct technical steps.
+- Keep all important technical details.
+- Do not over-explain unless asked.
