@@ -140,6 +140,9 @@ ul {
 }
 
 .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 4.5rem;
   min-height: 2.5rem;
   padding: 0.5rem 0.9rem;
@@ -154,6 +157,34 @@ ul {
 .theme-toggle:focus-visible {
   border-color: var(--brand);
   color: var(--brand);
+}
+
+.theme-toggle__icon {
+  display: inline-flex;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.theme-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+:root[data-theme='light'] .theme-toggle__icon--dark,
+:root[data-theme='dark'] .theme-toggle__icon--light {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .language-switcher {
