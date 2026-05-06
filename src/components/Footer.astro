@@ -1,52 +1,11 @@
----
-import { Mail, MoveRight } from 'lucide-static';
-import { navItems, siteMeta } from '../data/site';
-import Icon from './Icon.astro';
----
-
-<footer class="border-t border-[rgba(255,255,255,0.06)]">
-  <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1.4fr_1fr] lg:px-8">
-    <div class="space-y-5">
-      <span class="eyebrow">Available for select opportunities</span>
-      <h2 class="max-w-2xl text-2xl font-extrabold text-[var(--color-text)] sm:text-3xl">
-        Build business software that is clear, useful, and ready for production.
-      </h2>
-      <p class="max-w-2xl text-base leading-8 text-[var(--color-muted)]">
-        {siteMeta.name} is a Fullstack Developer focused on CRM systems, automation flows, and practical product delivery for service businesses.
-      </p>
-      <a class="button-primary" href={`mailto:${siteMeta.email}?subject=Portfolio%20Inquiry`}>
-        {siteMeta.email}
-        <Icon icon={MoveRight} class="size-4" />
-      </a>
-    </div>
-
-    <div class="grid gap-8 sm:grid-cols-2">
-      <div>
-        <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">Navigation</h3>
-        <ul class="mt-4 space-y-3">
-          {
-            navItems.map((item) => (
-              <li>
-                <a class="text-sm text-[var(--color-text)] hover:text-[var(--color-brand)]" href={item.href}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">Focus</h3>
-        <ul class="mt-4 space-y-3 text-sm text-[var(--color-muted)]">
-          <li class="flex items-center gap-2">
-            <Icon icon={Mail} class="size-4 text-[var(--color-brand)]" />
-            {siteMeta.email}
-          </li>
-          <li>React, Django, TypeScript, Odoo</li>
-          <li>Automation, CRM, and operations software</li>
-          <li>{siteMeta.location}</li>
-        </ul>
-      </div>
-    </div>
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>&copy; 2026 Roberto Millan</p>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </footer>

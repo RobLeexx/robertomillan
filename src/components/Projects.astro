@@ -1,0 +1,23 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section id="projects" class="section">
+  <div class="container stack">
+    <p class="eyebrow">Projects</p>
+    <h2>Selected projects.</h2>
+    <div class="projects-grid">
+      {
+        projects.map((project) => (
+          <article class="card">
+            <h3>{project.title}</h3>
+            <p>{project.summary}</p>
+            <ul class="tags">
+              {project.stack.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

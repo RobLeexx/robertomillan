@@ -1,97 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
-import CTASection from '../components/CTASection.astro';
-import FeaturedCaseStudy from '../components/FeaturedCaseStudy.astro';
-import HeroMotion from '../components/HeroMotion.astro';
-import HeroSection from '../components/HeroSection.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import SectionIntro from '../components/SectionIntro.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import SkillGrid from '../components/SkillGrid.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Experience from '../components/Experience.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { availabilityNote, callToAction, projects, services, skillGroups, testimonials } from '../data/site';
-
-const caseStudies = await getCollection('case-studies');
-const featuredCaseStudy = caseStudies.find((entry) => entry.data.featured) ?? caseStudies[0];
 ---
 
 <BaseLayout
-  title="Fullstack Developer building CRM, automation, and business software"
-  description="Portfolio for a Fullstack Developer specializing in React, TypeScript, Django, Odoo customization, CRM systems, and business automation."
+  title="Roberto Millan | Fullstack Developer"
+  description="Roberto Millan is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery."
 >
-  <HeroSection />
-  <HeroMotion />
-
-  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
-    <SectionIntro
-      eyebrow="Featured work"
-      title="A production CRM built around real sales and operations workflows"
-      description="The latest flagship project is a custom Odoo CRM for a moving company, built to centralize lead handling, contracts, reporting, media, duplicate detection, and follow-up workflows without exposing confidential client data."
-    />
-    <div class="mt-10">
-      <FeaturedCaseStudy entry={featuredCaseStudy} />
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
-    <SectionIntro
-      eyebrow="Skills"
-      title="A practical stack for custom business software"
-      description="I combine product-minded frontend work with backend logic, process design, and deployment so the final system is useful beyond the demo stage."
-    />
-    <div class="mt-10">
-      <SkillGrid groups={skillGroups} />
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
-    <SectionIntro
-      eyebrow="Selected projects"
-      title="Work focused on operations, visibility, and automation"
-      description="Examples of the types of systems I build, from internal tools to workflow automation and fullstack platform delivery."
-    />
-    <div class="mt-10 grid gap-5 lg:grid-cols-3">
-      {
-        projects.map((project) => (
-          <ProjectCard project={project} />
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
-    <SectionIntro
-      eyebrow="Services"
-      title="Flexible ways to work together"
-      description="Support for freelance, embedded, or longer-term collaborations where custom software, CRM logic, or automation can unlock better operations."
-    />
-    <div class="mt-10 grid gap-5 lg:grid-cols-2">
-      {
-        services.map((service) => (
-          <ServiceCard service={service} />
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-6xl px-6 py-18 lg:px-8 lg:py-24">
-    <SectionIntro
-      eyebrow="Testimonials"
-      title="References can be shared privately"
-      description="Public references are intentionally limited here, but strong client and collaboration references can be shared in direct conversations when relevant."
-    />
-    <div class="mt-10 grid gap-5 lg:grid-cols-2">
-      {
-        testimonials.map((testimonial) => (
-          <article class="panel rounded-[1.75rem] p-6" data-reveal>
-            <p class="font-mono-display text-xs uppercase tracking-[0.16em] text-[var(--color-brand)]">{testimonial.title}</p>
-            <p class="mt-5 text-lg leading-8 text-[var(--color-text)]">{testimonial.quote}</p>
-          </article>
-        ))
-      }
-    </div>
-    <p class="mt-8 text-sm leading-7 text-[var(--color-muted)]" data-reveal>{availabilityNote}</p>
-  </section>
-
-  <CTASection {...callToAction} />
+  <Hero />
+  <About />
+  <Experience />
+  <Projects />
+  <Contact />
+  <Footer />
 </BaseLayout>
