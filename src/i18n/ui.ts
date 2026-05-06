@@ -28,11 +28,14 @@ export const ui = {
     'hero.imageAlt': 'Abstract illustration representing software systems, interfaces, and connected workflows',
     'about.eyebrow': 'About',
     'about.title': 'Who am I?',
-    'about.p1': 'I am Roberto Millan, a systems engineer and fullstack developer based in Valencia, Spain.',
+    'about.p1':
+      'Hello! I am Roberto Millan, a Systems Engineer who graduated with highest honors from Universidad La Salle in La Paz, Bolivia.',
     'about.p2':
-      'My strongest work sits between product thinking and implementation: Django and React applications, Odoo customization, workflow automation, and static sites that stay fast and maintainable.',
+      'I am currently completing my master’s degree in Valencia, Spain, thanks to my dual nationality, and I bring a broad range of experience in software development.',
     'about.p3':
-      'I care about clean interfaces, reliable backend logic, and software that helps teams work better in practice, not just in demos.',
+      'What sets me apart from other developers or AIs is innovation, closely followed by creativity. I like to build in the simplest and most concise way possible, with no unnecessary detours, always direct, professional, and clear, while still staying approachable.',
+    'about.p4':
+      'In my projects there is usually always “something extra”. That unique detail and sharp eye are what have helped me build a strong reputation and references that I am always happy to share. My goal is to grow into a Tech Lead role, leading technical decisions, teams, and products that connect technology, business, and user experience. Thanks for reading this far. I am available for collaborations or proposals, so feel free to reach out, and I hope you enjoy the journey through my site.',
     'experience.eyebrow': 'Experience',
     'experience.title': 'Developer experience focused on real delivery.',
     'projects.eyebrow': 'Projects',
@@ -75,11 +78,14 @@ export const ui = {
     'hero.imageAlt': 'Ilustración abstracta que representa sistemas de software, interfaces y flujos de trabajo conectados',
     'about.eyebrow': 'Sobre mí',
     'about.title': '¿Quién soy?',
-    'about.p1': 'Soy Roberto Millan, ingeniero de sistemas y desarrollador fullstack con base en Valencia, España.',
+    'about.p1':
+      'Hola! Soy Roberto Millán, Ingeniero de Sistemas graduado con máximos honores de la Universidad La Salle en La Paz - Bolivia.',
     'about.p2':
-      'Mi mejor trabajo está entre la visión de producto y la implementación: aplicaciones con Django y React, personalización de Odoo, automatización de flujos y sitios estáticos rápidos y mantenibles.',
+      'Actualmente estoy realizando mi maestría en Valencia - España, gracias a mi doble nacionalidad; y cuento con un amplio repertorio de experiencia en desarrollo de software.',
     'about.p3':
-      'Me importan las interfaces limpias, la lógica backend fiable y el software que ayuda a los equipos a trabajar mejor en la práctica, no solo en demos.',
+      '¿Qué me diferencia de otros devs o IAs? Mi principal característica es la innovación seguida de la creatividad; todo realizado de la forma más simple y concisa posible, sin nada de rodeos, siendo tajante, directo y con la comunicación más profesional posible; pero amigable claro.',
+    'about.p4':
+      'Podrás ver que entre mis proyectos siempre se destaca “algo más”. Ese detalle único y buen ojo es lo que me da una reputación y referencias que con mucho gusto me gusta compartir y presumir. Mi objetivo es crecer hacia un rol de Tech Lead, liderando decisiones técnicas, equipos y productos que conecten tecnología, negocio y experiencia de usuario. Gracias por leer hasta aquí, estoy disponible para cualquier colaboración o propuesta que tengas, así que no dudes en contactarme y espero disfrutes del recorrido en mi página.',
     'experience.eyebrow': 'Experiencia',
     'experience.title': 'Experiencia de desarrollo centrada en entregas reales.',
     'projects.eyebrow': 'Proyectos',
