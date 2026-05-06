@@ -126,6 +126,12 @@ ul {
   color: var(--muted);
 }
 
+.site-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .site-nav a:hover,
 .site-nav a:focus-visible,
 .site-brand:hover,
@@ -148,6 +154,33 @@ ul {
 .theme-toggle:focus-visible {
   border-color: var(--brand);
   color: var(--brand);
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.language-switcher__link {
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.language-switcher__link:hover,
+.language-switcher__link:focus-visible {
+  color: var(--brand);
+}
+
+.language-switcher__link--active {
+  background: var(--surface-muted);
+  color: var(--text);
 }
 
 .section {

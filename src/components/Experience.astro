@@ -1,11 +1,20 @@
 ---
-import { experienceItems } from '../data/experience';
+import { getExperience } from '../data/experience';
+import { type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const experienceItems = getExperience(lang);
 ---
 
 <section id="experience" class="section section--muted">
   <div class="container stack">
-    <p class="eyebrow">Experience</p>
-    <h2>Developer experience focused on real delivery.</h2>
+    <p class="eyebrow">{t('experience.eyebrow')}</p>
+    <h2>{t('experience.title')}</h2>
     <div class="experience-list">
       {
         experienceItems.map((item) => (

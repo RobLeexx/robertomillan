@@ -1,22 +1,44 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLocalizedPath, type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+const homePath = getLocalizedPath(lang, '/');
+---
+
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-brand" href="#home">Roberto Millan</a>
+    <a class="site-brand" href={`${homePath}#home`}>Roberto Millan</a>
 
     <nav class="site-nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href={`${homePath}#about`}>{t('nav.about')}</a>
+      <a href={`${homePath}#experience`}>{t('nav.experience')}</a>
+      <a href={`${homePath}#projects`}>{t('nav.projects')}</a>
+      <a href={`${homePath}#contact`}>{t('nav.contact')}</a>
     </nav>
 
-    <button
-      class="theme-toggle"
-      type="button"
-      data-theme-toggle
-      aria-label="Toggle color theme"
-      aria-pressed="false"
-    >
-      <span data-theme-label>Dark</span>
-    </button>
+    <div class="site-actions">
+      <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
+
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-label={t('theme.toDark')}
+        aria-pressed="false"
+        data-label-dark={t('theme.dark')}
+        data-label-light={t('theme.light')}
+        data-aria-dark={t('theme.toDark')}
+        data-aria-light={t('theme.toLight')}
+      >
+        <span data-theme-label>{t('theme.dark')}</span>
+      </button>
+    </div>
   </div>
 </header>

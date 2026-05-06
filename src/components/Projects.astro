@@ -1,11 +1,20 @@
 ---
-import { projects } from '../data/projects';
+import { getProjects } from '../data/projects';
+import { type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = getProjects(lang);
 ---
 
 <section id="projects" class="section">
   <div class="container stack">
-    <p class="eyebrow">Projects</p>
-    <h2>Selected projects.</h2>
+    <p class="eyebrow">{t('projects.eyebrow')}</p>
+    <h2>{t('projects.title')}</h2>
     <div class="projects-grid">
       {
         projects.map((project) => (

@@ -1,21 +1,32 @@
+---
+import { type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <section id="home" class="hero section">
   <div class="container hero__grid">
     <div class="hero__content">
-      <p class="eyebrow">Roberto Millan</p>
-      <h1>Fullstack developer building practical software for real business workflows.</h1>
+      <p class="eyebrow">{t('hero.eyebrow')}</p>
+      <h1>{t('hero.title')}</h1>
       <p class="lead">
-        Based in Spain, I work across Django, React, TypeScript, Odoo, automation, and deployment to ship clean, production-ready products.
+        {t('hero.subtitle')}
       </p>
       <div class="actions">
-        <a class="button button--primary" href="#contact">Contact Me</a>
-        <a class="button button--secondary" href="#projects">View Projects</a>
+        <a class="button button--primary" href="#contact">{t('hero.ctaPrimary')}</a>
+        <a class="button button--secondary" href="#projects">{t('hero.ctaSecondary')}</a>
       </div>
     </div>
 
     <div class="hero__media">
-      <img
-        src="/hero-abstract.svg"
-        alt="Abstract illustration representing software systems, interfaces, and connected workflows"
+        <img
+          src="/hero-abstract.svg"
+        alt={t('hero.imageAlt')}
         width="720"
         height="520"
       />

@@ -5,17 +5,19 @@ import Experience from '../components/Experience.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
+import { defaultLang, ui } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Roberto Millan | Fullstack Developer"
-  description="Roberto Millan is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery."
+  title={ui.en['meta.title']}
+  description={ui.en['meta.description']}
+  lang={defaultLang}
 >
-  <Hero />
-  <About />
-  <Experience />
-  <Projects />
-  <Contact />
-  <Footer />
+  <Hero lang={defaultLang} />
+  <About lang={defaultLang} />
+  <Experience lang={defaultLang} />
+  <Projects lang={defaultLang} />
+  <Contact lang={defaultLang} />
+  <Footer lang={defaultLang} />
 </BaseLayout>

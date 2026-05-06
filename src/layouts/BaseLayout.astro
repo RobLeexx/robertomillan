@@ -1,16 +1,19 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
+import type { Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
   description: string;
+  lang: Lang;
   image?: string;
 }
 
 const {
   title,
   description,
+  lang,
   image = '/social-card.svg'
 } = Astro.props;
 
@@ -45,7 +48,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -75,7 +78,7 @@ const structuredData = {
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <Navbar />
+    <Navbar lang={lang} currentPath={Astro.url.pathname} />
     <main id="content">
       <slot />
     </main>
@@ -87,9 +90,13 @@ const structuredData = {
       if (toggle && label) {
         const syncTheme = () => {
           const isDark = root.dataset.theme === 'dark';
+          const darkLabel = toggle.dataset.labelDark || 'Dark';
+          const lightLabel = toggle.dataset.labelLight || 'Light';
+          const darkAria = toggle.dataset.ariaDark || 'Switch to dark theme';
+          const lightAria = toggle.dataset.ariaLight || 'Switch to light theme';
           toggle.setAttribute('aria-pressed', String(isDark));
-          toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-          label.textContent = isDark ? 'Light' : 'Dark';
+          toggle.setAttribute('aria-label', isDark ? lightAria : darkAria);
+          label.textContent = isDark ? lightLabel : darkLabel;
         };
 
         syncTheme();

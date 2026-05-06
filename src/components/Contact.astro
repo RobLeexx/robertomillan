@@ -1,28 +1,39 @@
+---
+import { type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <section id="contact" class="section section--muted">
   <div class="container stack">
-    <p class="eyebrow">Contact</p>
-    <h2>Let&apos;s talk.</h2>
+    <p class="eyebrow">{t('contact.eyebrow')}</p>
+    <h2>{t('contact.title')}</h2>
     <p class="lead lead--narrow">
-      I&apos;m open to freelance, remote, hybrid, and part-time opportunities involving fullstack product work, Odoo customization, frontend development, or automation.
+      {t('contact.subtitle')}
     </p>
 
     <div class="contact-grid">
       <a class="card card--link" href="mailto:hello@robertomillan.dev">
-        <h3>Email</h3>
+        <h3>{t('contact.email')}</h3>
         <p>hello@robertomillan.dev</p>
       </a>
       <a class="card card--link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-        <h3>LinkedIn</h3>
-        <p>LinkedIn profile</p>
+        <h3>{t('contact.linkedin')}</h3>
+        <p>{t('contact.linkedinLabel')}</p>
       </a>
       <a class="card card--link" href="https://github.com" target="_blank" rel="noreferrer">
-        <h3>GitHub</h3>
-        <p>GitHub profile</p>
+        <h3>{t('contact.github')}</h3>
+        <p>{t('contact.githubLabel')}</p>
       </a>
     </div>
 
     <div class="actions">
-      <a class="button button--primary" href="mailto:hello@robertomillan.dev">Send an Email</a>
+      <a class="button button--primary" href="mailto:hello@robertomillan.dev">{t('contact.cta')}</a>
     </div>
   </div>
 </section>

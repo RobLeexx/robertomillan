@@ -1,0 +1,42 @@
+---
+import { languages } from '../i18n/ui';
+import { getLocalizedPath, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+  label: string;
+}
+
+const { lang, currentPath, label } = Astro.props;
+---
+
+<nav class="language-switcher" aria-label={label}>
+  {
+    Object.entries(languages).map(([code, name]) => (
+      <a
+        class:list={['language-switcher__link', lang === code && 'language-switcher__link--active']}
+        href={getLocalizedPath(code as Lang, currentPath)}
+        hreflang={code}
+        lang={code}
+        aria-current={lang === code ? 'page' : undefined}
+        data-language-link
+      >
+        {name}
+      </a>
+    ))
+  }
+</nav>
+
+<script is:inline>
+  const currentHash = window.location.hash;
+  const currentSearch = window.location.search;
+
+  document.querySelectorAll('[data-language-link]').forEach((link) => {
+    const href = link.getAttribute('href');
+
+    if (!href) return;
+
+    link.setAttribute('href', `${href}${currentSearch}${currentHash}`);
+  });
+</script>
