@@ -109,7 +109,12 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
         return;
       }
 
-      if (!(path instanceof SVGPathElement) || !(weight instanceof SVGCircleElement) || !beads.length) {
+      if (
+        !(path instanceof SVGPathElement) ||
+        !(weight instanceof SVGCircleElement) ||
+        !beads.length ||
+        !beads.every((bead) => bead instanceof SVGCircleElement)
+      ) {
         debugWarn('Chain SVG internals are incomplete; animation disabled.');
         return;
       }
@@ -119,15 +124,16 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
         anchor: { x: 18, y: 4 },
         chain: {
           restLength: 42,
-          controlRatioX: 0.46,
-          controlRatioY: 0.58,
-          controlAngleBoost: 0.075
+          controlRatioX: 0.36,
+          controlRatioY: 0.54,
+          controlAngleBoost: 0.12,
+          lowerCurveBoost: 0.22
         },
         hover: {
           radius: 320,
-          maxAngle: 1.04,
-          enterImpulse: 0.18,
-          horizontalResponse: 1.22
+          maxAngle: 1.18,
+          enterImpulse: 0.24,
+          horizontalResponse: 1.4
         },
         click: {
           duration: 560,
@@ -178,7 +184,10 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
         frameId: 0
       };
       const renderState = {
-        transform: ''
+        pathD: '',
+        weightCx: Number.NaN,
+        weightCy: Number.NaN,
+        beadState: ''
       };
       const controller = new AbortController();
       const { signal } = controller;
@@ -218,6 +227,14 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
       };
 
       const heavyEase = createBezier(0.18, 0.75, 0.25, 1);
+
+      const getQuadraticPoint = (t, start, control, end) => {
+        const inv = 1 - t;
+        return {
+          x: (inv * inv * start.x) + (2 * inv * t * control.x) + (t * t * end.x),
+          y: (inv * inv * start.y) + (2 * inv * t * control.y) + (t * t * end.y)
+        };
+      };
 
       const getInteractionMetrics = () => {
         const bounds = chainButton.getBoundingClientRect();
@@ -260,7 +277,7 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
 
         const influence = heavyEase(proximity);
         const targetAngle =
-          -pointer.normalizedX *
+          pointer.normalizedX *
           config.hover.maxAngle *
           (0.44 + (influence * config.hover.horizontalResponse));
 
@@ -304,18 +321,64 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
         return lerp(config.click.settleDistance, 0, heavyEase((progress - 0.72) / 0.28));
       };
 
-      const render = () => {
-        const rotationDegrees = state.swingAngle * (180 / Math.PI);
-        const transform =
-          `translate3d(0px, ${state.verticalPull.toFixed(2)}px, 0px) rotate(${rotationDegrees.toFixed(3)}deg)`;
+      const computeChainGeometry = () => {
+        const currentLength = config.chain.restLength + state.verticalPull;
+        const swingInfluence = Math.abs(state.swingAngle) / config.physics.maxAngle;
+        const endPoint = {
+          x: config.anchor.x + (Math.sin(state.swingAngle) * currentLength),
+          y: config.anchor.y + (Math.cos(state.swingAngle) * currentLength)
+        };
+        const controlPoint = {
+          x:
+            config.anchor.x +
+            (Math.sin(state.swingAngle) * currentLength * (config.chain.controlRatioX + (swingInfluence * config.chain.lowerCurveBoost))),
+          y:
+            config.anchor.y +
+            (currentLength * (config.chain.controlRatioY + (Math.abs(state.swingAngle) * config.chain.controlAngleBoost)))
+        };
 
-        if (renderState.transform === transform) {
+        return {
+          currentLength,
+          endPoint,
+          controlPoint
+        };
+      };
+
+      const render = () => {
+        const geometry = computeChainGeometry();
+        const pathD =
+          `M ${config.anchor.x} ${config.anchor.y} Q ${geometry.controlPoint.x.toFixed(2)} ${geometry.controlPoint.y.toFixed(2)} ${geometry.endPoint.x.toFixed(2)} ${geometry.endPoint.y.toFixed(2)}`;
+        const beadState = beads.map((_, index) => {
+          const t = (index + 1) / (beads.length + 1);
+          const point = getQuadraticPoint(t, config.anchor, geometry.controlPoint, geometry.endPoint);
+          return `${point.x.toFixed(2)}:${point.y.toFixed(2)}`;
+        }).join('|');
+
+        if (
+          renderState.pathD === pathD &&
+          renderState.beadState === beadState &&
+          Math.abs(renderState.weightCx - geometry.endPoint.x) <= config.render.epsilon &&
+          Math.abs(renderState.weightCy - (geometry.endPoint.y + 8)) <= config.render.epsilon
+        ) {
           return;
         }
 
-        renderState.transform = transform;
-        svg.style.transformOrigin = `${config.anchor.x}px ${config.anchor.y}px`;
-        svg.style.transform = transform;
+        renderState.pathD = pathD;
+        renderState.beadState = beadState;
+        renderState.weightCx = geometry.endPoint.x;
+        renderState.weightCy = geometry.endPoint.y + 8;
+
+        path.setAttribute('d', pathD);
+
+        beads.forEach((bead, index) => {
+          const t = (index + 1) / (beads.length + 1);
+          const point = getQuadraticPoint(t, config.anchor, geometry.controlPoint, geometry.endPoint);
+          bead.setAttribute('cx', point.x.toFixed(2));
+          bead.setAttribute('cy', point.y.toFixed(2));
+        });
+
+        weight.setAttribute('cx', geometry.endPoint.x.toFixed(2));
+        weight.setAttribute('cy', (geometry.endPoint.y + 8).toFixed(2));
       };
 
       const updatePhysics = (now) => {
@@ -400,7 +463,7 @@ const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
         const metrics = getInteractionMetrics();
         const pointer = normalizePointer(metrics);
         state.active = true;
-        state.swingVelocity += -pointer.normalizedX * config.hover.enterImpulse;
+        state.swingVelocity += pointer.normalizedX * config.hover.enterImpulse;
         ensureAnimation();
       };
 
