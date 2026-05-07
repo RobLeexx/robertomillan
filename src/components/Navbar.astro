@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeControl from './ThemeControl.astro';
 import { getLocalizedPath, type Lang, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -25,37 +26,12 @@ const homePath = getLocalizedPath(lang, '/');
 
     <div class="site-actions">
       <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
-
-      <button
-        class="theme-toggle"
-        type="button"
-        data-theme-toggle
-        aria-label={t('theme.toDark')}
-        aria-pressed="false"
-        data-label-dark={t('theme.dark')}
-        data-label-light={t('theme.light')}
-        data-aria-dark={t('theme.toDark')}
-        data-aria-light={t('theme.toLight')}
-      >
-        <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18h6" />
-            <path d="M10 22h4" />
-            <path d="M12 2a7 7 0 0 0-4 12.75c.6.42 1 1.07 1 1.8V17h6v-.45c0-.73.4-1.38 1-1.8A7 7 0 0 0 12 2Z" />
-            <path d="M12 6v4" />
-            <path d="M10.5 8.5h3" />
-          </svg>
-        </span>
-        <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18h6" />
-            <path d="M10 22h4" />
-            <path d="M12 2a7 7 0 0 0-4 12.75c.6.42 1 1.07 1 1.8V17h6v-.45c0-.73.4-1.38 1-1.8A7 7 0 0 0 12 2Z" />
-            <path d="m4 4 16 16" />
-          </svg>
-        </span>
-        <span class="sr-only" data-theme-label>{t('theme.dark')}</span>
-      </button>
+      <ThemeControl
+        darkLabel={t('theme.dark')}
+        lightLabel={t('theme.light')}
+        toDarkLabel={t('theme.toDark')}
+        toLightLabel={t('theme.toLight')}
+      />
     </div>
   </div>
 </header>

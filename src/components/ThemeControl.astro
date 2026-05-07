@@ -1,0 +1,477 @@
+---
+interface Props {
+  darkLabel: string;
+  lightLabel: string;
+  toDarkLabel: string;
+  toLightLabel: string;
+}
+
+const { darkLabel, lightLabel, toDarkLabel, toLightLabel } = Astro.props;
+---
+
+<div class="theme-control" data-theme-control>
+  <button
+    class="theme-toggle"
+    type="button"
+    data-theme-toggle-control
+    aria-label={toDarkLabel}
+    aria-pressed="false"
+    data-label-dark={darkLabel}
+    data-label-light={lightLabel}
+    data-aria-dark={toDarkLabel}
+    data-aria-light={toLightLabel}
+  >
+    <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+        <path d="M12 2a7 7 0 0 0-4 12.75c.6.42 1 1.07 1 1.8V17h6v-.45c0-.73.4-1.38 1-1.8A7 7 0 0 0 12 2Z" />
+        <path d="M12 6v4" />
+        <path d="M10.5 8.5h3" />
+      </svg>
+    </span>
+    <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+        <path d="M12 2a7 7 0 0 0-4 12.75c.6.42 1 1.07 1 1.8V17h6v-.45c0-.73.4-1.38 1-1.8A7 7 0 0 0 12 2Z" />
+        <path d="m4 4 16 16" />
+      </svg>
+    </span>
+    <span class="sr-only" data-theme-label>{darkLabel}</span>
+  </button>
+
+  <button
+    class="pull-chain"
+    type="button"
+    data-theme-chain
+    data-theme-toggle-control
+    aria-label={toDarkLabel}
+    aria-pressed="false"
+    data-label-dark={darkLabel}
+    data-label-light={lightLabel}
+    data-aria-dark={toDarkLabel}
+    data-aria-light={toLightLabel}
+  >
+    <svg
+      class="pull-chain__svg"
+      viewBox="0 0 36 64"
+      width="36"
+      height="64"
+      aria-hidden="true"
+      focusable="false"
+      data-chain-svg
+    >
+      <path
+        class="pull-chain__path"
+        d="M 18 4 Q 18 24 18 46"
+        data-chain-path
+      />
+      <circle class="pull-chain__bead" cx="18" cy="10" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="16" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="22" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="28" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="34" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="40" r="2.1" data-chain-bead />
+      <circle class="pull-chain__bead" cx="18" cy="46" r="2.6" data-chain-bead />
+      <circle class="pull-chain__weight" cx="18" cy="54" r="5.25" data-chain-weight />
+    </svg>
+    <span class="sr-only">Pull chain</span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    const themeControlRoot = document.currentScript?.previousElementSibling;
+    const isDebugHost = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+    const debugWarn = (message) => {
+      if (isDebugHost) {
+        console.warn(`[ThemeControl] ${message}`);
+      }
+    };
+
+    if (themeControlRoot instanceof HTMLElement) {
+      const chainButton = themeControlRoot.querySelector('[data-theme-chain]');
+      const svg = themeControlRoot.querySelector('[data-chain-svg]');
+      const path = themeControlRoot.querySelector('[data-chain-path]');
+      const beads = Array.from(themeControlRoot.querySelectorAll('[data-chain-bead]'));
+      const weight = themeControlRoot.querySelector('[data-chain-weight]');
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!(chainButton instanceof HTMLButtonElement)) {
+        debugWarn('Missing `[data-theme-chain]`; chain animation disabled.');
+        return;
+      }
+
+      if (!(svg instanceof SVGSVGElement)) {
+        debugWarn('Missing `[data-chain-svg]`; chain animation disabled.');
+        return;
+      }
+
+      if (!(path instanceof SVGPathElement) || !(weight instanceof SVGCircleElement) || !beads.length) {
+        debugWarn('Chain SVG internals are incomplete; animation disabled.');
+        return;
+      }
+
+      {
+      const config = {
+        anchor: { x: 18, y: 4 },
+        chain: {
+          restLength: 42,
+          controlRatioX: 0.46,
+          controlRatioY: 0.58,
+          controlAngleBoost: 0.075
+        },
+        hover: {
+          radius: 320,
+          maxAngle: 1.04,
+          enterImpulse: 0.18,
+          horizontalResponse: 1.22
+        },
+        click: {
+          duration: 560,
+          pullDistance: 10.8,
+          recoilDistance: -2.1,
+          settleDistance: 0.85,
+          centerDeadZone: 0.12,
+          swingImpulse: 0.1,
+          verticalImpulse: 1.7
+        },
+        physics: {
+          maxAngle: 1.12,
+          angleStiffness: 0.05,
+          angleDamping: 0.12,
+          angleFriction: 0.984,
+          pullStiffness: 0.15,
+          pullDamping: 0.28,
+          pullFriction: 0.91,
+          pullClamp: { min: -2.6, max: 11.8 }
+        },
+        timing: {
+          minDt: 0.65,
+          maxDt: 1.8
+        },
+        settle: {
+          angleEpsilon: 0.0012,
+          velocityEpsilon: 0.0012,
+          pullEpsilon: 0.02
+        },
+        render: {
+          epsilon: 0.01
+        }
+      };
+
+      const state = {
+        swingAngle: 0,
+        swingVelocity: 0,
+        targetAngle: 0,
+        verticalPull: 0,
+        verticalVelocity: 0,
+        targetPull: 0,
+        pointerX: 0,
+        pointerY: 0,
+        active: false,
+        pullStartedAt: 0,
+        pullDirection: 0,
+        lastTime: performance.now(),
+        frameId: 0
+      };
+      const renderState = {
+        transform: ''
+      };
+      const controller = new AbortController();
+      const { signal } = controller;
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const lerp = (from, to, amount) => from + ((to - from) * amount);
+
+      const createBezier = (x1, y1, x2, y2) => {
+        const cx = 3 * x1;
+        const bx = 3 * (x2 - x1) - cx;
+        const ax = 1 - cx - bx;
+        const cy = 3 * y1;
+        const by = 3 * (y2 - y1) - cy;
+        const ay = 1 - cy - by;
+
+        const sampleX = (t) => (((ax * t) + bx) * t + cx) * t;
+        const sampleY = (t) => (((ay * t) + by) * t + cy) * t;
+        const sampleDerivativeX = (t) => ((3 * ax * t) + (2 * bx)) * t + cx;
+
+        return (x) => {
+          let t = clamp(x, 0, 1);
+
+          for (let index = 0; index < 5; index += 1) {
+            const derivative = sampleDerivativeX(t);
+
+            if (Math.abs(derivative) < 0.001) {
+              break;
+            }
+
+            const difference = sampleX(t) - x;
+            t -= difference / derivative;
+            t = clamp(t, 0, 1);
+          }
+
+          return sampleY(t);
+        };
+      };
+
+      const heavyEase = createBezier(0.18, 0.75, 0.25, 1);
+
+      const getInteractionMetrics = () => {
+        const bounds = chainButton.getBoundingClientRect();
+        const centerX = bounds.left + (bounds.width / 2);
+        const centerY = bounds.top + (bounds.height / 2);
+        return {
+          bounds,
+          centerX,
+          centerY,
+          radiusX: Math.max(bounds.width * 1.6, 1),
+          radiusY: Math.max(bounds.height * 0.9, 1)
+        };
+      };
+
+      const normalizePointer = (metrics, pointerX = state.pointerX, pointerY = state.pointerY) => {
+        const dx = pointerX - metrics.centerX;
+        const dy = pointerY - metrics.centerY;
+        const distance = Math.hypot(dx, dy);
+        return {
+          dx,
+          dy,
+          distance,
+          normalizedX: clamp(dx / metrics.radiusX, -1.25, 1.25),
+          normalizedY: clamp(dy / metrics.radiusY, -1.25, 1.25)
+        };
+      };
+
+      const getHoverTargetAngle = () => {
+        if (reducedMotion || !canHover || !state.active) {
+          return 0;
+        }
+
+        const metrics = getInteractionMetrics();
+        const pointer = normalizePointer(metrics);
+        const proximity = clamp(1 - (pointer.distance / config.hover.radius), 0, 1);
+
+        if (proximity <= 0) {
+          return 0;
+        }
+
+        const influence = heavyEase(proximity);
+        const targetAngle =
+          -pointer.normalizedX *
+          config.hover.maxAngle *
+          (0.44 + (influence * config.hover.horizontalResponse));
+
+        return clamp(targetAngle, -config.physics.maxAngle, config.physics.maxAngle);
+      };
+
+      const getClickPullTarget = (now) => {
+        if (!state.pullStartedAt) {
+          return 0;
+        }
+
+        const elapsed = now - state.pullStartedAt;
+        const progress = clamp(elapsed / config.click.duration, 0, 1);
+
+        if (progress >= 1) {
+          state.pullStartedAt = 0;
+          state.pullDirection = 0;
+          return 0;
+        }
+
+        if (progress < 0.2) {
+          return lerp(0, config.click.pullDistance, heavyEase(progress / 0.2));
+        }
+
+        if (progress < 0.4) {
+          return lerp(
+            config.click.pullDistance,
+            config.click.recoilDistance,
+            heavyEase((progress - 0.2) / 0.2)
+          );
+        }
+
+        if (progress < 0.72) {
+          return lerp(
+            config.click.recoilDistance,
+            config.click.settleDistance,
+            heavyEase((progress - 0.4) / 0.32)
+          );
+        }
+
+        return lerp(config.click.settleDistance, 0, heavyEase((progress - 0.72) / 0.28));
+      };
+
+      const render = () => {
+        const rotationDegrees = state.swingAngle * (180 / Math.PI);
+        const transform =
+          `translate3d(0px, ${state.verticalPull.toFixed(2)}px, 0px) rotate(${rotationDegrees.toFixed(3)}deg)`;
+
+        if (renderState.transform === transform) {
+          return;
+        }
+
+        renderState.transform = transform;
+        svg.style.transformOrigin = `${config.anchor.x}px ${config.anchor.y}px`;
+        svg.style.transform = transform;
+      };
+
+      const updatePhysics = (now) => {
+        const dt = clamp((now - state.lastTime) / 16.6667, config.timing.minDt, config.timing.maxDt);
+        state.lastTime = now;
+        state.targetAngle = getHoverTargetAngle();
+        state.targetPull = getClickPullTarget(now);
+
+        const angularAcceleration =
+          ((state.targetAngle - state.swingAngle) * config.physics.angleStiffness) -
+          (state.swingVelocity * config.physics.angleDamping);
+        state.swingVelocity += angularAcceleration * dt;
+        state.swingVelocity *= Math.pow(config.physics.angleFriction, dt);
+        state.swingAngle += state.swingVelocity * dt;
+        state.swingAngle = clamp(state.swingAngle, -config.physics.maxAngle, config.physics.maxAngle);
+
+        const verticalAcceleration =
+          ((state.targetPull - state.verticalPull) * config.physics.pullStiffness) -
+          (state.verticalVelocity * config.physics.pullDamping);
+        state.verticalVelocity += verticalAcceleration * dt;
+        state.verticalVelocity *= Math.pow(config.physics.pullFriction, dt);
+        state.verticalPull += state.verticalVelocity * dt;
+        state.verticalPull = clamp(
+          state.verticalPull,
+          config.physics.pullClamp.min,
+          config.physics.pullClamp.max
+        );
+
+        if (
+          !state.active &&
+          Math.abs(state.swingAngle) < config.settle.angleEpsilon &&
+          Math.abs(state.swingVelocity) < config.settle.velocityEpsilon
+        ) {
+          state.swingAngle = 0;
+          state.swingVelocity = 0;
+        }
+
+        if (
+          !state.pullStartedAt &&
+          Math.abs(state.verticalPull) < config.settle.pullEpsilon &&
+          Math.abs(state.verticalVelocity) < config.settle.pullEpsilon
+        ) {
+          state.verticalPull = 0;
+          state.verticalVelocity = 0;
+        }
+      };
+
+      const shouldAnimate = () => (
+        state.active ||
+        state.pullStartedAt !== 0 ||
+        Math.abs(state.swingAngle) > config.settle.angleEpsilon ||
+        Math.abs(state.swingVelocity) > config.settle.velocityEpsilon ||
+        Math.abs(state.verticalPull) > config.settle.pullEpsilon ||
+        Math.abs(state.verticalVelocity) > config.settle.pullEpsilon
+      );
+
+      const tick = (now) => {
+        state.frameId = 0;
+        updatePhysics(now);
+        render();
+
+        if (shouldAnimate()) {
+          state.frameId = window.requestAnimationFrame(tick);
+        }
+      };
+
+      const ensureAnimation = () => {
+        if (reducedMotion || state.frameId) {
+          return;
+        }
+
+        state.frameId = window.requestAnimationFrame(tick);
+      };
+
+      const updatePointer = (event) => {
+        state.pointerX = event.clientX;
+        state.pointerY = event.clientY;
+      };
+
+      const handlePointerEnter = (event) => {
+        updatePointer(event);
+        const metrics = getInteractionMetrics();
+        const pointer = normalizePointer(metrics);
+        state.active = true;
+        state.swingVelocity += -pointer.normalizedX * config.hover.enterImpulse;
+        ensureAnimation();
+      };
+
+      const handlePointerLeave = () => {
+        state.active = false;
+        ensureAnimation();
+      };
+
+      const handlePointerMove = (event) => {
+        if (!state.active) {
+          return;
+        }
+
+        updatePointer(event);
+        ensureAnimation();
+      };
+
+      const handlePull = (event) => {
+        if (reducedMotion) {
+          return;
+        }
+
+        if (event && 'clientX' in event && 'clientY' in event) {
+          updatePointer(event);
+        }
+
+        const metrics = getInteractionMetrics();
+        const pointer = normalizePointer(metrics);
+        const horizontalDirection =
+          Math.abs(pointer.normalizedX) < config.click.centerDeadZone
+            ? 0
+            : Math.sign(pointer.normalizedX);
+
+        state.pullStartedAt = performance.now();
+        state.pullDirection = horizontalDirection;
+        state.verticalVelocity += config.click.verticalImpulse;
+
+        if (horizontalDirection !== 0) {
+          state.swingVelocity += horizontalDirection * config.click.swingImpulse;
+        }
+
+        ensureAnimation();
+      };
+
+      const cleanup = () => {
+        if (state.frameId) {
+          window.cancelAnimationFrame(state.frameId);
+          state.frameId = 0;
+        }
+
+        controller.abort();
+      };
+
+      render();
+
+        if (canHover && !reducedMotion) {
+          themeControlRoot.addEventListener('pointerenter', handlePointerEnter, { signal });
+          themeControlRoot.addEventListener('pointerleave', handlePointerLeave, { signal });
+          window.addEventListener('pointermove', handlePointerMove, { passive: true, signal });
+        }
+
+        chainButton.addEventListener('click', handlePull, { signal });
+        chainButton.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            handlePull(event);
+          }
+        }, { signal });
+        window.addEventListener('pagehide', cleanup, { once: true, signal });
+        window.addEventListener('beforeunload', cleanup, { once: true, signal });
+        document.addEventListener('astro:before-swap', cleanup, { once: true, signal });
+      }
+    }
+  })();
+</script>

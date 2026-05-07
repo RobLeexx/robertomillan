@@ -143,9 +143,9 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 4.5rem;
-  min-height: 2.5rem;
-  padding: 0.5rem 0.9rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
@@ -170,9 +170,70 @@ ul {
   height: 100%;
 }
 
+:root[data-theme='dark'] .theme-toggle__icon--dark {
+  display: inline-flex;
+}
+
 :root[data-theme='light'] .theme-toggle__icon--dark,
 :root[data-theme='dark'] .theme-toggle__icon--light {
   display: none;
+}
+
+.theme-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  overflow: visible;
+}
+
+.pull-chain {
+  position: absolute;
+  top: calc(100% - 0.15rem);
+  left: 50%;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  inline-size: 4.75rem;
+  block-size: 6.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--muted) 84%, var(--brand) 16%);
+  cursor: pointer;
+  touch-action: manipulation;
+  transform: translateX(-50%);
+  transition: color 320ms cubic-bezier(0.18, 0.75, 0.25, 1);
+}
+
+.pull-chain:hover,
+.pull-chain:focus-visible {
+  color: var(--brand);
+}
+
+.pull-chain__svg {
+  overflow: visible;
+  margin-top: 0.15rem;
+}
+
+.pull-chain__path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+}
+
+.pull-chain__bead,
+.pull-chain__weight {
+  fill: currentColor;
+}
+
+.pull-chain__weight {
+  fill: color-mix(in srgb, var(--surface) 72%, currentColor 28%);
+  stroke: currentColor;
+  stroke-width: 1.2;
 }
 
 .sr-only {
@@ -452,5 +513,13 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pull-chain {
+    top: calc(100% - 0.05rem);
+    inline-size: 4.25rem;
+    block-size: 5.5rem;
   }
 }

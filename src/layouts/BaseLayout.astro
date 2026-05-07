@@ -84,27 +84,53 @@ const structuredData = {
     </main>
     <script is:inline>
       const root = document.documentElement;
-      const toggle = document.querySelector('[data-theme-toggle]');
-      const label = document.querySelector('[data-theme-label]');
+      const controls = Array.from(document.querySelectorAll('[data-theme-toggle-control]'));
 
-      if (toggle && label) {
+      if (controls.length) {
         const syncTheme = () => {
           const isDark = root.dataset.theme === 'dark';
-          const darkLabel = toggle.dataset.labelDark || 'Dark';
-          const lightLabel = toggle.dataset.labelLight || 'Light';
-          const darkAria = toggle.dataset.ariaDark || 'Switch to dark theme';
-          const lightAria = toggle.dataset.ariaLight || 'Switch to light theme';
-          toggle.setAttribute('aria-pressed', String(isDark));
-          toggle.setAttribute('aria-label', isDark ? lightAria : darkAria);
-          label.textContent = isDark ? lightLabel : darkLabel;
+
+          controls.forEach((control) => {
+            const label = control.querySelector('[data-theme-label]');
+            const darkLabel = control.dataset.labelDark || 'Dark';
+            const lightLabel = control.dataset.labelLight || 'Light';
+            const darkAria = control.dataset.ariaDark || 'Switch to dark theme';
+            const lightAria = control.dataset.ariaLight || 'Switch to light theme';
+
+            control.setAttribute('aria-pressed', String(isDark));
+            control.setAttribute('aria-label', isDark ? lightAria : darkAria);
+
+            if (label) {
+              label.textContent = isDark ? lightLabel : darkLabel;
+            }
+          });
         };
 
         syncTheme();
 
-        toggle.addEventListener('click', () => {
+        const toggleTheme = () => {
           root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
           localStorage.setItem('theme', root.dataset.theme);
           syncTheme();
+        };
+
+        controls.forEach((control) => {
+          control.addEventListener('click', () => {
+            if (
+              control instanceof HTMLElement &&
+              control.hasAttribute('data-theme-chain')
+            ) {
+              toggleTheme();
+              return;
+            }
+
+            if (
+              control instanceof HTMLElement &&
+              !control.hasAttribute('data-theme-chain')
+            ) {
+              toggleTheme();
+            }
+          });
         });
       }
     </script>
