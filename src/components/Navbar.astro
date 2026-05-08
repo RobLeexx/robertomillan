@@ -17,21 +17,23 @@ const homePath = getLocalizedPath(lang, '/');
   <div class="container site-header__inner">
     <a class="site-brand" href={`${homePath}#home`}>Roberto Millan</a>
 
-    <nav class="site-nav" aria-label="Primary">
-      <a href={`${homePath}#about`}>{t('nav.about')}</a>
-      <a href={`${homePath}#experience`}>{t('nav.experience')}</a>
-      <a href={`${homePath}#projects`}>{t('nav.projects')}</a>
-      <a href={`${homePath}#contact`}>{t('nav.contact')}</a>
-    </nav>
-
-    <div class="site-actions">
-      <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
+    <div class="site-theme">
       <ThemeControl
         darkLabel={t('theme.dark')}
         lightLabel={t('theme.light')}
         toDarkLabel={t('theme.toDark')}
         toLightLabel={t('theme.toLight')}
       />
+    </div>
+
+    <div class="site-actions">
+      <nav class="site-nav" aria-label="Primary">
+        <a href={`${homePath}#about`}>{t('nav.about')}</a>
+        <a href={`${homePath}#experience`}>{t('nav.experience')}</a>
+        <a href={`${homePath}#projects`}>{t('nav.projects')}</a>
+        <a href={`${homePath}#contact`}>{t('nav.contact')}</a>
+      </nav>
+      <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
     </div>
   </div>
 </header>
