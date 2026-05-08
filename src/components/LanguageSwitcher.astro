@@ -1,6 +1,8 @@
 ---
 import { languages } from '../i18n/ui';
 import { getLocalizedPath, type Lang } from '../i18n/utils';
+import englishFlag from '../../static/eng.jpg';
+import spanishFlag from '../../static/sp.jpg';
 
 interface Props {
   lang: Lang;
@@ -9,6 +11,10 @@ interface Props {
 }
 
 const { lang, currentPath, label } = Astro.props;
+const languageFlags: Record<Lang, typeof englishFlag> = {
+  en: englishFlag,
+  es: spanishFlag
+};
 ---
 
 <nav class="language-switcher" aria-label={label}>
@@ -22,7 +28,16 @@ const { lang, currentPath, label } = Astro.props;
         aria-current={lang === code ? 'page' : undefined}
         data-language-link
       >
-        {name}
+        <img
+          class="language-switcher__flag"
+          src={languageFlags[code as Lang].src}
+          alt=""
+          width="20"
+          height="20"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="sr-only">{name}</span>
       </a>
     ))
   }
