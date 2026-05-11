@@ -1,80 +1,367 @@
 import type { Lang } from '../i18n/utils';
 
-export interface ExperienceItem {
-  period: string;
+export interface ExperienceSpecialtyEntry {
   title: string;
+  subtitle: string;
+  period: string;
+  location: string;
   summary: string;
   highlights: string[];
+  stack: string[];
 }
 
-const experienceByLang: Record<Lang, ExperienceItem[]> = {
+export interface ExperienceSpecialtySection {
+  id: string;
+  navLabel: string;
+  title: string;
+  emphasis?: 'primary' | 'standard' | 'compact';
+  entries: ExperienceSpecialtyEntry[];
+}
+
+const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
   en: [
     {
-      period: 'Recent',
-      title: 'Fullstack and Odoo Developer | Production CRM delivery',
-      summary:
-        'Built and deployed a custom Odoo CRM for a moving company, covering lead intake, quote logic, contracts, operational workflows, and production infrastructure.',
-      highlights: [
-        'Custom Odoo modules and CRM automation',
-        'Docker, PostgreSQL, Nginx, and SSL deployment',
-        'WordPress form intake, anti-spam filtering, and document workflows'
+      id: 'crm-automation',
+      navLabel: 'CRM & Automation',
+      title: 'CRM & Automation',
+      emphasis: 'primary',
+      entries: [
+        {
+          title: 'Mudanzas Willy — Odoo CRM Developer',
+          subtitle: 'Production CRM and business workflow automation',
+          period: '2026 - Present',
+          location: 'Spain',
+          summary:
+            "Custom Odoo CRM implementation designed around a moving company's real commercial and operational workflow.",
+          highlights: [
+            'CRM customization, quotation flows, and contract generation',
+            'PDF systems, lead management, and duplicate detection',
+            'Operational workflow modeling with Docker and VPS deployment'
+          ],
+          stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automation']
+        }
       ]
     },
     {
-      period: 'Ongoing',
-      title: 'Fullstack Developer | Product and platform work',
-      summary:
-        'Worked across Django, React, TypeScript, Supabase, and NestJS projects with a focus on authentication, product structure, and maintainable implementation.',
-      highlights: [
-        'Authentication and role-based flows',
-        'Frontend and backend architecture decisions',
-        'Product-oriented implementation with clean delivery scope'
+      id: 'frontend-engineering',
+      navLabel: 'Frontend Engineering',
+      title: 'Frontend Engineering',
+      entries: [
+        {
+          title: 'Frontend Engineering Focus',
+          subtitle: 'Banco Solidario as the main delivery reference',
+          period: '2025',
+          location: 'Bolivia',
+          summary:
+            'Frontend systems built for structured business workflows with strong component discipline, responsive UI, and production-ready integration patterns.',
+          highlights: [
+            'React, Next.js, and TypeScript application delivery',
+            'Atomic Design, Tailwind, MUI, and Vuetify component systems',
+            'Responsive interfaces, API integration, and Azure DevOps workflow'
+          ],
+          stack: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'MUI', 'Vuetify', 'Azure DevOps']
+        }
       ]
     },
     {
-      period: 'Broader practice',
-      title: 'Frontend, systems, and applied experimentation',
-      summary:
-        'Built static Astro sites, explored UX and interface design, and experimented with AI and computer vision to strengthen product and engineering judgment.',
-      highlights: [
-        'Astro static sites and responsive frontend work',
-        'UX and UI thinking grounded in usability',
-        'Applied AI and computer vision experimentation'
+      id: 'fullstack-backend',
+      navLabel: 'Fullstack & Backend',
+      title: 'Fullstack & Backend',
+      entries: [
+        {
+          title: 'Banco Solidario — Fullstack Developer',
+          subtitle: 'Enterprise platform delivery and API collaboration',
+          period: '2025',
+          location: 'Bolivia',
+          summary:
+            'Worked across frontend and backend-aligned enterprise delivery with a strong focus on APIs, architecture, and integration discipline.',
+          highlights: [
+            '.NET services, Ardalis architecture, and Entity Framework',
+            'REST APIs, authentication systems, and backend integrations',
+            'Docker-based workflows and enterprise delivery standards'
+          ],
+          stack: ['.NET', 'Ardalis', 'Entity Framework', 'REST APIs', 'Authentication', 'Docker']
+        },
+        {
+          title: 'Jalasoft — Fullstack Developer Intern',
+          subtitle: 'Enterprise engineering foundation',
+          period: '2022',
+          location: 'Bolivia',
+          summary:
+            'Early enterprise experience across structured software delivery, reusable frontend systems, and service-oriented engineering practices.',
+          highlights: [
+            'Spring Boot and microservice-oriented development exposure',
+            'React, TypeScript, Storybook, and microfrontend workflows',
+            'Team-based engineering foundations and maintainable architecture'
+          ],
+          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends']
+        },
+        {
+          title: 'Direccion Nacional de Tecnologia y Telematica',
+          subtitle: 'Fullstack internal systems delivery',
+          period: '2021',
+          location: 'Bolivia',
+          summary:
+            'Built internal business software features across backend flows, data handling, document generation, and interface integration.',
+          highlights: [
+            'Laravel, Vue, and Inertia implementation',
+            'PostgreSQL, MySQL, and backend data workflows',
+            'QR, PDF, and mapping-related integrations'
+          ],
+          stack: ['Laravel', 'Vue', 'Inertia', 'PostgreSQL', 'MySQL', 'QR/PDF']
+        }
+      ]
+    },
+    {
+      id: 'ai-computer-vision',
+      navLabel: 'AI & Computer Vision',
+      title: 'AI & Computer Vision',
+      entries: [
+        {
+          title: 'FELCC Public Safety Collaboration',
+          subtitle: 'Applied AI and fullstack engineering project',
+          period: '2023 - 2024',
+          location: 'Bolivia',
+          summary:
+            'Real-world applied AI engineering collaboration for public safety workflows, combining fullstack delivery with computer vision and investigation-focused software.',
+          highlights: [
+            'Django APIs, React + TypeScript frontend, PostgreSQL, and Docker',
+            'TensorFlow experimentation, facial recognition, and image analysis pipelines',
+            'AI-assisted investigation systems in an institutional software context'
+          ],
+          stack: ['Django', 'React', 'TypeScript', 'PostgreSQL', 'Docker', 'TensorFlow', 'Computer Vision']
+        }
+      ]
+    },
+    {
+      id: 'consulting-freelance',
+      navLabel: 'Consulting & Freelance',
+      title: 'Consulting & Freelance',
+      emphasis: 'compact',
+      entries: [
+        {
+          title: 'Consulting Academy',
+          subtitle: 'Automation and business support tooling',
+          period: '2025',
+          location: 'Bolivia / Remote',
+          summary:
+            'Rapid consulting delivery for automation-heavy workflows and lightweight operational tooling.',
+          highlights: [
+            'Python automation and Selenium scraping',
+            'API integrations and business support systems',
+            'Fast delivery for external consulting needs'
+          ],
+          stack: ['Python', 'Selenium', 'APIs', 'Automation', 'Business Tools']
+        },
+        {
+          title: 'Blockchain Consultora',
+          subtitle: 'Interfaces for external consulting projects',
+          period: '2024',
+          location: 'Bolivia',
+          summary:
+            'Client-facing interface delivery for compact consulting projects with an emphasis on speed, clarity, and integration readiness.',
+          highlights: [
+            'React interfaces and Tailwind implementation',
+            'Lightweight backend-aware UI delivery',
+            'Rapid consulting workflows for business software'
+          ],
+          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting']
+        }
+      ]
+    },
+    {
+      id: 'volunteer-experience',
+      navLabel: 'Volunteer Experience',
+      title: 'Volunteer Experience',
+      emphasis: 'compact',
+      entries: [
+        {
+          title: 'TEDxUMSA',
+          subtitle: 'Graphic Design & Creative Support',
+          period: '2024',
+          location: 'Bolivia',
+          summary:
+            'Creative collaboration supporting event visuals, design consistency, and multidisciplinary communication workflows.',
+          highlights: [
+            'Graphic design collaboration and event visual support',
+            'Figma, FigJam, and Adobe-based creative workflows',
+            'Visual communication, teamwork, and design-system thinking'
+          ],
+          stack: ['Figma', 'FigJam', 'Illustrator', 'Photoshop', 'Design Systems']
+        }
       ]
     }
   ],
   es: [
     {
-      period: 'Reciente',
-      title: 'Desarrollador Fullstack y Odoo | Entrega de CRM en producción',
-      summary:
-        'Construí y desplegué un CRM personalizado en Odoo para una empresa de mudanzas, cubriendo captación de leads, lógica de presupuestos, contratos, flujos operativos e infraestructura de producción.',
-      highlights: [
-        'Módulos personalizados de Odoo y automatización de CRM',
-        'Despliegue con Docker, PostgreSQL, Nginx y SSL',
-        'Entrada de formularios desde WordPress, filtrado anti-spam y flujos documentales'
+      id: 'crm-automation',
+      navLabel: 'CRM y Automatización',
+      title: 'CRM y Automatización',
+      emphasis: 'primary',
+      entries: [
+        {
+          title: 'Mudanzas Willy — Desarrollador Odoo CRM',
+          subtitle: 'CRM productivo y automatización de flujos de negocio',
+          period: '2026 - Actualidad',
+          location: 'España',
+          summary:
+            'Implementación personalizada de Odoo CRM construida alrededor del flujo comercial y operativo real de una empresa de mudanzas.',
+          highlights: [
+            'Personalización CRM, flujos de cotización y generación de contratos',
+            'Sistemas PDF, gestión de leads y detección de duplicados',
+            'Modelado operativo con Docker y despliegue en VPS'
+          ],
+          stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automatización']
+        }
       ]
     },
     {
-      period: 'Actual',
-      title: 'Desarrollador Fullstack | Trabajo de producto y plataforma',
-      summary:
-        'He trabajado en proyectos con Django, React, TypeScript, Supabase y NestJS con foco en autenticación, estructura de producto e implementación mantenible.',
-      highlights: [
-        'Flujos de autenticación y roles',
-        'Decisiones de arquitectura frontend y backend',
-        'Implementación orientada a producto con alcance claro'
+      id: 'frontend-engineering',
+      navLabel: 'Frontend Engineering',
+      title: 'Ingeniería Frontend',
+      entries: [
+        {
+          title: 'Enfoque en Frontend Engineering',
+          subtitle: 'Banco Solidario como referencia principal',
+          period: '2025',
+          location: 'Bolivia',
+          summary:
+            'Construcción de sistemas frontend para flujos de negocio con disciplina de componentes, UI responsive y patrones listos para producción.',
+          highlights: [
+            'Entrega con React, Next.js y TypeScript',
+            'Sistemas de componentes con Atomic Design, Tailwind, MUI y Vuetify',
+            'Interfaces responsive, integración API y flujo con Azure DevOps'
+          ],
+          stack: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'MUI', 'Vuetify', 'Azure DevOps']
+        }
       ]
     },
     {
-      period: 'Trayectoria ampliada',
-      title: 'Frontend, sistemas y experimentación aplicada',
-      summary:
-        'He desarrollado sitios estáticos con Astro, explorado UX e interfaces, y experimentado con IA y visión por computador para fortalecer criterio de producto e ingeniería.',
-      highlights: [
-        'Sitios estáticos con Astro y frontend responsive',
-        'Pensamiento UX y UI basado en usabilidad',
-        'Experimentación aplicada con IA y visión por computador'
+      id: 'fullstack-backend',
+      navLabel: 'Fullstack y Backend',
+      title: 'Fullstack y Backend',
+      entries: [
+        {
+          title: 'Banco Solidario — Desarrollador Fullstack',
+          subtitle: 'Entrega de plataforma empresarial e integración API',
+          period: '2025',
+          location: 'Bolivia',
+          summary:
+            'Trabajo orientado a entrega empresarial con foco en APIs, arquitectura y disciplina de integración entre frontend y backend.',
+          highlights: [
+            'Servicios .NET, arquitectura Ardalis y Entity Framework',
+            'REST APIs, autenticación e integraciones backend',
+            'Flujos con Docker y estándares de entrega empresarial'
+          ],
+          stack: ['.NET', 'Ardalis', 'Entity Framework', 'REST APIs', 'Autenticación', 'Docker']
+        },
+        {
+          title: 'Jalasoft — Pasante Fullstack',
+          subtitle: 'Base de ingeniería empresarial',
+          period: '2022',
+          location: 'Bolivia',
+          summary:
+            'Experiencia temprana en un entorno profesional con foco en entrega estructurada, sistemas reutilizables y prácticas de ingeniería orientadas a servicios.',
+          highlights: [
+            'Exposición a Spring Boot y desarrollo orientado a microservicios',
+            'React, TypeScript, Storybook y flujos de microfrontends',
+            'Base de arquitectura mantenible y trabajo de equipo'
+          ],
+          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends']
+        },
+        {
+          title: 'Dirección Nacional de Tecnología y Telemática',
+          subtitle: 'Entrega fullstack de sistemas internos',
+          period: '2021',
+          location: 'Bolivia',
+          summary:
+            'Desarrollo de funcionalidades internas para software de negocio en flujos backend, manejo de datos, documentos e integraciones de interfaz.',
+          highlights: [
+            'Implementación con Laravel, Vue e Inertia',
+            'PostgreSQL, MySQL y flujos de datos backend',
+            'Integraciones con QR, PDF y mapas'
+          ],
+          stack: ['Laravel', 'Vue', 'Inertia', 'PostgreSQL', 'MySQL', 'QR/PDF']
+        }
+      ]
+    },
+    {
+      id: 'ai-computer-vision',
+      navLabel: 'IA y Visión',
+      title: 'IA y Visión por Computador',
+      entries: [
+        {
+          title: 'Colaboración de Seguridad Pública con FELCC',
+          subtitle: 'Proyecto aplicado de IA e ingeniería fullstack',
+          period: '2023 - 2024',
+          location: 'Bolivia',
+          summary:
+            'Colaboración real de ingeniería aplicada para flujos de seguridad pública, combinando entrega fullstack con visión por computador y software de apoyo investigativo.',
+          highlights: [
+            'APIs con Django, frontend React + TypeScript, PostgreSQL y Docker',
+            'TensorFlow, reconocimiento facial y pipelines de análisis de imagen',
+            'Sistemas asistidos por IA en un contexto institucional'
+          ],
+          stack: ['Django', 'React', 'TypeScript', 'PostgreSQL', 'Docker', 'TensorFlow', 'Visión por Computador']
+        }
+      ]
+    },
+    {
+      id: 'consulting-freelance',
+      navLabel: 'Consultoría y Freelance',
+      title: 'Consultoría y Freelance',
+      emphasis: 'compact',
+      entries: [
+        {
+          title: 'Consulting Academy',
+          subtitle: 'Automatización y herramientas de soporte de negocio',
+          period: '2025',
+          location: 'Bolivia / Remoto',
+          summary:
+            'Entrega rápida para flujos de consultoría enfocados en automatización y tooling operativo ligero.',
+          highlights: [
+            'Automatización en Python y scraping con Selenium',
+            'Integraciones API y sistemas de soporte de negocio',
+            'Implementación ágil para necesidades externas de consultoría'
+          ],
+          stack: ['Python', 'Selenium', 'APIs', 'Automatización', 'Business Tools']
+        },
+        {
+          title: 'Blockchain Consultora',
+          subtitle: 'Interfaces para proyectos externos de consultoría',
+          period: '2024',
+          location: 'Bolivia',
+          summary:
+            'Entrega de interfaces para proyectos compactos de consultoría, con foco en velocidad, claridad y preparación para integraciones.',
+          highlights: [
+            'Interfaces con React e implementación con Tailwind',
+            'Entrega UI ligera con conciencia backend',
+            'Flujos rápidos para software de negocio'
+          ],
+          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting']
+        }
+      ]
+    },
+    {
+      id: 'volunteer-experience',
+      navLabel: 'Experiencia Voluntaria',
+      title: 'Experiencia Voluntaria',
+      emphasis: 'compact',
+      entries: [
+        {
+          title: 'TEDxUMSA',
+          subtitle: 'Diseño Gráfico y Soporte Creativo',
+          period: '2024',
+          location: 'Bolivia',
+          summary:
+            'Colaboración creativa enfocada en piezas visuales para eventos, coherencia de diseño y flujos de comunicación multidisciplinarios.',
+          highlights: [
+            'Colaboración en diseño gráfico y soporte visual para eventos',
+            'Flujos creativos con Figma, FigJam y herramientas Adobe',
+            'Comunicación visual, trabajo en equipo y pensamiento de design systems'
+          ],
+          stack: ['Figma', 'FigJam', 'Illustrator', 'Photoshop', 'Design Systems']
+        }
       ]
     }
   ]

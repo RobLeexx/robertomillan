@@ -31,13 +31,16 @@ export const ui = {
     'about.p1':
       'Hello! I am Roberto Millan, a Systems Engineer who graduated with highest honors from Universidad La Salle in La Paz, Bolivia.',
     'about.p2':
-      'I am currently completing my master’s degree in Valencia, Spain, thanks to my dual nationality, and I bring a broad range of experience in software development.',
+      "I am currently completing my master's degree in Valencia, Spain, thanks to my dual nationality, and I bring a broad range of experience in software development.",
     'about.p3':
       'What sets me apart from other developers or AIs is innovation, closely followed by creativity. I like to build in the simplest and most concise way possible, with no unnecessary detours, always direct, professional, and clear, while still staying approachable.',
     'about.p4':
-      'In my projects there is usually always “something extra”. That unique detail and sharp eye are what have helped me build a strong reputation and references that I am always happy to share. My goal is to grow into a Tech Lead role, leading technical decisions, teams, and products that connect technology, business, and user experience. Thanks for reading this far. I am available for collaborations or proposals, so feel free to reach out, and I hope you enjoy the journey through my site.',
+      'In my projects there is usually always "something extra". That unique detail and sharp eye are what have helped me build a strong reputation and references that I am always happy to share. My goal is to grow into a Tech Lead role, leading technical decisions, teams, and products that connect technology, business, and user experience. Thanks for reading this far. I am available for collaborations or proposals, so feel free to reach out, and I hope you enjoy the journey through my site.',
     'experience.eyebrow': 'Experience',
-    'experience.title': 'Developer experience focused on real delivery.',
+    'experience.title': 'Experience',
+    'experience.subtitle':
+      'A compact view of the technical areas where I build and ship software.',
+    'experience.navLabel': 'Experience specialties',
     'projects.eyebrow': 'Projects',
     'projects.title': 'Selected projects.',
     'contact.eyebrow': 'Contact',
@@ -79,15 +82,18 @@ export const ui = {
     'about.eyebrow': 'Sobre mí',
     'about.title': '¿Quién soy?',
     'about.p1':
-      'Hola! Soy Roberto Millán, Ingeniero de Sistemas graduado con máximos honores de la Universidad La Salle en La Paz - Bolivia.',
+      '¡Hola! Soy Roberto Millán, Ingeniero de Sistemas graduado con máximos honores de la Universidad La Salle en La Paz, Bolivia.',
     'about.p2':
-      'Actualmente estoy realizando mi maestría en Valencia - España, gracias a mi doble nacionalidad; y cuento con un amplio repertorio de experiencia en desarrollo de software.',
+      'Actualmente estoy realizando mi maestría en Valencia, España, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en desarrollo de software.',
     'about.p3':
-      '¿Qué me diferencia de otros devs o IAs? Mi principal característica es la innovación seguida de la creatividad; todo realizado de la forma más simple y concisa posible, sin nada de rodeos, siendo tajante, directo y con la comunicación más profesional posible; pero amigable claro.',
+      '¿Qué me diferencia de otros devs o IAs? Mi principal característica es la innovación seguida de la creatividad; todo realizado de la forma más simple y concisa posible, sin rodeos, siendo directo, profesional y claro, pero siempre amigable.',
     'about.p4':
-      'Podrás ver que entre mis proyectos siempre se destaca “algo más”. Ese detalle único y buen ojo es lo que me da una reputación y referencias que con mucho gusto me gusta compartir y presumir. Mi objetivo es crecer hacia un rol de Tech Lead, liderando decisiones técnicas, equipos y productos que conecten tecnología, negocio y experiencia de usuario. Gracias por leer hasta aquí, estoy disponible para cualquier colaboración o propuesta que tengas, así que no dudes en contactarme y espero disfrutes del recorrido en mi página.',
+      'Podrás ver que entre mis proyectos siempre se destaca "algo más". Ese detalle único y buen ojo es lo que me da una reputación y referencias que con mucho gusto me gusta compartir. Mi objetivo es crecer hacia un rol de Tech Lead, liderando decisiones técnicas, equipos y productos que conecten tecnología, negocio y experiencia de usuario. Gracias por leer hasta aquí; estoy disponible para cualquier colaboración o propuesta, así que no dudes en contactarme y espero que disfrutes el recorrido por mi página.',
     'experience.eyebrow': 'Experiencia',
-    'experience.title': 'Experiencia de desarrollo centrada en entregas reales.',
+    'experience.title': 'Experiencia',
+    'experience.subtitle':
+      'Una vista compacta de las áreas técnicas donde construyo y entrego software.',
+    'experience.navLabel': 'Especialidades de experiencia',
     'projects.eyebrow': 'Proyectos',
     'projects.title': 'Proyectos seleccionados.',
     'contact.eyebrow': 'Contacto',
