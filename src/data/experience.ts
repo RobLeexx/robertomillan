@@ -1,22 +1,5 @@
 import type { Lang } from '../i18n/utils';
-
-export interface ExperienceSpecialtyEntry {
-  title: string;
-  subtitle: string;
-  period: string;
-  location: string;
-  summary: string;
-  highlights: string[];
-  stack: string[];
-}
-
-export interface ExperienceSpecialtySection {
-  id: string;
-  navLabel: string;
-  title: string;
-  emphasis?: 'primary' | 'standard' | 'compact';
-  entries: ExperienceSpecialtyEntry[];
-}
+import type { ExperienceSpecialtySection } from '../types/content';
 
 const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
   en: [

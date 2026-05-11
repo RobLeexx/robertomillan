@@ -1,7 +1,8 @@
 ---
+import ThemeControl from '../animations/ThemeControl.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import ThemeControl from './ThemeControl.astro';
-import { getLocalizedPath, type Lang, useTranslations } from '../i18n/utils';
+import NavLinks from './NavLinks.astro';
+import { getLocalizedPath, type Lang, useTranslations } from '../../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -23,15 +24,13 @@ const homePath = getLocalizedPath(lang, '/');
         lightLabel={t('theme.light')}
         toDarkLabel={t('theme.toDark')}
         toLightLabel={t('theme.toLight')}
+        pullChainLabel={t('theme.pullChain')}
       />
     </div>
 
     <div class="site-actions">
-      <nav class="site-nav" aria-label="Primary">
-        <a href={`${homePath}#about`}>{t('nav.about')}</a>
-        <a href={`${homePath}#experience`}>{t('nav.experience')}</a>
-        <a href={`${homePath}#projects`}>{t('nav.projects')}</a>
-        <a href={`${homePath}#contact`}>{t('nav.contact')}</a>
+      <nav class="site-nav" aria-label={t('nav.primaryLabel')}>
+        <NavLinks basePath={homePath} links="primary" translate={t} />
       </nav>
       <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
     </div>

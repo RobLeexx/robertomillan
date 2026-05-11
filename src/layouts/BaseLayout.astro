@@ -1,7 +1,10 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import '../styles/global.css';
+import Navbar from '../components/navigation/Navbar.astro';
+import { siteConfig } from '../config/site';
+import { themeConfig } from '../config/theme';
 import type { Lang } from '../i18n/utils';
+import themeToggleScript from '../scripts/theme-toggle.ts?url';
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -14,48 +17,44 @@ const {
   title,
   description,
   lang,
-  image = '/social-card.svg'
+  image = siteConfig.socialCard
 } = Astro.props;
 
-const siteName = 'Roberto Millan';
-const origin = Astro.site ?? new URL('https://robertomillan.dev');
+const origin = Astro.site ?? new URL(siteConfig.defaultOrigin);
 const canonical = new URL(Astro.url.pathname, origin).toString();
 const ogImage = new URL(image, origin).toString();
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: siteName,
-  jobTitle: 'Fullstack Developer',
+  name: siteConfig.name,
+  jobTitle: siteConfig.title,
   description,
   url: canonical,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Valencia',
-    addressCountry: 'ES'
+    addressLocality: siteConfig.location.locality,
+    addressCountry: siteConfig.location.country
   },
-  knowsAbout: [
-    'Python',
-    'Django',
-    'React',
-    'TypeScript',
-    'Odoo',
-    'PostgreSQL',
-    'Docker',
-    'Astro'
-  ]
+  knowsAbout: siteConfig.knowsAbout
 };
+
+const initialThemeScript = `
+  const storedTheme = localStorage.getItem('${themeConfig.storageKey}');
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? '${themeConfig.dark}' : '${themeConfig.light}';
+  document.documentElement.dataset.theme = storedTheme ?? systemTheme;
+`;
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="light">
+<html lang={lang} data-theme={themeConfig.light}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content={siteConfig.themeColor} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -64,16 +63,12 @@ const structuredData = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content={siteName} />
+    <meta property="og:site_name" content={siteConfig.name} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <script is:inline>
-      const storedTheme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.dataset.theme = storedTheme ?? systemTheme;
-    </script>
+    <script is:inline set:html={initialThemeScript} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
@@ -82,57 +77,6 @@ const structuredData = {
     <main id="content">
       <slot />
     </main>
-    <script is:inline>
-      const root = document.documentElement;
-      const controls = Array.from(document.querySelectorAll('[data-theme-toggle-control]'));
-
-      if (controls.length) {
-        const syncTheme = () => {
-          const isDark = root.dataset.theme === 'dark';
-
-          controls.forEach((control) => {
-            const label = control.querySelector('[data-theme-label]');
-            const darkLabel = control.dataset.labelDark || 'Dark';
-            const lightLabel = control.dataset.labelLight || 'Light';
-            const darkAria = control.dataset.ariaDark || 'Switch to dark theme';
-            const lightAria = control.dataset.ariaLight || 'Switch to light theme';
-
-            control.setAttribute('aria-pressed', String(isDark));
-            control.setAttribute('aria-label', isDark ? lightAria : darkAria);
-
-            if (label) {
-              label.textContent = isDark ? lightLabel : darkLabel;
-            }
-          });
-        };
-
-        syncTheme();
-
-        const toggleTheme = () => {
-          root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-          localStorage.setItem('theme', root.dataset.theme);
-          syncTheme();
-        };
-
-        controls.forEach((control) => {
-          control.addEventListener('click', () => {
-            if (
-              control instanceof HTMLElement &&
-              control.hasAttribute('data-theme-chain')
-            ) {
-              toggleTheme();
-              return;
-            }
-
-            if (
-              control instanceof HTMLElement &&
-              !control.hasAttribute('data-theme-chain')
-            ) {
-              toggleTheme();
-            }
-          });
-        });
-      }
-    </script>
+    <script is:inline type="module" src={themeToggleScript}></script>
   </body>
 </html>

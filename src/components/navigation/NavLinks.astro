@@ -1,0 +1,20 @@
+---
+import { footerNavigation, primaryNavigation } from '../../config/navigation';
+import { type TranslationKey } from '../../i18n/utils';
+import { getSectionHref } from '../../utils/section-links';
+
+interface Props {
+  basePath: string;
+  links: 'primary' | 'footer';
+  translate: (key: TranslationKey) => string;
+}
+
+const { basePath, links, translate } = Astro.props;
+const items = links === 'primary' ? primaryNavigation : footerNavigation;
+---
+
+{
+  items.map((item) => (
+    <a href={getSectionHref(basePath, item.id)}>{translate(item.labelKey)}</a>
+  ))
+}

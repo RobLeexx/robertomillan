@@ -1,4 +1,6 @@
 ---
+import BadgeList from '../components/ui/BadgeList.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
 import { getProjects } from '../data/projects';
 import { type Lang, useTranslations } from '../i18n/utils';
 
@@ -13,17 +15,14 @@ const projects = getProjects(lang);
 
 <section id="projects" class="section">
   <div class="container stack">
-    <p class="eyebrow">{t('projects.eyebrow')}</p>
-    <h2>{t('projects.title')}</h2>
+    <SectionHeader title={t('projects.title')} />
     <div class="projects-grid">
       {
         projects.map((project) => (
           <article class="card">
             <h3>{project.title}</h3>
             <p>{project.summary}</p>
-            <ul class="tags">
-              {project.stack.map((item) => <li>{item}</li>)}
-            </ul>
+            <BadgeList items={project.stack} ariaLabel={t('projects.stackLabel')} />
           </article>
         ))
       }

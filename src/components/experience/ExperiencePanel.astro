@@ -1,0 +1,59 @@
+---
+import BadgeList from '../ui/BadgeList.astro';
+import type { ExperienceSpecialtySection } from '../../types/content';
+
+interface Props {
+  section: ExperienceSpecialtySection;
+  active: boolean;
+  highlightsLabel: string;
+  stackLabel: string;
+}
+
+const {
+  section,
+  active,
+  highlightsLabel,
+  stackLabel
+} = Astro.props;
+---
+
+<section
+  id={`experience-panel-${section.id}`}
+  class:list={[
+    'experience-toggle__panel',
+    section.emphasis === 'primary' && 'experience-toggle__panel--primary',
+    section.emphasis === 'compact' && 'experience-toggle__panel--compact',
+    active && 'experience-toggle__panel--active'
+  ]}
+  role="tabpanel"
+  aria-labelledby={`experience-tab-${section.id}`}
+  data-experience-panel
+  data-panel={section.id}
+  hidden={active ? undefined : true}
+>
+  {
+    section.entries.map((entry) => (
+      <article class="experience-toggle__entry">
+        <div class="experience-toggle__entry-top">
+          <div class="experience-toggle__entry-heading">
+            <h3>{entry.title}</h3>
+            <p class="experience-toggle__entry-subtitle">{entry.subtitle}</p>
+          </div>
+
+          <div class="experience-toggle__entry-meta">
+            <span>{entry.location}</span>
+            <span>{entry.period}</span>
+          </div>
+        </div>
+
+        <p class="experience-toggle__entry-summary">{entry.summary}</p>
+
+        <ul class="experience-toggle__highlights" aria-label={highlightsLabel}>
+          {entry.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+
+        <BadgeList items={entry.stack} compact ariaLabel={stackLabel} />
+      </article>
+    ))
+  }
+</section>

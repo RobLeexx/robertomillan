@@ -1,0 +1,60 @@
+---
+import ContactCard from '../components/ui/ContactCard.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import { contactLinks } from '../config/site';
+import { type Lang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const getContactTitle = (id: (typeof contactLinks)[number]['id']) => {
+  switch (id) {
+    case 'email':
+      return t('contact.email');
+    case 'linkedin':
+      return t('contact.linkedin');
+    case 'github':
+      return t('contact.github');
+  }
+};
+
+const getContactDescription = (id: (typeof contactLinks)[number]['id'], fallback: string) => {
+  switch (id) {
+    case 'email':
+      return fallback;
+    case 'linkedin':
+      return t('contact.linkedinLabel');
+    case 'github':
+      return t('contact.githubLabel');
+  }
+};
+---
+
+<section id="contact" class="section section--muted">
+  <div class="container stack">
+    <SectionHeader
+      title={t('contact.title')}
+    />
+
+    <div class="contact-grid">
+      {
+        contactLinks.map((link) => (
+          <ContactCard
+            title={getContactTitle(link.id)}
+            description={getContactDescription(link.id, link.value)}
+            href={link.href}
+            external={link.external}
+          />
+        ))
+      }
+    </div>
+
+    <div class="actions">
+      <a class="button button--primary" href={contactLinks[0].href}>{t('contact.cta')}</a>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,9 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLocalizedPath, type Lang } from '../i18n/utils';
-import englishFlag from '../../static/eng.jpg';
-import spanishFlag from '../../static/sp.jpg';
+import languageSwitcherScript from '../../scripts/language-switcher.ts?url';
+import { languages } from '../../i18n/ui';
+import { getLocalizedPath, type Lang } from '../../i18n/utils';
+import englishFlag from '../../../static/eng.jpg';
+import spanishFlag from '../../../static/sp.jpg';
 
 interface Props {
   lang: Lang;
@@ -17,7 +18,7 @@ const languageFlags: Record<Lang, typeof englishFlag> = {
 };
 ---
 
-<nav class="language-switcher" aria-label={label}>
+<nav class="language-switcher" aria-label={label} data-language-switcher>
   {
     Object.entries(languages).map(([code, name]) => (
       <a
@@ -43,15 +44,4 @@ const languageFlags: Record<Lang, typeof englishFlag> = {
   }
 </nav>
 
-<script is:inline>
-  const currentHash = window.location.hash;
-  const currentSearch = window.location.search;
-
-  document.querySelectorAll('[data-language-link]').forEach((link) => {
-    const href = link.getAttribute('href');
-
-    if (!href) return;
-
-    link.setAttribute('href', `${href}${currentSearch}${currentHash}`);
-  });
-</script>
+<script is:inline type="module" src={languageSwitcherScript}></script>

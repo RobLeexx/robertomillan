@@ -14,10 +14,12 @@ export const ui = {
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.contact': 'Contact',
+    'nav.primaryLabel': 'Primary navigation',
     'theme.dark': 'Dark',
     'theme.light': 'Light',
     'theme.toDark': 'Switch to dark theme',
     'theme.toLight': 'Switch to light theme',
+    'theme.pullChain': 'Pull chain to toggle theme',
     'lang.label': 'Language',
     'hero.eyebrow': 'Roberto Millan',
     'hero.title': 'Fullstack developer building practical software for real business workflows.',
@@ -41,8 +43,11 @@ export const ui = {
     'experience.subtitle':
       'A compact view of the technical areas where I build and ship software.',
     'experience.navLabel': 'Experience specialties',
+    'experience.highlightsLabel': 'Highlights',
+    'experience.stackLabel': 'Technologies',
     'projects.eyebrow': 'Projects',
     'projects.title': 'Selected projects.',
+    'projects.stackLabel': 'Project technologies',
     'contact.eyebrow': 'Contact',
     'contact.title': "Let's talk.",
     'contact.subtitle':
@@ -57,6 +62,7 @@ export const ui = {
     'footer.about': 'About',
     'footer.projects': 'Projects',
     'footer.contact': 'Contact',
+    'footer.navLabel': 'Footer navigation',
     'footer.rights': 'All rights reserved.'
   },
   es: {
@@ -67,10 +73,12 @@ export const ui = {
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
     'nav.contact': 'Contacto',
+    'nav.primaryLabel': 'Navegación principal',
     'theme.dark': 'Oscuro',
     'theme.light': 'Claro',
     'theme.toDark': 'Cambiar a tema oscuro',
     'theme.toLight': 'Cambiar a tema claro',
+    'theme.pullChain': 'Tira de la cadena para cambiar el tema',
     'lang.label': 'Idioma',
     'hero.eyebrow': 'Roberto Millan',
     'hero.title': 'Desarrollador fullstack que construye software práctico para flujos de trabajo reales.',
@@ -94,8 +102,11 @@ export const ui = {
     'experience.subtitle':
       'Una vista compacta de las áreas técnicas donde construyo y entrego software.',
     'experience.navLabel': 'Especialidades de experiencia',
+    'experience.highlightsLabel': 'Aspectos clave',
+    'experience.stackLabel': 'Tecnologías',
     'projects.eyebrow': 'Proyectos',
     'projects.title': 'Proyectos seleccionados.',
+    'projects.stackLabel': 'Tecnologías del proyecto',
     'contact.eyebrow': 'Contacto',
     'contact.title': 'Hablemos.',
     'contact.subtitle':
@@ -110,6 +121,7 @@ export const ui = {
     'footer.about': 'Sobre mí',
     'footer.projects': 'Proyectos',
     'footer.contact': 'Contacto',
+    'footer.navLabel': 'Navegación del pie de página',
     'footer.rights': 'Todos los derechos reservados.'
   }
 } as const;

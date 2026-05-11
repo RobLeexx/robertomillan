@@ -1,0 +1,21 @@
+---
+import NavLinks from '../navigation/NavLinks.astro';
+import { getLocalizedPath, type Lang, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const homePath = getLocalizedPath(lang, '/');
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>&copy; 2026 Roberto Millan. {t('footer.rights')}</p>
+    <nav class="footer__nav" aria-label={t('footer.navLabel')}>
+      <NavLinks basePath={homePath} links="footer" translate={t} />
+    </nav>
+  </div>
+</footer>

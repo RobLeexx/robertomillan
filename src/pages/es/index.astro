@@ -1,10 +1,5 @@
 ---
-import About from '../../components/About.astro';
-import Contact from '../../components/Contact.astro';
-import Experience from '../../components/Experience.astro';
-import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
-import Projects from '../../components/Projects.astro';
+import SiteSections from '../../components/layout/SiteSections.astro';
 import { ui } from '../../i18n/ui';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -16,10 +11,5 @@ const lang = 'es';
   description={ui.es['meta.description']}
   lang={lang}
 >
-  <Hero lang={lang} />
-  <About lang={lang} />
-  <Experience lang={lang} />
-  <Projects lang={lang} />
-  <Contact lang={lang} />
-  <Footer lang={lang} />
+  <SiteSections lang={lang} />
 </BaseLayout>

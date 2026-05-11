@@ -1,0 +1,69 @@
+---
+import experienceToggleScript from '../../scripts/experience-toggle.ts?url';
+import { getExperience } from '../../data/experience';
+import { type Lang, useTranslations } from '../../i18n/utils';
+import ExperiencePanel from './ExperiencePanel.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const experienceSections = getExperience(lang);
+const initialSection = experienceSections[0];
+---
+
+<section id="experience" class="section section--muted">
+  <div class="container stack">
+    <SectionHeader
+      title={t('experience.title')}
+    />
+
+    <div
+      class="experience-toggle"
+      data-experience-toggle
+      data-initial-section={initialSection.id}
+    >
+      <div
+        class="experience-toggle__tabs"
+        role="tablist"
+        aria-label={t('experience.navLabel')}
+      >
+        {
+          experienceSections.map((section, index) => (
+            <button
+              id={`experience-tab-${section.id}`}
+              class:list={['experience-toggle__tab', index === 0 && 'experience-toggle__tab--active']}
+              type="button"
+              role="tab"
+              aria-selected={index === 0 ? 'true' : 'false'}
+              aria-controls={`experience-panel-${section.id}`}
+              tabindex={index === 0 ? '0' : '-1'}
+              data-experience-tab
+              data-target={section.id}
+            >
+              {section.navLabel}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="experience-toggle__panels">
+        {
+          experienceSections.map((section, index) => (
+            <ExperiencePanel
+              section={section}
+              active={index === 0}
+              highlightsLabel={t('experience.highlightsLabel')}
+              stackLabel={t('experience.stackLabel')}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline type="module" src={experienceToggleScript}></script>

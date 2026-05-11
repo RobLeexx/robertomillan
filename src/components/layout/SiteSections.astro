@@ -1,0 +1,22 @@
+---
+import { type Lang } from '../../i18n/utils';
+import HeroSection from '../../sections/HeroSection.astro';
+import AboutSection from '../../sections/AboutSection.astro';
+import ExperienceSection from '../../sections/ExperienceSection.astro';
+import ProjectsSection from '../../sections/ProjectsSection.astro';
+import ContactSection from '../../sections/ContactSection.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<HeroSection lang={lang} />
+<AboutSection lang={lang} />
+<ExperienceSection lang={lang} />
+<ProjectsSection lang={lang} />
+<ContactSection lang={lang} />
+<Footer lang={lang} />

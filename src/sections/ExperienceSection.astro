@@ -1,0 +1,12 @@
+---
+import Experience from '../components/experience/Experience.astro';
+import { type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<Experience lang={lang} />

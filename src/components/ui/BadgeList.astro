@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: string[];
+  compact?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  items,
+  compact = false,
+  ariaLabel
+} = Astro.props;
+---
+
+<ul class:list={['badge-list', compact && 'badge-list--compact']} aria-label={ariaLabel}>
+  {items.map((item) => <li>{item}</li>)}
+</ul>

@@ -1,10 +1,5 @@
 import type { Lang } from '../i18n/utils';
-
-export interface ProjectItem {
-  title: string;
-  summary: string;
-  stack: string[];
-}
+import type { ProjectItem } from '../types/content';
 
 const projectsByLang: Record<Lang, ProjectItem[]> = {
   en: [
