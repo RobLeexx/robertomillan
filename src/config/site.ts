@@ -1,7 +1,7 @@
 import type { ContactLink } from '../types/content';
 
 export const siteConfig = {
-  name: 'Roberto Millan',
+  name: 'Roberto Millán',
   title: 'Fullstack Developer',
   defaultOrigin: 'https://robertomillan.dev',
   socialCard: '/social-card.svg',
@@ -30,8 +30,8 @@ export const siteConfig = {
 export const contactLinks: ContactLink[] = [
   {
     id: 'email',
-    href: 'mailto:hello@robertomillan.dev',
-    value: 'hello@robertomillan.dev'
+    href: 'mailto:rc_millan@outlook.com',
+    value: 'rc_millan@outlook.com'
   },
   {
     id: 'linkedin',

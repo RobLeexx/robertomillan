@@ -7,9 +7,9 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
-    'meta.title': 'Roberto Millan | Fullstack Developer',
+    'meta.title': 'Roberto Millán | Fullstack Developer',
     'meta.description':
-      'Roberto Millan is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery.',
+      'Roberto Millán is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery.',
     'nav.about': 'About',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
@@ -21,7 +21,7 @@ export const ui = {
     'theme.toLight': 'Switch to light theme',
     'theme.pullChain': 'Pull chain to toggle theme',
     'lang.label': 'Language',
-    'hero.eyebrow': 'Roberto Millan',
+    'hero.eyebrow': 'Roberto Millán',
     'hero.title': 'Fullstack developer building practical software for real business workflows.',
     'hero.subtitle':
       'Based in Spain, I work across Django, React, TypeScript, Odoo, automation, and deployment to ship clean, production-ready products.',
@@ -31,7 +31,7 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'Who am I?',
     'about.p1':
-      'Hello! I am Roberto Millan, a Systems Engineer who graduated with highest honors from Universidad La Salle in La Paz, Bolivia.',
+      'Hello! I am Roberto Millán, a Systems Engineer who graduated with highest honors from Universidad La Salle in La Paz, Bolivia.',
     'about.p2':
       "I am currently completing my master's degree in Valencia, Spain, thanks to my dual nationality, and I bring a broad range of experience in software development.",
     'about.p3':
@@ -46,10 +46,10 @@ export const ui = {
     'experience.highlightsLabel': 'Highlights',
     'experience.stackLabel': 'Technologies',
     'projects.eyebrow': 'Projects',
-    'projects.title': 'Selected projects.',
+    'projects.title': 'Projects',
     'projects.stackLabel': 'Project technologies',
     'contact.eyebrow': 'Contact',
-    'contact.title': "Let's talk.",
+    'contact.title': "Let's talk",
     'contact.subtitle':
       "I'm open to freelance, remote, hybrid, and part-time opportunities involving fullstack product work, Odoo customization, frontend development, or automation.",
     'contact.email': 'Email',
@@ -66,9 +66,9 @@ export const ui = {
     'footer.rights': 'All rights reserved.'
   },
   es: {
-    'meta.title': 'Roberto Millan | Desarrollador Fullstack',
+    'meta.title': 'Roberto Millán | Desarrollador Fullstack',
     'meta.description':
-      'Roberto Millan es un desarrollador fullstack en España, enfocado en Django, React, Odoo, automatización y software listo para producción.',
+      'Roberto Millán es un desarrollador fullstack en España, enfocado en Django, React, Odoo, automatización y software listo para producción.',
     'nav.about': 'Sobre mí',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
@@ -80,7 +80,7 @@ export const ui = {
     'theme.toLight': 'Cambiar a tema claro',
     'theme.pullChain': 'Tira de la cadena para cambiar el tema',
     'lang.label': 'Idioma',
-    'hero.eyebrow': 'Roberto Millan',
+    'hero.eyebrow': 'Roberto Millán',
     'hero.title': 'Desarrollador fullstack que construye software práctico para flujos de trabajo reales.',
     'hero.subtitle':
       'Desde España, trabajo con Django, React, TypeScript, Odoo, automatización y despliegue para entregar productos limpios y listos para producción.',
@@ -105,10 +105,10 @@ export const ui = {
     'experience.highlightsLabel': 'Aspectos clave',
     'experience.stackLabel': 'Tecnologías',
     'projects.eyebrow': 'Proyectos',
-    'projects.title': 'Proyectos seleccionados.',
+    'projects.title': 'Proyectos',
     'projects.stackLabel': 'Tecnologías del proyecto',
     'contact.eyebrow': 'Contacto',
-    'contact.title': 'Hablemos.',
+    'contact.title': 'Hablemos',
     'contact.subtitle':
       'Estoy abierto a oportunidades freelance, remotas, híbridas y de media jornada relacionadas con producto fullstack, personalización de Odoo, frontend o automatización.',
     'contact.email': 'Email',

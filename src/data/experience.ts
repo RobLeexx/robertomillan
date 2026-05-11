@@ -18,7 +18,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             "Custom Odoo CRM implementation designed around a moving company's real commercial and operational workflow.",
           highlights: [
             'CRM customization, quotation flows, and contract generation',
-            'PDF systems, lead management, and duplicate detection',
+            'PDF systems, lead management, and SPAM detection',
+            'Digital signatures and identity validation, email integrations',
             'Operational workflow modeling with Docker and VPS deployment'
           ],
           stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automation']
@@ -31,7 +32,7 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
       title: 'Frontend Engineering',
       entries: [
         {
-          title: 'Frontend Engineering Focus',
+          title: 'Frontend Developer',
           subtitle: 'Banco Solidario as the main delivery reference',
           period: '2025',
           location: 'Bolivia',
@@ -191,7 +192,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             'Implementación personalizada de Odoo CRM construida alrededor del flujo comercial y operativo real de una empresa de mudanzas.',
           highlights: [
             'Personalización CRM, flujos de cotización y generación de contratos',
-            'Sistemas PDF, gestión de leads y detección de duplicados',
+            'Sistemas PDF, gestión de leads y detección de SPAM/duplicados',
+            'Firmas Digitales y validación de identidad, integraciones de correo electrónico',
             'Modelado operativo con Docker y despliegue en VPS'
           ],
           stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automatización']
@@ -204,7 +206,7 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
       title: 'Ingeniería Frontend',
       entries: [
         {
-          title: 'Enfoque en Frontend Engineering',
+          title: 'Desarrollador Frontend',
           subtitle: 'Banco Solidario como referencia principal',
           period: '2025',
           location: 'Bolivia',
@@ -239,8 +241,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
           stack: ['.NET', 'Ardalis', 'Entity Framework', 'REST APIs', 'Autenticación', 'Docker']
         },
         {
-          title: 'Jalasoft — Pasante Fullstack',
-          subtitle: 'Base de ingeniería empresarial',
+          title: 'Jalasoft — Becario Fullstack',
+          subtitle: 'Base de ingeniería comercial',
           period: '2022',
           location: 'Bolivia',
           summary:
@@ -248,7 +250,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
           highlights: [
             'Exposición a Spring Boot y desarrollo orientado a microservicios',
             'React, TypeScript, Storybook y flujos de microfrontends',
-            'Base de arquitectura mantenible y trabajo de equipo'
+            'Base de arquitectura mantenible y trabajo de equipo',
+            'APIs de mapas con Mapbox y MapLibre'
           ],
           stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends']
         },

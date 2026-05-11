@@ -1,4 +1,4 @@
-# Roberto Millan Portfolio
+# Roberto Millán Portfolio
 
 Minimal one-page portfolio built with Astro and TypeScript.
 

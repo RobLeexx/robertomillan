@@ -2,7 +2,7 @@
 
 ## Project goal
 
-This repository contains a minimal static Astro portfolio for Roberto Millan.
+This repository contains a minimal static Astro portfolio for Roberto Millán.
 
 ## Core conventions
 
