@@ -18,11 +18,36 @@ const projects = getProjects(lang);
     <SectionHeader title={t('projects.title')} />
     <div class="projects-grid">
       {
-        projects.map((project) => (
-          <article class="card">
-            <h3>{project.title}</h3>
-            <p>{project.summary}</p>
-            <BadgeList items={project.stack} ariaLabel={t('projects.stackLabel')} />
+        projects.map((project, index) => (
+          <article class:list={['project-card', index % 2 === 1 && 'project-card--reverse']}>
+            <div class="project-card__media-shell">
+              <div class="project-card__visual">
+              {
+                project.imageSrc ? (
+                  <img
+                    class="project-card__image"
+                    src={project.imageSrc}
+                    alt={project.imageAlt ?? ''}
+                    width={project.imageWidth ?? 1280}
+                    height={project.imageHeight ?? 720}
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 759px) calc(100vw - 4rem), (max-width: 979px) 58vw, 52vw"
+                  />
+                ) : (
+                  <div class="project-card__image project-card__image--fallback" aria-hidden="true">
+                    <span class="project-card__fallback-title">{project.title}</span>
+                  </div>
+                )
+              }
+              </div>
+            </div>
+
+            <div class="project-card__content">
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+              <BadgeList items={project.stack} ariaLabel={t('projects.stackLabel')} />
+            </div>
           </article>
         ))
       }

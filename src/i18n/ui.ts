@@ -31,9 +31,9 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'Who am I?',
     'about.p1':
-      'Hello! I am Roberto Millán, a Systems Engineer who graduated with highest honors from Universidad La Salle in La Paz, Bolivia.',
+      'Hello! I am Roberto Millán, a Software Developer from Bolivia living in Spain.',
     'about.p2':
-      "I am currently completing my master's degree in Valencia, Spain, thanks to my dual nationality, and I bring a broad range of experience in software development.",
+      "I am currently completing my master's degree in Valencia, thanks to my dual nationality, and I bring a broad range of experience in software engineering.",
     'about.p3':
       'What sets me apart from other developers or AIs is innovation, closely followed by creativity. I like to build in the simplest and most concise way possible, with no unnecessary detours, always direct, professional, and clear, while still staying approachable.',
     'about.p4':
@@ -90,9 +90,9 @@ export const ui = {
     'about.eyebrow': 'Sobre mí',
     'about.title': '¿Quién soy?',
     'about.p1':
-      '¡Hola! Soy Roberto Millán, Ingeniero de Sistemas graduado con máximos honores de la Universidad La Salle en La Paz, Bolivia.',
+      '¡Hola! Soy Roberto Millán, Desarrollador de Software de Bolivia viviendo en España.',
     'about.p2':
-      'Actualmente estoy realizando mi maestría en Valencia, España, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en desarrollo de software.',
+      'Actualmente estoy realizando mi maestría en Valencia, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en ingeniería de software.',
     'about.p3':
       '¿Qué me diferencia de otros devs o IAs? Mi principal característica es la innovación seguida de la creatividad; todo realizado de la forma más simple y concisa posible, sin rodeos, siendo directo, profesional y claro, pero siempre amigable.',
     'about.p4':

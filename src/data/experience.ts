@@ -18,8 +18,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             "Custom Odoo CRM implementation designed around a moving company's real commercial and operational workflow.",
           highlights: [
             'CRM customization, quotation flows, and contract generation',
-            'PDF systems, lead management, and SPAM detection',
-            'Digital signatures and identity validation, email integrations',
+            'PDF systems, lead management, and spam detection',
+            'Digital signatures, identity validation, and email integrations',
             'Operational workflow modeling with Docker and VPS deployment'
           ],
           stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automation']
@@ -27,44 +27,24 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
       ]
     },
     {
-      id: 'frontend-engineering',
-      navLabel: 'Frontend Engineering',
-      title: 'Frontend Engineering',
-      entries: [
-        {
-          title: 'Frontend Developer',
-          subtitle: 'Banco Solidario as the main delivery reference',
-          period: '2025',
-          location: 'Bolivia',
-          summary:
-            'Frontend systems built for structured business workflows with strong component discipline, responsive UI, and production-ready integration patterns.',
-          highlights: [
-            'React, Next.js, and TypeScript application delivery',
-            'Atomic Design, Tailwind, MUI, and Vuetify component systems',
-            'Responsive interfaces, API integration, and Azure DevOps workflow'
-          ],
-          stack: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'MUI', 'Vuetify', 'Azure DevOps']
-        }
-      ]
-    },
-    {
       id: 'fullstack-backend',
-      navLabel: 'Fullstack & Backend',
-      title: 'Fullstack & Backend',
+      navLabel: 'Fullstack Development',
+      title: 'Fullstack Development',
       entries: [
         {
           title: 'Banco Solidario — Fullstack Developer',
-          subtitle: 'Enterprise platform delivery and API collaboration',
+          subtitle: 'Enterprise platform delivery across frontend and backend',
           period: '2025',
           location: 'Bolivia',
           summary:
-            'Worked across frontend and backend-aligned enterprise delivery with a strong focus on APIs, architecture, and integration discipline.',
+            'Worked across frontend and backend-aligned enterprise delivery with a strong focus on architecture, interfaces, APIs, and integration discipline.',
           highlights: [
+            'React, Next.js, and TypeScript application delivery',
+            'Atomic Design, Tailwind, MUI, and Vuetify component systems',
             '.NET services, Ardalis architecture, and Entity Framework',
-            'REST APIs, authentication systems, and backend integrations',
-            'Docker-based workflows and enterprise delivery standards'
+            'REST APIs, authentication systems, backend integrations, Docker, and Azure DevOps workflow'
           ],
-          stack: ['.NET', 'Ardalis', 'Entity Framework', 'REST APIs', 'Authentication', 'Docker']
+          stack: ['React', 'Next.js', 'TypeScript', '.NET', 'Entity Framework', 'Docker', 'Azure DevOps']
         },
         {
           title: 'Jalasoft — Fullstack Developer Intern',
@@ -78,10 +58,10 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             'React, TypeScript, Storybook, and microfrontend workflows',
             'Team-based engineering foundations and maintainable architecture'
           ],
-          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends']
+          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends', 'MapGL APIs']
         },
         {
-          title: 'Direccion Nacional de Tecnologia y Telematica',
+          title: 'National Directorate of Technology and Telematics',
           subtitle: 'Fullstack internal systems delivery',
           period: '2021',
           location: 'Bolivia',
@@ -149,7 +129,7 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             'Lightweight backend-aware UI delivery',
             'Rapid consulting workflows for business software'
           ],
-          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting']
+          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting', 'Next.js', 'Ecommerce']
         }
       ]
     },
@@ -192,8 +172,8 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             'Implementación personalizada de Odoo CRM construida alrededor del flujo comercial y operativo real de una empresa de mudanzas.',
           highlights: [
             'Personalización CRM, flujos de cotización y generación de contratos',
-            'Sistemas PDF, gestión de leads y detección de SPAM/duplicados',
-            'Firmas Digitales y validación de identidad, integraciones de correo electrónico',
+            'Sistemas PDF, gestión de leads y detección de spam',
+            'Firmas digitales, validación de identidad e integraciones de correo electrónico',
             'Modelado operativo con Docker y despliegue en VPS'
           ],
           stack: ['Odoo', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'VPS', 'Automatización']
@@ -201,48 +181,28 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
       ]
     },
     {
-      id: 'frontend-engineering',
-      navLabel: 'Frontend Engineering',
-      title: 'Ingeniería Frontend',
-      entries: [
-        {
-          title: 'Desarrollador Frontend',
-          subtitle: 'Banco Solidario como referencia principal',
-          period: '2025',
-          location: 'Bolivia',
-          summary:
-            'Construcción de sistemas frontend para flujos de negocio con disciplina de componentes, UI responsive y patrones listos para producción.',
-          highlights: [
-            'Entrega con React, Next.js y TypeScript',
-            'Sistemas de componentes con Atomic Design, Tailwind, MUI y Vuetify',
-            'Interfaces responsive, integración API y flujo con Azure DevOps'
-          ],
-          stack: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'MUI', 'Vuetify', 'Azure DevOps']
-        }
-      ]
-    },
-    {
       id: 'fullstack-backend',
-      navLabel: 'Fullstack y Backend',
-      title: 'Fullstack y Backend',
+      navLabel: 'Desarrollo Fullstack',
+      title: 'Desarrollo Fullstack',
       entries: [
         {
           title: 'Banco Solidario — Desarrollador Fullstack',
-          subtitle: 'Entrega de plataforma empresarial e integración API',
+          subtitle: 'Entrega de plataforma empresarial en frontend y backend',
           period: '2025',
           location: 'Bolivia',
           summary:
-            'Trabajo orientado a entrega empresarial con foco en APIs, arquitectura y disciplina de integración entre frontend y backend.',
+            'Trabajo orientado a entrega empresarial con foco en arquitectura, interfaces, APIs y disciplina de integración entre frontend y backend.',
           highlights: [
+            'Entrega con React, Next.js y TypeScript',
+            'Sistemas de componentes con Atomic Design, Tailwind, MUI y Vuetify',
             'Servicios .NET, arquitectura Ardalis y Entity Framework',
-            'REST APIs, autenticación e integraciones backend',
-            'Flujos con Docker y estándares de entrega empresarial'
+            'REST APIs, autenticación, integraciones backend, Docker y flujo con Azure DevOps'
           ],
-          stack: ['.NET', 'Ardalis', 'Entity Framework', 'REST APIs', 'Autenticación', 'Docker']
+          stack: ['React', 'Next.js', 'TypeScript', '.NET', 'Entity Framework', 'Docker', 'Azure DevOps']
         },
         {
           title: 'Jalasoft — Becario Fullstack',
-          subtitle: 'Base de ingeniería comercial',
+          subtitle: 'Base de ingeniería empresarial',
           period: '2022',
           location: 'Bolivia',
           summary:
@@ -250,10 +210,9 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
           highlights: [
             'Exposición a Spring Boot y desarrollo orientado a microservicios',
             'React, TypeScript, Storybook y flujos de microfrontends',
-            'Base de arquitectura mantenible y trabajo de equipo',
-            'APIs de mapas con Mapbox y MapLibre'
+            'Base de arquitectura mantenible, trabajo de equipo y APIs de mapas con Mapbox y MapLibre'
           ],
-          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends']
+          stack: ['Spring Boot', 'React', 'TypeScript', 'Storybook', 'Microservices', 'Microfrontends', 'MapGL APIs']
         },
         {
           title: 'Dirección Nacional de Tecnología y Telemática',
@@ -273,7 +232,7 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
     },
     {
       id: 'ai-computer-vision',
-      navLabel: 'IA y Visión',
+      navLabel: 'IA y Visión Artificial',
       title: 'IA y Visión por Computador',
       entries: [
         {
@@ -324,7 +283,7 @@ const experienceByLang: Record<Lang, ExperienceSpecialtySection[]> = {
             'Entrega UI ligera con conciencia backend',
             'Flujos rápidos para software de negocio'
           ],
-          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting']
+          stack: ['React', 'Tailwind', 'TypeScript', 'UI Delivery', 'Consulting', 'Next.js', 'Ecommerce']
         }
       ]
     },

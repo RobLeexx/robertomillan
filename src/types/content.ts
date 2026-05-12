@@ -20,6 +20,10 @@ export interface ProjectItem {
   title: string;
   summary: string;
   stack: string[];
+  imageSrc?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 export interface ContactLink {
