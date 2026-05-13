@@ -1,5 +1,5 @@
 const modal = document.querySelector<HTMLDialogElement>('[data-video-modal]');
-const frame = modal?.querySelector<HTMLIFrameElement>('[data-video-frame]');
+let frame = modal?.querySelector<HTMLIFrameElement>('[data-video-frame]');
 const title = modal?.querySelector<HTMLElement>('[data-video-title]');
 const closeButton = modal?.querySelector<HTMLButtonElement>('[data-video-close]');
 const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-video-trigger]'));
@@ -8,7 +8,11 @@ let lastTrigger: HTMLButtonElement | null = null;
 
 const clearFrame = () => {
   if (frame) {
+    frame.src = 'about:blank';
     frame.removeAttribute('src');
+    const freshFrame = frame.cloneNode(false) as HTMLIFrameElement;
+    frame.replaceWith(freshFrame);
+    frame = freshFrame;
   }
 };
 
@@ -17,6 +21,7 @@ const closeModal = () => {
     return;
   }
 
+  clearFrame();
   modal.close();
 };
 
@@ -24,7 +29,7 @@ if (modal && frame && triggers.length > 0) {
   const openModal = (trigger: HTMLButtonElement) => {
     const videoUrl = trigger.dataset.videoUrl;
 
-    if (!videoUrl) {
+    if (!videoUrl || !frame) {
       return;
     }
 
@@ -55,6 +60,10 @@ if (modal && frame && triggers.length > 0) {
     document.documentElement.classList.remove('has-dialog-open');
     clearFrame();
     lastTrigger?.focus();
+  });
+
+  modal.addEventListener('cancel', () => {
+    clearFrame();
   });
 
   document.addEventListener('keydown', (event) => {

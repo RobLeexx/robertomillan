@@ -6,6 +6,8 @@ import gameImage from '../../static/projects/game.png';
 
 const exampleVideoUrl = 'https://www.youtube.com/embed/ZPVJQlDZlwo?autoplay=1&rel=0&modestbranding=1';
 const exampleYoutubeUrl = 'https://www.youtube.com/shorts/ZPVJQlDZlwo';
+const workahoricVideoUrl = 'https://www.youtube.com/embed/QuYKSTyoO8c?autoplay=1&rel=0&modestbranding=1';
+const workahoricYoutubeUrl = 'https://www.youtube.com/shorts/QuYKSTyoO8c';
 const masitasDemoUrl = 'https://robleexx.github.io/Masitas';
 
 const projectsByLang: Record<Lang, ProjectItem[]> = {
@@ -42,9 +44,9 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['React Native', 'Expo', 'TypeScript', 'i18n'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/WorkaHoric' },
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: workahoricYoutubeUrl }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: workahoricVideoUrl,
       imageSrc: appImage.src,
       imageAlt: 'WorkaHoric app preview',
       imageWidth: 1448,
@@ -111,9 +113,9 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['React Native', 'Expo', 'TypeScript', 'i18n'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/WorkaHoric' },
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: workahoricYoutubeUrl }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: workahoricVideoUrl,
       imageSrc: appImage.src,
       imageAlt: 'Vista previa de la app WorkaHoric',
       imageWidth: 1448,
