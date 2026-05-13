@@ -4,6 +4,8 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 import { getProjects } from '../data/projects';
 import { type Lang, useTranslations } from '../i18n/utils';
 import projectVideoModalScript from '../scripts/project-video-modal.ts?url';
+import type { ProjectAction } from '../types/content';
+import unityIcon from '../../static/projects/icons/unity.png';
 
 interface Props {
   lang: Lang;
@@ -13,6 +15,12 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const projects = getProjects(lang);
 const hasVideos = projects.some((project) => project.videoUrl);
+const actionLabels: Record<ProjectAction['kind'], string> = {
+  github: t('projects.link.github'),
+  youtube: t('projects.link.youtube'),
+  docs: t('projects.link.docs'),
+  unityWebgl: t('projects.link.unityWebgl')
+};
 ---
 
 <section id="projects" class="section">
@@ -85,6 +93,63 @@ const hasVideos = projects.some((project) => project.videoUrl);
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
               <BadgeList items={project.stack} ariaLabel={t('projects.stackLabel')} />
+              {
+                project.actions && project.actions.length > 0 && (
+                  <div class="project-card__links" aria-label={t('projects.linksLabel')}>
+                    {
+                      project.actions.map((action) => (
+                        <a
+                          class="project-card__link"
+                          href={action.href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`${actionLabels[action.kind]}: ${project.title}`}
+                          data-label={actionLabels[action.kind]}
+                          data-kind={action.kind}
+                        >
+                          <span class="project-card__link-icon" aria-hidden="true">
+                            {
+                              action.kind === 'github' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" focusable="false">
+                                  <path d="M12 2C6.48 2 2 6.59 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.21-3.37-1.21-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.09 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.82c.85 0 1.71.12 2.51.35 1.9-1.33 2.74-1.05 2.74-1.05.56 1.42.21 2.47.1 2.73.64.71 1.03 1.62 1.03 2.74 0 3.96-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.59 17.52 2 12 2Z" />
+                                </svg>
+                              )
+                            }
+                            {
+                              action.kind === 'youtube' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" focusable="false">
+                                  <path d="M21.58 7.19a2.98 2.98 0 0 0-2.09-2.11C17.63 4.5 12 4.5 12 4.5s-5.63 0-7.49.58A2.98 2.98 0 0 0 2.42 7.2 31.6 31.6 0 0 0 2 12a31.6 31.6 0 0 0 .42 4.81 2.98 2.98 0 0 0 2.09 2.11c1.86.58 7.49.58 7.49.58s5.63 0 7.49-.58a2.98 2.98 0 0 0 2.09-2.11c.28-1.58.42-3.19.42-4.81s-.14-3.23-.42-4.81ZM10 15.74V8.26L16 12l-6 3.74Z" />
+                                </svg>
+                              )
+                            }
+                            {
+                              action.kind === 'docs' && (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                  <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z" />
+                                  <path d="M14 2v5h5" />
+                                  <path d="M9 13h6" />
+                                  <path d="M9 17h6" />
+                                </svg>
+                              )
+                            }
+                            {
+                              action.kind === 'unityWebgl' && (
+                                <img
+                                  src={unityIcon.src}
+                                  alt=""
+                                  class="project-card__link-image"
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                              )
+                            }
+                          </span>
+                        </a>
+                      ))
+                    }
+                  </div>
+                )
+              }
             </div>
           </article>
         ))

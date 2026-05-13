@@ -16,10 +16,16 @@ export interface ExperienceSpecialtySection {
   entries: ExperienceSpecialtyEntry[];
 }
 
+export interface ProjectAction {
+  kind: 'github' | 'youtube' | 'docs' | 'unityWebgl';
+  href: string;
+}
+
 export interface ProjectItem {
   title: string;
   summary: string;
   stack: string[];
+  actions?: ProjectAction[];
   videoUrl?: string;
   demoUrl?: string;
   imageSrc?: string;

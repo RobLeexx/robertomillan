@@ -668,6 +668,114 @@ h4 {
   gap: 0.4rem;
 }
 
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+  width: fit-content;
+  margin-top: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.project-card__link {
+  --project-link-hover: var(--brand);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.65rem;
+  height: 3.05rem;
+  color: var(--muted);
+  border-right: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.project-card__link:last-child {
+  border-right: 0;
+}
+
+.project-card__link:hover,
+.project-card__link:focus-visible {
+  color: white;
+  background: var(--project-link-hover);
+  transform: translateY(-1px);
+}
+
+.project-card__link[data-kind='youtube'] {
+  --project-link-hover: #ff3b30;
+}
+
+.project-card__link[data-kind='docs'] {
+  --project-link-hover: #2563eb;
+}
+
+.project-card__link[data-kind='github'] {
+  --project-link-hover: #7c3aed;
+}
+
+.project-card__link[data-kind='unityWebgl'] {
+  --project-link-hover: #6b7280;
+}
+
+.project-card__link::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.45rem);
+  padding: 0.25rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--line) 86%, transparent);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -0.2rem);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.project-card__link:hover::after,
+.project-card__link:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.project-card__link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.project-card__link-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.project-card__link-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 180ms ease;
+}
+
+.project-card__link[data-kind='unityWebgl']:hover .project-card__link-image,
+.project-card__link[data-kind='unityWebgl']:focus-visible .project-card__link-image {
+  filter: brightness(0) invert(1);
+}
+
 .experience-toggle {
   display: grid;
   gap: 1rem;
