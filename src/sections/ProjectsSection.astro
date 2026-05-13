@@ -3,6 +3,7 @@ import BadgeList from '../components/ui/BadgeList.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import { getProjects } from '../data/projects';
 import { type Lang, useTranslations } from '../i18n/utils';
+import projectVideoModalScript from '../scripts/project-video-modal.ts?url';
 
 interface Props {
   lang: Lang;
@@ -11,6 +12,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const projects = getProjects(lang);
+const hasVideos = projects.some((project) => project.videoUrl);
 ---
 
 <section id="projects" class="section">
@@ -22,24 +24,60 @@ const projects = getProjects(lang);
           <article class:list={['project-card', index % 2 === 1 && 'project-card--reverse']}>
             <div class="project-card__media-shell">
               <div class="project-card__visual">
-              {
-                project.imageSrc ? (
-                  <img
-                    class="project-card__image"
-                    src={project.imageSrc}
-                    alt={project.imageAlt ?? ''}
-                    width={project.imageWidth ?? 1280}
-                    height={project.imageHeight ?? 720}
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(max-width: 759px) calc(100vw - 4rem), (max-width: 979px) 58vw, 52vw"
-                  />
-                ) : (
-                  <div class="project-card__image project-card__image--fallback" aria-hidden="true">
-                    <span class="project-card__fallback-title">{project.title}</span>
+                <div class="project-card__visual-frame">
+                  <div class="project-card__visual-media">
+                    {
+                      project.demoUrl ? (
+                        <a
+                          class="project-card__play"
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`${t('projects.openProject')}: ${project.title}`}
+                        >
+                          <span class="project-card__play-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false">
+                              <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                            </svg>
+                          </span>
+                        </a>
+                      ) : (
+                        <button
+                          class="project-card__play"
+                          type="button"
+                          data-video-trigger
+                          data-video-url={project.videoUrl ?? ''}
+                          data-video-title={project.title}
+                          aria-label={`${t('projects.playVideo')}: ${project.title}`}
+                        >
+                          <span class="project-card__play-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false">
+                              <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                            </svg>
+                          </span>
+                        </button>
+                      )
+                    }
+                    {
+                      project.imageSrc ? (
+                        <img
+                          class="project-card__image"
+                          src={project.imageSrc}
+                          alt={project.imageAlt ?? ''}
+                          width={project.imageWidth ?? 1280}
+                          height={project.imageHeight ?? 720}
+                          loading="lazy"
+                          decoding="async"
+                          sizes="(max-width: 759px) calc(100vw - 4rem), (max-width: 979px) 58vw, 52vw"
+                        />
+                      ) : (
+                        <div class="project-card__image project-card__image--fallback" aria-hidden="true">
+                          <span class="project-card__fallback-title">{project.title}</span>
+                        </div>
+                      )
+                    }
                   </div>
-                )
-              }
+                </div>
               </div>
             </div>
 
@@ -53,4 +91,44 @@ const projects = getProjects(lang);
       }
     </div>
   </div>
+
+  {
+    hasVideos && (
+      <>
+        <dialog
+          class="video-modal"
+          data-video-modal
+          aria-labelledby="project-video-modal-title"
+        >
+          <div class="video-modal__surface">
+            <div class="video-modal__header">
+              <p id="project-video-modal-title" class="video-modal__title" data-video-title>
+                {t('projects.videoDialogTitle')}
+              </p>
+              <button
+                class="video-modal__close"
+                type="button"
+                data-video-close
+                aria-label={t('projects.closeVideo')}
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+
+            <div class="video-modal__frame">
+              <iframe
+                data-video-frame
+                title={t('projects.videoDialogTitle')}
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </dialog>
+        <script is:inline type="module" src={projectVideoModalScript}></script>
+      </>
+    )
+  }
 </section>

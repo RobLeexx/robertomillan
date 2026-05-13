@@ -48,6 +48,10 @@ export const ui = {
     'projects.eyebrow': 'Projects',
     'projects.title': 'Projects',
     'projects.stackLabel': 'Project technologies',
+    'projects.playVideo': 'Play project video',
+    'projects.openProject': 'Open project',
+    'projects.videoDialogTitle': 'Project video',
+    'projects.closeVideo': 'Close video',
     'contact.eyebrow': 'Contact',
     'contact.title': "Let's talk",
     'contact.subtitle':
@@ -107,6 +111,10 @@ export const ui = {
     'projects.eyebrow': 'Proyectos',
     'projects.title': 'Proyectos',
     'projects.stackLabel': 'Tecnologías del proyecto',
+    'projects.playVideo': 'Ver video del proyecto',
+    'projects.openProject': 'Abrir proyecto',
+    'projects.videoDialogTitle': 'Video del proyecto',
+    'projects.closeVideo': 'Cerrar video',
     'contact.eyebrow': 'Contacto',
     'contact.title': 'Hablemos',
     'contact.subtitle':

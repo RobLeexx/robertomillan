@@ -20,6 +20,8 @@ export interface ProjectItem {
   title: string;
   summary: string;
   stack: string[];
+  videoUrl?: string;
+  demoUrl?: string;
   imageSrc?: string;
   imageAlt?: string;
   imageWidth?: number;
