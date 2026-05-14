@@ -14,7 +14,7 @@ export const siteConfig = {
     locality: 'Valencia',
     country: 'ES'
   },
-  themeColor: '#0b1220',
+  themeColor: '#0E3746',
   knowsAbout: [
     'Python',
     'Django',

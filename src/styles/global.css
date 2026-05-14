@@ -1,31 +1,99 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
 :root {
-  --bg: #f5f7fb;
-  --surface: #ffffff;
-  --surface-muted: #eef2f8;
-  --text: #111827;
-  --muted: #4b5563;
-  --line: #d8e0ea;
-  --brand: #0f766e;
-  --brand-dark: #0b5d57;
-  --border-strong: #b7c6d9;
-  --glow: rgba(15, 118, 110, 0.14);
-  --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --color-primary: #0e3746;
+  --color-primary-strong: #092b35;
+  --color-background: #f4f2ec;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eae8dc;
+  --color-accent: #be2623;
+  --color-text: #0e3746;
+  --color-text-muted: #5f6b70;
+  --color-dark-background: #071a22;
+  --color-dark-surface: #0e3746;
+  --color-dark-text: #f4f2ec;
+  --color-dark-text-muted: #b8b6ae;
+  --color-text-inverse: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-border: rgb(14 55 70 / 0.16);
+  --color-border-strong: rgb(14 55 70 / 0.28);
+  --color-primary-soft: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface) 84%);
+  --color-primary-softer: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface) 92%);
+  --color-surface-overlay: rgb(255 255 255 / 0.82);
+  --color-surface-glass: rgb(255 255 255 / 0.18);
+  --color-surface-glass-border: rgb(255 255 255 / 0.44);
+  --color-surface-highlight: rgb(255 255 255 / 0.12);
+  --color-overlay: rgb(7 26 34 / 0.72);
+  --color-video-surface: #071a22;
+  --color-glow: rgb(14 55 70 / 0.14);
+  --color-shadow-rgb: 14 55 70;
+  --color-hero-glow-start: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  --color-hero-glow-end: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  --color-platform-youtube: var(--color-accent);
+  --color-platform-docs: color-mix(in srgb, var(--color-primary) 82%, var(--color-text-inverse) 18%);
+  --color-platform-github: color-mix(in srgb, var(--color-primary) 48%, var(--color-accent) 52%);
+  --color-platform-unity: var(--color-primary-strong);
+  --color-focus-ring: color-mix(in srgb, var(--color-primary) 72%, var(--color-text-inverse) 28%);
+  --shadow-surface: 0 18px 50px rgb(var(--color-shadow-rgb) / 0.08);
+  --shadow-card: 0 18px 44px rgb(var(--color-shadow-rgb) / 0.07);
+  --shadow-frame: 0 28px 80px rgb(var(--color-shadow-rgb) / 0.11);
+  --shadow-float: 0 10px 24px rgb(var(--color-shadow-rgb) / 0.14);
+  --shadow-float-strong: 0 16px 32px rgb(var(--color-shadow-rgb) / 0.18);
+  --shadow-toolbar: 0 10px 26px rgb(var(--color-shadow-rgb) / 0.05);
+  --shadow-tooltip: 0 8px 18px rgb(var(--color-shadow-rgb) / 0.08);
+  --shadow-panel: 0 12px 30px rgb(var(--color-shadow-rgb) / 0.05);
+  --shadow-panel-strong: 0 18px 40px rgb(var(--color-shadow-rgb) / 0.08);
+  --shadow-panel-soft: 0 10px 24px rgb(var(--color-shadow-rgb) / 0.04);
   --radius: 24px;
   --container: 1120px;
 }
 
 :root[data-theme='dark'] {
-  --bg: #0b1220;
-  --surface: #111a2b;
-  --surface-muted: #0f1727;
-  --text: #edf2f7;
-  --muted: #a5b4c7;
-  --line: #243041;
-  --brand: #5eead4;
-  --brand-dark: #2dd4bf;
-  --border-strong: #3a4a5f;
-  --glow: rgba(94, 234, 212, 0.12);
-  --shadow: 0 18px 50px rgba(2, 6, 23, 0.34);
+  --color-primary: color-mix(in srgb, #0e3746 34%, #f4f2ec 66%);
+  --color-primary-strong: color-mix(in srgb, #0e3746 22%, #f4f2ec 78%);
+  --color-background: var(--color-dark-background);
+  --color-surface: var(--color-dark-surface);
+  --color-surface-muted: rgb(244 242 236 / 0.08);
+  --color-text: var(--color-dark-text);
+  --color-text-muted: var(--color-dark-text-muted);
+  --color-text-inverse: var(--color-dark-text);
+  --color-on-primary: var(--color-dark-background);
+  --color-border: rgb(244 242 236 / 0.16);
+  --color-border-strong: rgb(244 242 236 / 0.26);
+  --color-primary-soft: color-mix(in srgb, var(--color-primary) 32%, var(--color-surface) 68%);
+  --color-primary-softer: color-mix(in srgb, var(--color-primary) 18%, var(--color-surface) 82%);
+  --color-surface-overlay: rgb(14 55 70 / 0.82);
+  --color-surface-glass: rgb(244 242 236 / 0.1);
+  --color-surface-glass-border: rgb(244 242 236 / 0.24);
+  --color-surface-highlight: rgb(244 242 236 / 0.14);
+  --color-overlay: rgb(7 26 34 / 0.76);
+  --color-video-surface: #071a22;
+  --color-glow: rgb(244 242 236 / 0.08);
+  --color-shadow-rgb: 7 26 34;
+  --color-hero-glow-start: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  --color-hero-glow-end: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --color-platform-docs: color-mix(in srgb, var(--color-primary) 50%, var(--color-text-inverse) 50%);
+  --color-platform-github: color-mix(in srgb, var(--color-primary) 42%, var(--color-accent) 58%);
+  --shadow-surface: 0 18px 50px rgb(var(--color-shadow-rgb) / 0.34);
+  --shadow-card: 0 18px 44px rgb(var(--color-shadow-rgb) / 0.3);
+  --shadow-frame: 0 28px 80px rgb(var(--color-shadow-rgb) / 0.38);
+  --shadow-float: 0 10px 24px rgb(var(--color-shadow-rgb) / 0.28);
+  --shadow-float-strong: 0 16px 32px rgb(var(--color-shadow-rgb) / 0.32);
+  --shadow-toolbar: 0 10px 26px rgb(var(--color-shadow-rgb) / 0.24);
+  --shadow-tooltip: 0 8px 18px rgb(var(--color-shadow-rgb) / 0.3);
+  --shadow-panel: 0 12px 30px rgb(var(--color-shadow-rgb) / 0.24);
+  --shadow-panel-strong: 0 18px 40px rgb(var(--color-shadow-rgb) / 0.3);
+  --shadow-panel-soft: 0 10px 24px rgb(var(--color-shadow-rgb) / 0.22);
 }
 
 *,
@@ -48,11 +116,11 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28%),
-    radial-gradient(circle at top right, rgba(14, 165, 233, 0.08), transparent 24%),
-    var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    radial-gradient(circle at top left, var(--color-hero-glow-start), transparent 28%),
+    radial-gradient(circle at top right, var(--color-hero-glow-end), transparent 24%),
+    var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
   line-height: 1.6;
   transition:
     background-color 180ms ease,
@@ -72,6 +140,13 @@ a {
 button {
   font: inherit;
   color: inherit;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
 }
 
 p,
@@ -94,8 +169,8 @@ ul {
   z-index: 10;
   padding: 0.75rem 1rem;
   border-radius: 999px;
-  background: var(--text);
-  color: white;
+  background: var(--color-text);
+  color: var(--color-text-inverse);
 }
 
 .skip-link:focus {
@@ -104,7 +179,7 @@ ul {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--brand) 72%, white 28%);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 
@@ -117,8 +192,8 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
   backdrop-filter: blur(14px);
 }
 
@@ -132,6 +207,7 @@ button:focus-visible {
 }
 
 .site-brand {
+  font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -145,7 +221,7 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .site-actions {
@@ -160,7 +236,7 @@ button:focus-visible {
 .site-nav a:focus-visible,
 .site-brand:hover,
 .site-brand:focus-visible {
-  color: var(--brand);
+  color: var(--color-primary);
 }
 
 .theme-toggle {
@@ -170,17 +246,17 @@ button:focus-visible {
   min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0.5rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--text);
+  background: var(--color-surface);
+  color: var(--color-text);
   cursor: pointer;
 }
 
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
-  border-color: var(--brand);
-  color: var(--brand);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .theme-toggle__icon {
@@ -225,7 +301,7 @@ button:focus-visible {
   padding: 0;
   border: 0;
   background: transparent;
-  color: color-mix(in srgb, var(--muted) 84%, var(--brand) 16%);
+  color: color-mix(in srgb, var(--color-text-muted) 84%, var(--color-primary) 16%);
   cursor: pointer;
   touch-action: manipulation;
   transform: translateX(-50%);
@@ -234,7 +310,7 @@ button:focus-visible {
 
 .pull-chain:hover,
 .pull-chain:focus-visible {
-  color: var(--brand);
+  color: var(--color-primary);
 }
 
 .pull-chain__svg {
@@ -256,7 +332,7 @@ button:focus-visible {
 }
 
 .pull-chain__weight {
-  fill: color-mix(in srgb, var(--surface) 72%, currentColor 28%);
+  fill: color-mix(in srgb, var(--color-surface) 72%, currentColor 28%);
   stroke: currentColor;
   stroke-width: 1.2;
 }
@@ -278,9 +354,9 @@ button:focus-visible {
   align-items: center;
   gap: 0.35rem;
   padding: 0.25rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--color-surface);
 }
 
 .language-switcher__link {
@@ -289,7 +365,7 @@ button:focus-visible {
   justify-content: center;
   padding: 0.45rem 0.7rem;
   border-radius: 999px;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.92rem;
   line-height: 1;
 }
@@ -304,18 +380,14 @@ button:focus-visible {
 
 .language-switcher__link:hover,
 .language-switcher__link:focus-visible {
-  color: var(--brand);
+  color: var(--color-primary);
+  background: var(--color-primary-softer);
 }
 
 .language-switcher__link--active {
-  background: var(--surface-muted);
-  color: var(--text);
-}
-
-:root[data-theme='dark'] .language-switcher__link--active {
-  background: color-mix(in srgb, var(--brand) 24%, var(--surface) 76%);
-  color: var(--brand);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 42%, transparent);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 42%, transparent);
 }
 
 .section {
@@ -323,7 +395,7 @@ button:focus-visible {
 }
 
 .section--muted {
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
 }
 
 .stack > * + * {
@@ -336,7 +408,7 @@ button:focus-visible {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--color-primary);
 }
 
 h1 {
@@ -344,6 +416,7 @@ h1 {
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
+  font-family: var(--font-heading);
 }
 
 h2 {
@@ -351,23 +424,26 @@ h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
+  font-family: var(--font-heading);
 }
 
 h3 {
   font-size: 1.2rem;
   line-height: 1.3;
+  font-family: var(--font-heading);
 }
 
 h4 {
   font-size: 1.1rem;
   line-height: 1.3;
+  font-family: var(--font-heading);
 }
 
 .lead,
 .copy p,
 .card p,
 .footer {
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .lead {
@@ -396,9 +472,9 @@ h4 {
 .hero__media img {
   width: 100%;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  background: var(--surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-surface);
+  background: var(--color-surface);
 }
 
 .actions {
@@ -420,18 +496,18 @@ h4 {
 }
 
 .button--primary {
-  background: var(--brand);
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 .button--primary:hover,
 .button--primary:focus-visible {
-  background: var(--brand-dark);
+  background: var(--color-primary-strong);
 }
 
 .button--secondary {
-  border-color: var(--line);
-  background: var(--surface);
+  border-color: var(--color-border);
+  background: var(--color-surface);
 }
 
 .button--secondary:hover,
@@ -440,7 +516,7 @@ h4 {
 .card--link:focus-visible,
 .footer__nav a:hover,
 .footer__nav a:focus-visible {
-  color: var(--brand);
+  color: var(--color-primary);
 }
 
 .copy {
@@ -459,10 +535,10 @@ h4 {
 
 .card {
   padding: 1.5rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-surface);
 }
 
 .card > * + * {
@@ -480,7 +556,7 @@ h4 {
   border: 0;
   border-radius: 0;
   background: transparent;
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.07);
+  box-shadow: var(--shadow-card);
   overflow: clip;
 }
 
@@ -501,11 +577,11 @@ h4 {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   clip-path: var(--project-shape);
-  background: color-mix(in srgb, var(--border-strong) 78%, var(--brand) 22%);
+  background: var(--color-primary);
   padding: 2px;
   box-shadow:
-    0 28px 80px var(--shadow),
-    0 0 32px var(--glow);
+    var(--shadow-frame),
+    0 0 32px var(--color-glow);
 }
 
 .project-card--reverse .project-card__visual-frame {
@@ -519,7 +595,7 @@ h4 {
   clip-path: inherit;
   z-index: 2;
   pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--brand) 62%, var(--border-strong) 38%);
+  border: 1px solid var(--color-primary);
 }
 
 .project-card__visual-media {
@@ -528,7 +604,7 @@ h4 {
   height: 100%;
   overflow: hidden;
   clip-path: inherit;
-  background: color-mix(in srgb, var(--surface-muted) 92%, transparent);
+  background: color-mix(in srgb, var(--color-surface-muted) 92%, transparent);
 }
 
 .project-card__visual-media::after {
@@ -537,7 +613,7 @@ h4 {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, color-mix(in srgb, white 10%, transparent), transparent 26%);
+  background: linear-gradient(180deg, var(--color-surface-highlight), transparent 26%);
   opacity: 0.42;
 }
 
@@ -552,15 +628,14 @@ h4 {
   width: 4.25rem;
   height: 4.25rem;
   padding: 0;
-  border: 1px solid color-mix(in srgb, var(--surface) 44%, transparent);
+  border: 1px solid var(--color-primary);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 18%, transparent);
-  color: white;
+  background: var(--color-surface);
+  color: var(--color-primary);
   box-shadow:
-    0 10px 24px rgba(15, 23, 42, 0.14),
-    inset 0 0 0 1px color-mix(in srgb, white 8%, transparent);
-  backdrop-filter: blur(8px);
-  opacity: 0.22;
+    var(--shadow-float),
+    inset 0 0 0 1px var(--color-surface-highlight);
+  opacity: 1;
   transform: translate(-50%, -50%) scale(0.94);
   transition:
     opacity 180ms ease,
@@ -590,13 +665,14 @@ h4 {
 .project-card__visual:focus-within .project-card__play,
 .project-card__play:hover,
 .project-card__play:focus-visible {
-  opacity: 0.78;
+  opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-  background: color-mix(in srgb, var(--brand) 26%, var(--surface) 74%);
-  border-color: color-mix(in srgb, var(--brand) 44%, var(--surface) 56%);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
   box-shadow:
-    0 16px 32px rgba(15, 23, 42, 0.18),
-    inset 0 0 0 1px color-mix(in srgb, white 12%, transparent);
+    var(--shadow-float-strong),
+    inset 0 0 0 1px var(--color-surface-highlight);
 }
 
 .project-card__image {
@@ -604,7 +680,7 @@ h4 {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  background: var(--surface-muted);
+  background: var(--color-surface-muted);
 }
 
 .project-card__image--fallback {
@@ -612,8 +688,8 @@ h4 {
   align-items: flex-end;
   height: 100%;
   padding: 1.5rem;
-  color: white;
-  background: color-mix(in srgb, var(--text) 82%, var(--surface) 18%);
+  color: var(--color-text-inverse);
+  background: color-mix(in srgb, var(--color-text) 82%, var(--color-surface) 18%);
 }
 
 .project-card__fallback-title {
@@ -635,8 +711,8 @@ h4 {
   font-size: clamp(2rem, 5vw, 3.3rem);
   line-height: 0.95;
   letter-spacing: -0.06em;
-  font-style: italic;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
+  font-weight: 700;
 }
 
 .project-card__content p {
@@ -655,13 +731,14 @@ h4 {
 
 .badge-list li {
   padding: 0.4rem 0.72rem;
-  border: 1px solid color-mix(in srgb, var(--line) 84%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, transparent);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface-muted) 78%, transparent);
-  color: var(--text);
+  background: color-mix(in srgb, var(--color-surface-muted) 78%, transparent);
+  color: var(--color-text);
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1;
+  font-family: var(--font-mono);
 }
 
 .badge-list--compact {
@@ -675,21 +752,21 @@ h4 {
   align-items: center;
   width: fit-content;
   margin-top: 0.35rem;
-  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
-  background: color-mix(in srgb, var(--surface) 94%, transparent);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+  border: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  box-shadow: var(--shadow-toolbar);
 }
 
 .project-card__link {
-  --project-link-hover: var(--brand);
+  --project-link-hover: var(--color-primary);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 3.65rem;
   height: 3.05rem;
-  color: var(--muted);
-  border-right: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  color: var(--color-text-muted);
+  border-right: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
   transition:
     color 180ms ease,
     background-color 180ms ease,
@@ -702,7 +779,7 @@ h4 {
 
 .project-card__link:hover,
 .project-card__link:focus-visible {
-  color: white;
+  color: var(--color-text-inverse);
   background: var(--project-link-hover);
   transform: translateY(-1px);
 }
@@ -720,7 +797,7 @@ h4 {
 }
 
 .project-card__link[data-kind='unityWebgl'] {
-  --project-link-hover: #6b7280;
+  --project-link-hover: var(--color-primary);
 }
 
 .project-card__link::after {
@@ -729,9 +806,9 @@ h4 {
   left: 50%;
   top: calc(100% + 0.45rem);
   padding: 0.25rem 0.45rem;
-  border: 1px solid color-mix(in srgb, var(--line) 86%, transparent);
-  background: var(--surface);
-  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--color-border) 86%, transparent);
+  background: var(--color-surface);
+  color: var(--color-text);
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1;
@@ -742,7 +819,7 @@ h4 {
   transition:
     opacity 160ms ease,
     transform 160ms ease;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-tooltip);
 }
 
 .project-card__link:hover::after,
@@ -768,11 +845,10 @@ h4 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: filter 180ms ease;
+  transition: none;
 }
 
-.project-card__link[data-kind='unityWebgl']:hover .project-card__link-image,
-.project-card__link[data-kind='unityWebgl']:focus-visible .project-card__link-image {
+.project-card__link[data-kind='unityWebgl'] .project-card__link-image {
   filter: brightness(0) invert(1);
 }
 
@@ -796,10 +872,10 @@ h4 {
   flex: 0 0 auto;
   min-height: 2.55rem;
   padding: 0.65rem 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--line) 86%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 86%, transparent);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 94%, transparent);
-  color: var(--muted);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.15;
@@ -813,14 +889,15 @@ h4 {
 
 .experience-toggle__tab:hover,
 .experience-toggle__tab:focus-visible {
-  color: var(--text);
-  border-color: color-mix(in srgb, var(--brand) 34%, var(--line) 66%);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-softer);
 }
 
 .experience-toggle__tab--active {
-  background: color-mix(in srgb, var(--surface-muted) 74%, var(--brand) 26%);
-  border-color: color-mix(in srgb, var(--brand) 42%, var(--line) 58%);
-  color: var(--brand);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 .experience-toggle__panels {
@@ -831,10 +908,10 @@ h4 {
   display: grid;
   gap: 0.85rem;
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--line) 84%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, transparent);
   border-radius: calc(var(--radius) - 6px);
-  background: color-mix(in srgb, var(--surface) 94%, transparent);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  box-shadow: var(--shadow-panel);
 }
 
 .experience-toggle__panel[hidden] {
@@ -846,22 +923,22 @@ h4 {
 }
 
 .experience-toggle__panel--primary {
-  border-color: color-mix(in srgb, var(--brand) 32%, var(--line) 68%);
+  border-color: color-mix(in srgb, var(--color-primary) 32%, var(--color-border) 68%);
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface) 95%, var(--brand) 5%), var(--surface)),
-    var(--surface);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 95%, var(--color-primary) 5%), var(--color-surface)),
+    var(--color-surface);
+  box-shadow: var(--shadow-panel-strong);
 }
 
 .experience-toggle__panel--compact {
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--shadow-panel-soft);
 }
 
 .experience-toggle__entry {
   display: grid;
   gap: 0.7rem;
   padding: 0.9rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 78%, transparent);
 }
 
 .experience-toggle__entry:first-child {
@@ -887,7 +964,7 @@ h4 {
 .experience-toggle__entry-subtitle,
 .experience-toggle__entry-summary,
 .experience-toggle__highlights {
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .experience-toggle__entry-subtitle {
@@ -900,7 +977,7 @@ h4 {
   gap: 0.65rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .experience-toggle__entry-summary {
@@ -928,7 +1005,7 @@ h4 {
   width: 0.28rem;
   height: 0.28rem;
   border-radius: 999px;
-  background: var(--brand);
+  background: var(--color-primary);
 }
 
 @keyframes experience-panel-in {
@@ -948,11 +1025,11 @@ h4 {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .video-modal::backdrop {
-  background: rgba(15, 23, 42, 0.72);
+  background: var(--color-overlay);
   backdrop-filter: blur(10px);
 }
 
@@ -960,10 +1037,10 @@ h4 {
   display: grid;
   gap: 1rem;
   padding: 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 74%, transparent);
   border-radius: calc(var(--radius) - 2px);
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
-  box-shadow: var(--shadow);
+  background: color-mix(in srgb, var(--color-surface) 96%, transparent);
+  box-shadow: var(--shadow-surface);
 }
 
 .video-modal__header {
@@ -976,7 +1053,8 @@ h4 {
 .video-modal__title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--color-text);
+  font-family: var(--font-heading);
 }
 
 .video-modal__close {
@@ -986,17 +1064,17 @@ h4 {
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
   cursor: pointer;
 }
 
 .video-modal__close:hover,
 .video-modal__close:focus-visible {
-  color: var(--brand);
-  border-color: color-mix(in srgb, var(--brand) 42%, var(--line) 58%);
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 42%, var(--color-border) 58%);
 }
 
 .video-modal__close span {
@@ -1008,8 +1086,8 @@ h4 {
   overflow: hidden;
   aspect-ratio: 9 / 16;
   border-radius: calc(var(--radius) - 8px);
-  background: #000;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 6%, transparent);
+  background: var(--color-video-surface);
+  box-shadow: inset 0 0 0 1px var(--color-surface-highlight);
 }
 
 .video-modal__frame iframe {
@@ -1027,7 +1105,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
   padding-top: 1.5rem;
 }
 
