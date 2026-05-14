@@ -6,8 +6,12 @@ import canesImage from '../../static/projects/canes.png';
 import crmImage from '../../static/projects/crm.png';
 import gameImage from '../../static/projects/game.png';
 
-const exampleVideoUrl = 'https://www.youtube.com/embed/ZPVJQlDZlwo?autoplay=1&rel=0&modestbranding=1';
-const exampleYoutubeUrl = 'https://www.youtube.com/shorts/ZPVJQlDZlwo';
+const odooCrmEnglishVideoUrl = 'https://www.youtube.com/embed/v0ysaI-zs9s?autoplay=1&rel=0&modestbranding=1';
+const odooCrmEnglishYoutubeUrl = 'https://youtu.be/v0ysaI-zs9s';
+const odooCrmSpanishVideoUrl = 'https://www.youtube.com/embed/KJQlI__Xx30?autoplay=1&rel=0&modestbranding=1';
+const odooCrmSpanishYoutubeUrl = 'https://youtu.be/KJQlI__Xx30';
+const ateneaVideoUrl = 'https://www.youtube.com/embed/BEBcn_Cz2Sc?autoplay=1&rel=0&modestbranding=1';
+const ateneaYoutubeUrl = 'https://youtu.be/BEBcn_Cz2Sc';
 const workahoricVideoUrl = 'https://www.youtube.com/embed/QuYKSTyoO8c?autoplay=1&rel=0&modestbranding=1';
 const workahoricYoutubeUrl = 'https://www.youtube.com/shorts/QuYKSTyoO8c';
 const masitasDemoUrl = 'https://robleexx.github.io/Masitas';
@@ -20,9 +24,9 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
         'Production Odoo CRM for a moving company with custom quote logic, contract generation, electronic signature flow, lead ingestion, anti-spam filtering, and Dockerized deployment.',
       stack: ['Odoo 19', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'Spec-Driven Development'],
       actions: [
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: odooCrmEnglishYoutubeUrl }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: odooCrmEnglishVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Odoo CRM project preview',
       imagePosition: '18% top',
@@ -36,10 +40,10 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['Django', 'React', 'TypeScript', 'TensorFlow', 'GAN', 'AI', 'Artificial Vision', 'Criminal Analysis'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Atenea' },
-        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'youtube', href: ateneaYoutubeUrl },
         { kind: 'docs', href: 'http://181.188.186.20/handle/123456789/680' }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: ateneaVideoUrl,
       imageSrc: ateneaImage.src,
       imageAlt: 'Atenea project preview',
       imageWidth: 1536,
@@ -97,9 +101,9 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
         'CRM productivo en Odoo para una empresa de mudanzas con lógica personalizada de presupuestos, generación de contratos, firma electrónica, entrada de leads, filtrado anti-spam y despliegue con Docker.',
       stack: ['Odoo 19', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'Spec-Driven Development'],
       actions: [
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: odooCrmSpanishYoutubeUrl }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: odooCrmSpanishVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Vista previa del proyecto Odoo CRM',
       imagePosition: '18% top',
@@ -113,10 +117,10 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['Django', 'React', 'TypeScript', 'TensorFlow', 'GAN', 'IA', 'Visión Artificial', 'Análisis Criminal'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Atenea' },
-        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'youtube', href: ateneaYoutubeUrl },
         { kind: 'docs', href: 'http://181.188.186.20/handle/123456789/680' }
       ],
-      videoUrl: exampleVideoUrl,
+      videoUrl: ateneaVideoUrl,
       imageSrc: ateneaImage.src,
       imageAlt: 'Vista previa del proyecto Atenea',
       imageWidth: 1536,
