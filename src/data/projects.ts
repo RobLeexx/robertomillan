@@ -1,6 +1,8 @@
 import type { Lang } from '../i18n/utils';
 import type { ProjectItem } from '../types/content';
 import appImage from '../../static/projects/app.png';
+import ateneaImage from '../../static/projects/atenea.png';
+import canesImage from '../../static/projects/canes.png';
 import crmImage from '../../static/projects/crm.png';
 import gameImage from '../../static/projects/game.png';
 
@@ -23,6 +25,7 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       videoUrl: exampleVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Odoo CRM project preview',
+      imagePosition: '18% top',
       imageWidth: 1913,
       imageHeight: 940
     },
@@ -33,9 +36,14 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['Django', 'React', 'TypeScript', 'TensorFlow', 'GAN', 'AI', 'Artificial Vision', 'Criminal Analysis'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Atenea' },
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'docs', href: 'http://181.188.186.20/handle/123456789/680' }
       ],
-      videoUrl: exampleVideoUrl
+      videoUrl: exampleVideoUrl,
+      imageSrc: ateneaImage.src,
+      imageAlt: 'Atenea project preview',
+      imageWidth: 1536,
+      imageHeight: 1024
     },
     {
       title: 'WorkaHoric',
@@ -58,16 +66,18 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
         'Police georeferencing system for monitoring and tracking dangerous breed dogs with online QR certification for proper training and instruction of dogs with dangerous characteristics according to Law 533 of Bolivia.',
       stack: ['Vue', 'JavaScript', 'Laravel', 'Inertia', 'QR/PDF', 'Nginx', 'Docker', 'MapsGL'],
       actions: [
-        { kind: 'github', href: 'https://github.com/RobLeexx/WorkaHoric' },
-        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'github', href: 'https://github.com/RobLeexx/Canes_Peligrosos' },
         { kind: 'docs', href: 'https://sea.gob.bo/digesto/CompendioII/I/60_L_553.pdf' }
       ],
-      videoUrl: exampleVideoUrl
+      imageSrc: canesImage.src,
+      imageAlt: 'Canes project preview',
+      imageWidth: 1536,
+      imageHeight: 1024
     },
     {
       title: 'Masitas',
       summary:
-        'Web and desktop video game made with Unity about a masa looking for meat to become the famous Bolivian "salteña".',
+        'Web and desktop video game made with Unity at university about a masa looking for meat to become the famous Bolivian "salteña".',
       stack: ['Unity', 'WebGL 2.0', 'GitHub Pages', 'HTML/CSS', 'WebAssembly'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Masitas' },
@@ -92,6 +102,7 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       videoUrl: exampleVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Vista previa del proyecto Odoo CRM',
+      imagePosition: '18% top',
       imageWidth: 1913,
       imageHeight: 940
     },
@@ -102,9 +113,14 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       stack: ['Django', 'React', 'TypeScript', 'TensorFlow', 'GAN', 'IA', 'Visión Artificial', 'Análisis Criminal'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Atenea' },
-        { kind: 'youtube', href: exampleYoutubeUrl }
+        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'docs', href: 'http://181.188.186.20/handle/123456789/680' }
       ],
-      videoUrl: exampleVideoUrl
+      videoUrl: exampleVideoUrl,
+      imageSrc: ateneaImage.src,
+      imageAlt: 'Vista previa del proyecto Atenea',
+      imageWidth: 1536,
+      imageHeight: 1024
     },
     {
       title: 'WorkaHoric',
@@ -127,16 +143,18 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
         'Sistema policial de georreferenciación para monitoreo y seguimiento de perros de raza peligrosa con certificación QR en línea para el correcto adiestramiento e instrucción de perros con características peligrosas según la Ley 533 de Bolivia.',
       stack: ['Vue', 'JavaScript', 'Laravel', 'Inertia', 'QR/PDF', 'Nginx', 'Docker', 'MapsGL'],
       actions: [
-        { kind: 'github', href: 'https://github.com/RobLeexx/WorkaHoric' },
-        { kind: 'youtube', href: exampleYoutubeUrl },
+        { kind: 'github', href: 'https://github.com/RobLeexx/Canes_Peligrosos' },
         { kind: 'docs', href: 'https://sea.gob.bo/digesto/CompendioII/I/60_L_553.pdf' }
       ],
-      videoUrl: exampleVideoUrl
+      imageSrc: canesImage.src,
+      imageAlt: 'Vista previa del proyecto Canes',
+      imageWidth: 1536,
+      imageHeight: 1024
     },
     {
       title: 'Masitas',
       summary:
-        'Videojuego web y de escritorio hecho con Unity sobre una masa que busca carne para convertirse en la famosa "salteña" boliviana.',
+        'Proyecto universitario sobre un videojuego web y de escritorio hecho con Unity sobre una masa que busca carne para convertirse en la famosa "salteña" boliviana.',
       stack: ['Unity', 'WebGL 2.0', 'GitHub Pages', 'HTML/CSS', 'WebAssembly'],
       actions: [
         { kind: 'github', href: 'https://github.com/RobLeexx/Masitas' },

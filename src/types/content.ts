@@ -30,6 +30,7 @@ export interface ProjectItem {
   demoUrl?: string;
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: string;
   imageWidth?: number;
   imageHeight?: number;
 }

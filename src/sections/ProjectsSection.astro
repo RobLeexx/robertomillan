@@ -14,6 +14,12 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const projects = getProjects(lang);
+const actionOrder: Record<ProjectAction['kind'], number> = {
+  github: 0,
+  youtube: 1,
+  docs: 2,
+  unityWebgl: 3
+};
 const hasVideos = projects.some((project) => project.videoUrl);
 const actionLabels: Record<ProjectAction['kind'], string> = {
   github: t('projects.link.github'),
@@ -49,7 +55,7 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                             </svg>
                           </span>
                         </a>
-                      ) : (
+                      ) : project.videoUrl ? (
                         <button
                           class="project-card__play"
                           type="button"
@@ -64,7 +70,8 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                             </svg>
                           </span>
                         </button>
-                      )
+                      ) : null
+                      
                     }
                     {
                       project.imageSrc ? (
@@ -72,6 +79,7 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                           class="project-card__image"
                           src={project.imageSrc}
                           alt={project.imageAlt ?? ''}
+                          style={project.imagePosition ? `object-position: ${project.imagePosition};` : undefined}
                           width={project.imageWidth ?? 1280}
                           height={project.imageHeight ?? 720}
                           loading="lazy"
@@ -97,7 +105,9 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                 project.actions && project.actions.length > 0 && (
                   <div class="project-card__links" aria-label={t('projects.linksLabel')}>
                     {
-                      project.actions.map((action) => (
+                      [...project.actions]
+                        .sort((left, right) => actionOrder[left.kind] - actionOrder[right.kind])
+                        .map((action) => (
                         <a
                           class="project-card__link"
                           href={action.href}
