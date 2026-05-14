@@ -4,6 +4,7 @@ import { siteConfig } from '../config/site';
 import { themeConfig } from '../config/theme';
 import type { Lang } from '../i18n/utils';
 import themeToggleScript from '../scripts/theme-toggle.ts?url';
+import logoFavicon from '../../static/logo-favicon.png';
 import '../styles/global.css';
 
 interface Props {
@@ -56,8 +57,9 @@ const initialThemeScript = `
     <meta name="description" content={description} />
     <meta name="theme-color" content={siteConfig.themeColor} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href={logoFavicon.src} />
+    <link rel="shortcut icon" type="image/png" href={logoFavicon.src} />
+    <link rel="apple-touch-icon" href={logoFavicon.src} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
