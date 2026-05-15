@@ -1,15 +1,10 @@
 import type { ContactLink } from '../types/content';
 
 export const siteConfig = {
-  name: 'Roberto Millán',
+  name: 'Roberto Mill\u00e1n',
   title: 'Fullstack Developer',
   defaultOrigin: 'https://robertomillan.dev',
   socialCard: '/social-card.svg',
-  heroImage: {
-    src: '/hero-abstract.svg',
-    width: 720,
-    height: 520
-  },
   location: {
     locality: 'Valencia',
     country: 'ES'

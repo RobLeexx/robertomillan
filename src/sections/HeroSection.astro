@@ -1,6 +1,8 @@
 ---
-import { siteConfig } from '../config/site';
+import heroDark from '../../static/hero/dark2.png';
+import heroLight from '../../static/hero/light.png';
 import { type Lang, useTranslations } from '../i18n/utils';
+import heroParallaxScript from '../scripts/hero-parallax.ts?url';
 
 interface Props {
   lang: Lang;
@@ -10,25 +12,18 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="home" class="hero section">
-  <div class="container hero__grid">
-    <div class="hero__content">
-      <h1>{t('hero.title')}</h1>
-      <div class="actions">
-        <a class="button button--primary" href="#contact">{t('hero.ctaPrimary')}</a>
-        <a class="button button--secondary" href="#projects">{t('hero.ctaSecondary')}</a>
+<section
+  id="home"
+  class="hero section"
+  data-hero-parallax
+  style={`--hero-image-light: url('${heroLight.src}'); --hero-image-dark: url('${heroDark.src}');`}
+>
+  <div class="container">
+    <div class="hero__panel">
+      <div class="hero__content">
+        <h1 class="hero__title" data-hero-title>{t('hero.title')}</h1>
       </div>
     </div>
-
-    <div class="hero__media">
-      <img
-        src={siteConfig.heroImage.src}
-        alt={t('hero.imageAlt')}
-        width={siteConfig.heroImage.width}
-        height={siteConfig.heroImage.height}
-        fetchpriority="high"
-        decoding="async"
-      />
-    </div>
   </div>
+  <script is:inline type="module" src={heroParallaxScript}></script>
 </section>

@@ -2,6 +2,7 @@
 import ThemeControl from '../animations/ThemeControl.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import NavLinks from './NavLinks.astro';
+import { siteConfig } from '../../config/site';
 import { getLocalizedPath, type Lang, useTranslations } from '../../i18n/utils';
 import englishCv from '../../../static/cv/RobertoMillanCVenglish.pdf';
 import spanishCv from '../../../static/cv/RobertoMillanCVspanish.pdf';
@@ -20,7 +21,7 @@ const cvHref = lang === 'es' ? spanishCv : englishCv;
 <header class="site-header">
   <div class="container site-header__inner">
     <div class="site-brand-group">
-      <a class="site-brand" href={`${homePath}#home`}>Roberto Millán</a>
+      <a class="site-brand" href={`${homePath}#home`}>{siteConfig.name}</a>
       <a class="site-cv-link" href={cvHref} download>{t('nav.downloadCv')}</a>
     </div>
 

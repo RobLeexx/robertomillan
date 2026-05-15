@@ -32,9 +32,9 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'Who am I?',
     'about.p1':
-      'Hello! I am Roberto Mill\u00e1n, a Software Developer from Bolivia living in Spain.',
+      'Hello! I am Roberto Mill\u00e1n, a Software Developer living in Spain.',
     'about.p2':
-      "I am currently completing my master's degree in Valencia, thanks to my dual nationality, and I bring a broad range of experience in software engineering.",
+      "I am currently completing my master's degree in Valencia and I bring a broad range of experience in software engineering.",
     'about.p3':
       'What sets me apart from other developers or AIs is innovation, closely followed by creativity. I like to build in the simplest and most concise way possible, with no unnecessary detours, always direct, professional, and clear, while still staying approachable.',
     'about.p4':
@@ -112,9 +112,9 @@ export const ui = {
     'about.eyebrow': 'Sobre m\u00ed',
     'about.title': '\u00bfQui\u00e9n soy?',
     'about.p1':
-      '\u00a1Hola! Soy Roberto Mill\u00e1n, desarrollador de software de Bolivia viviendo en Espa\u00f1a.',
+      '\u00a1Hola! Soy Roberto Mill\u00e1n, desarrollador de software en Espa\u00f1a.',
     'about.p2':
-      'Actualmente estoy realizando mi maestr\u00eda en Valencia, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en ingenier\u00eda de software.',
+      'Actualmente estoy realizando mi maestr\u00eda en Valencia y cuento con un amplio repertorio de experiencia en ingenier\u00eda de software.',
     'about.p3':
       '\u00bfQu\u00e9 me diferencia de otros devs o IAs? Mi principal caracter\u00edstica es la innovaci\u00f3n, seguida de la creatividad; todo realizado de la forma m\u00e1s simple y concisa posible, sin rodeos, siendo directo, profesional y claro, pero siempre amigable.',
     'about.p4':

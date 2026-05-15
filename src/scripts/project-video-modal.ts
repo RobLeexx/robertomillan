@@ -72,3 +72,5 @@ if (modal && frame && triggers.length > 0) {
     }
   });
 }
+
+export {};
