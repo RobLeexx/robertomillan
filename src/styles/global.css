@@ -1098,7 +1098,13 @@ h4 {
   transition: none;
 }
 
-.project-card__link[data-kind='unityWebgl'] .project-card__link-image {
+:root[data-theme='light'] .project-card__link[data-kind='unityWebgl'] .project-card__link-image {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(9%) saturate(562%) hue-rotate(176deg) brightness(91%) contrast(86%);
+}
+
+:root[data-theme='dark'] .project-card__link[data-kind='unityWebgl'] .project-card__link-image,
+:root[data-theme='light'] .project-card__link[data-kind='unityWebgl']:hover .project-card__link-image,
+:root[data-theme='light'] .project-card__link[data-kind='unityWebgl']:focus-visible .project-card__link-image {
   filter: brightness(0) invert(1);
 }
 
