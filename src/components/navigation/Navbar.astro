@@ -41,5 +41,32 @@ const cvHref = lang === 'es' ? spanishCv : englishCv;
       </nav>
       <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
     </div>
+
+    <details class="site-mobile-menu">
+      <summary class="site-mobile-menu__toggle" aria-label={t('nav.primaryLabel')}>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </summary>
+
+      <div class="site-mobile-menu__panel">
+        <a class="site-cv-link site-cv-link--mobile" href={cvHref} download>{t('nav.downloadCv')}</a>
+
+        <nav class="site-nav site-nav--mobile" aria-label={t('nav.primaryLabel')}>
+          <NavLinks basePath={homePath} links="primary" translate={t} />
+        </nav>
+
+        <div class="site-mobile-menu__controls">
+          <ThemeControl
+            darkLabel={t('theme.dark')}
+            lightLabel={t('theme.light')}
+            toDarkLabel={t('theme.toDark')}
+            toLightLabel={t('theme.toLight')}
+            pullChainLabel={t('theme.pullChain')}
+          />
+          <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
+        </div>
+      </div>
+    </details>
   </div>
 </header>
