@@ -40,9 +40,15 @@ export const contactLinks: ContactLink[] = [
     external: true
   },
   {
-    id: 'github',
-    href: 'https://github.com',
-    value: 'GitHub profile',
+    id: 'instagram',
+    href: 'https://www.instagram.com',
+    value: 'Instagram profile',
+    external: true
+  },
+  {
+    id: 'whatsapp',
+    href: 'https://www.whatsapp.com/',
+    value: 'WhatsApp',
     external: true
   }
 ];

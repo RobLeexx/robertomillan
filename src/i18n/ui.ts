@@ -1,15 +1,15 @@
 export const languages = {
   en: 'English',
-  es: 'Español'
+  es: 'Espa\u00f1ol'
 } as const;
 
 export const defaultLang = 'en';
 
 export const ui = {
   en: {
-    'meta.title': 'Roberto Millán | Fullstack Developer',
+    'meta.title': 'Roberto Mill\u00e1n | Fullstack Developer',
     'meta.description':
-      'Roberto Millán is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery.',
+      'Roberto Mill\u00e1n is a fullstack developer based in Spain, focused on Django, React, Odoo, automation, and production-ready software delivery.',
     'nav.about': 'About',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
@@ -21,7 +21,7 @@ export const ui = {
     'theme.toLight': 'Switch to light theme',
     'theme.pullChain': 'Pull chain to toggle theme',
     'lang.label': 'Language',
-    'hero.eyebrow': 'Roberto Millán',
+    'hero.eyebrow': 'Roberto Mill\u00e1n',
     'hero.title': 'Fullstack developer building practical software for real business workflows.',
     'hero.subtitle':
       'Based in Spain, I work across Django, React, TypeScript, Odoo, automation, and deployment to ship clean, production-ready products.',
@@ -31,7 +31,7 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'Who am I?',
     'about.p1':
-      'Hello! I am Roberto Millán, a Software Developer from Bolivia living in Spain.',
+      'Hello! I am Roberto Mill\u00e1n, a Software Developer from Bolivia living in Spain.',
     'about.p2':
       "I am currently completing my master's degree in Valencia, thanks to my dual nationality, and I bring a broad range of experience in software engineering.",
     'about.p3':
@@ -64,8 +64,19 @@ export const ui = {
     'contact.email': 'Email',
     'contact.linkedin': 'LinkedIn',
     'contact.linkedinLabel': 'LinkedIn profile',
-    'contact.github': 'GitHub',
-    'contact.githubLabel': 'GitHub profile',
+    'contact.instagram': 'Instagram',
+    'contact.instagramLabel': 'Instagram profile',
+    'contact.whatsapp': 'WhatsApp',
+    'contact.whatsappLabel': 'WhatsApp profile',
+    'contact.form.name': 'Name',
+    'contact.form.email': 'Email',
+    'contact.form.subject': 'Subject',
+    'contact.form.message': 'Message',
+    'contact.form.namePlaceholder': 'Your name',
+    'contact.form.emailPlaceholder': 'you@example.com',
+    'contact.form.subjectPlaceholder': 'Project, role, or collaboration',
+    'contact.form.messagePlaceholder': 'Tell me a bit about your idea, role, or collaboration.',
+    'contact.form.submit': 'Send message',
     'contact.cta': 'Send an Email',
     'footer.home': 'Home',
     'footer.about': 'About',
@@ -75,47 +86,47 @@ export const ui = {
     'footer.rights': 'All rights reserved.'
   },
   es: {
-    'meta.title': 'Roberto Millán | Desarrollador Fullstack',
+    'meta.title': 'Roberto Mill\u00e1n | Desarrollador Fullstack',
     'meta.description':
-      'Roberto Millán es un desarrollador fullstack en España, enfocado en Django, React, Odoo, automatización y software listo para producción.',
-    'nav.about': 'Sobre mí',
+      'Roberto Mill\u00e1n es un desarrollador fullstack en Espa\u00f1a, enfocado en Django, React, Odoo, automatizaci\u00f3n y software listo para producci\u00f3n.',
+    'nav.about': 'Sobre mi',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
     'nav.contact': 'Contacto',
-    'nav.primaryLabel': 'Navegación principal',
+    'nav.primaryLabel': 'Navegacion principal',
     'theme.dark': 'Oscuro',
     'theme.light': 'Claro',
     'theme.toDark': 'Cambiar a tema oscuro',
     'theme.toLight': 'Cambiar a tema claro',
     'theme.pullChain': 'Tira de la cadena para cambiar el tema',
     'lang.label': 'Idioma',
-    'hero.eyebrow': 'Roberto Millán',
-    'hero.title': 'Desarrollador fullstack que construye software práctico para flujos de trabajo reales.',
+    'hero.eyebrow': 'Roberto Mill\u00e1n',
+    'hero.title': 'Desarrollador fullstack que construye software practico para flujos de trabajo reales.',
     'hero.subtitle':
-      'Desde España, trabajo con Django, React, TypeScript, Odoo, automatización y despliegue para entregar productos limpios y listos para producción.',
+      'Desde Espa\u00f1a, trabajo con Django, React, TypeScript, Odoo, automatizacion y despliegue para entregar productos limpios y listos para produccion.',
     'hero.ctaPrimary': 'Contactar',
     'hero.ctaSecondary': 'Ver proyectos',
-    'hero.imageAlt': 'Ilustración abstracta que representa sistemas de software, interfaces y flujos de trabajo conectados',
-    'about.eyebrow': 'Sobre mí',
-    'about.title': '¿Quién soy?',
+    'hero.imageAlt': 'Ilustracion abstracta que representa sistemas de software, interfaces y flujos de trabajo conectados',
+    'about.eyebrow': 'Sobre mi',
+    'about.title': 'Quien soy?',
     'about.p1':
-      '¡Hola! Soy Roberto Millán, Desarrollador de Software de Bolivia viviendo en España.',
+      'Hola! Soy Roberto Mill\u00e1n, Desarrollador de Software de Bolivia viviendo en Espa\u00f1a.',
     'about.p2':
-      'Actualmente estoy realizando mi maestría en Valencia, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en ingeniería de software.',
+      'Actualmente estoy realizando mi maestria en Valencia, gracias a mi doble nacionalidad, y cuento con un amplio repertorio de experiencia en ingenieria de software.',
     'about.p3':
-      '¿Qué me diferencia de otros devs o IAs? Mi principal característica es la innovación seguida de la creatividad; todo realizado de la forma más simple y concisa posible, sin rodeos, siendo directo, profesional y claro, pero siempre amigable.',
+      'Que me diferencia de otros devs o IAs? Mi principal caracteristica es la innovacion seguida de la creatividad; todo realizado de la forma mas simple y concisa posible, sin rodeos, siendo directo, profesional y claro, pero siempre amigable.',
     'about.p4':
-      'Podrás ver que entre mis proyectos siempre se destaca "algo más". Ese detalle único y buen ojo es lo que me da una reputación y referencias que con mucho gusto me gusta compartir. Mi objetivo es crecer hacia un rol de Tech Lead, liderando decisiones técnicas, equipos y productos que conecten tecnología, negocio y experiencia de usuario. Gracias por leer hasta aquí; estoy disponible para cualquier colaboración o propuesta, así que no dudes en contactarme y espero que disfrutes el recorrido por mi página.',
+      'Podras ver que entre mis proyectos siempre se destaca "algo mas". Ese detalle unico y buen ojo es lo que me da una reputacion y referencias que con mucho gusto me gusta compartir. Mi objetivo es crecer hacia un rol de Tech Lead, liderando decisiones tecnicas, equipos y productos que conecten tecnologia, negocio y experiencia de usuario. Gracias por leer hasta aqui; estoy disponible para cualquier colaboracion o propuesta, asi que no dudes en contactarme y espero que disfrutes el recorrido por mi pagina.',
     'experience.eyebrow': 'Experiencia',
     'experience.title': 'Experiencia',
     'experience.subtitle':
-      'Una vista compacta de las áreas técnicas donde construyo y entrego software.',
+      'Una vista compacta de las areas tecnicas donde construyo y entrego software.',
     'experience.navLabel': 'Especialidades de experiencia',
     'experience.highlightsLabel': 'Aspectos clave',
-    'experience.stackLabel': 'Tecnologías',
+    'experience.stackLabel': 'Tecnologias',
     'projects.eyebrow': 'Proyectos',
     'projects.title': 'Proyectos principales',
-    'projects.stackLabel': 'Tecnologías del proyecto',
+    'projects.stackLabel': 'Tecnologias del proyecto',
     'projects.linksLabel': 'Enlaces del proyecto',
     'projects.playVideo': 'Ver video del proyecto',
     'projects.openProject': 'Abrir proyecto',
@@ -128,18 +139,29 @@ export const ui = {
     'contact.eyebrow': 'Contacto',
     'contact.title': 'Hablemos',
     'contact.subtitle':
-      'Estoy abierto a oportunidades freelance, remotas, híbridas y de media jornada relacionadas con producto fullstack, personalización de Odoo, frontend o automatización.',
+      'Estoy abierto a oportunidades freelance, remotas, hibridas y de media jornada relacionadas con producto fullstack, personalizacion de Odoo, frontend o automatizacion.',
     'contact.email': 'Email',
     'contact.linkedin': 'LinkedIn',
     'contact.linkedinLabel': 'Perfil de LinkedIn',
-    'contact.github': 'GitHub',
-    'contact.githubLabel': 'Perfil de GitHub',
+    'contact.instagram': 'Instagram',
+    'contact.instagramLabel': 'Perfil de Instagram',
+    'contact.whatsapp': 'WhatsApp',
+    'contact.whatsappLabel': 'Perfil de WhatsApp',
+    'contact.form.name': 'Nombre',
+    'contact.form.email': 'Email',
+    'contact.form.subject': 'Asunto',
+    'contact.form.message': 'Mensaje',
+    'contact.form.namePlaceholder': 'Tu nombre',
+    'contact.form.emailPlaceholder': 'tu@email.com',
+    'contact.form.subjectPlaceholder': 'Proyecto, vacante o colaboracion',
+    'contact.form.messagePlaceholder': 'Cuentame un poco sobre tu idea, vacante o colaboracion.',
+    'contact.form.submit': 'Enviar mensaje',
     'contact.cta': 'Enviar email',
     'footer.home': 'Inicio',
-    'footer.about': 'Sobre mí',
+    'footer.about': 'Sobre mi',
     'footer.projects': 'Proyectos',
     'footer.contact': 'Contacto',
-    'footer.navLabel': 'Navegación del pie de página',
+    'footer.navLabel': 'Navegacion del pie de pagina',
     'footer.rights': 'Todos los derechos reservados.'
   }
 } as const;

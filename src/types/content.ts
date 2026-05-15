@@ -36,7 +36,7 @@ export interface ProjectItem {
 }
 
 export interface ContactLink {
-  id: 'email' | 'linkedin' | 'github';
+  id: 'email' | 'linkedin' | 'instagram' | 'whatsapp';
   href: string;
   value: string;
   external?: boolean;

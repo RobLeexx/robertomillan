@@ -1,5 +1,4 @@
 ---
-import ContactCard from '../components/ui/ContactCard.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import { contactLinks } from '../config/site';
 import { type Lang, useTranslations } from '../i18n/utils';
@@ -11,50 +10,119 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const getContactTitle = (id: (typeof contactLinks)[number]['id']) => {
+const visibleContactIds = ['email', 'linkedin', 'instagram', 'whatsapp'] as const;
+const visibleContacts = visibleContactIds
+  .map((id) => contactLinks.find((link) => link.id === id))
+  .filter((link): link is (typeof contactLinks)[number] => Boolean(link));
+const emailContact = contactLinks.find((link) => link.id === 'email');
+const mailtoAction = `${emailContact?.href ?? 'mailto:'}?subject=${encodeURIComponent('Portfolio contact')}`;
+
+const getContactLabel = (id: (typeof visibleContactIds)[number], fallback: string) => {
   switch (id) {
     case 'email':
-      return t('contact.email');
+      return `${t('contact.email')}: ${fallback}`;
     case 'linkedin':
       return t('contact.linkedin');
-    case 'github':
-      return t('contact.github');
+    case 'instagram':
+      return t('contact.instagram');
+    case 'whatsapp':
+      return t('contact.whatsapp');
   }
 };
 
-const getContactDescription = (id: (typeof contactLinks)[number]['id'], fallback: string) => {
-  switch (id) {
-    case 'email':
-      return fallback;
-    case 'linkedin':
-      return t('contact.linkedinLabel');
-    case 'github':
-      return t('contact.githubLabel');
-  }
-};
 ---
 
 <section id="contact" class="section section--muted">
   <div class="container stack">
-    <SectionHeader
-      title={t('contact.title')}
-    />
-
     <div class="contact-grid">
-      {
-        contactLinks.map((link) => (
-          <ContactCard
-            title={getContactTitle(link.id)}
-            description={getContactDescription(link.id, link.value)}
-            href={link.href}
-            external={link.external}
-          />
-        ))
-      }
-    </div>
+      <div class="contact-copy">
+        <SectionHeader
+          title={t('contact.title')}
+          description={t('contact.subtitle')}
+        />
 
-    <div class="actions">
-      <a class="button button--primary" href={contactLinks[0].href}>{t('contact.cta')}</a>
+        <ul class="contact-list" aria-label={t('contact.eyebrow')}>
+          {
+            visibleContacts.map((link) => (
+              <li class="contact-list__item">
+                <a
+                  class="contact-list__link"
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noreferrer' : undefined}
+                  aria-label={getContactLabel(link.id, link.value)}
+                  data-contact={link.id}
+                >
+                  <span class="contact-list__icon" aria-hidden="true">
+                    {
+                      link.id === 'email' && (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 6h16v12H4z" />
+                          <path d="m4 7 8 6 8-6" />
+                        </svg>
+                      )
+                    }
+                    {
+                      link.id === 'linkedin' && (
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3a1.97 1.97 0 1 0 0 3.94A1.97 1.97 0 0 0 5.25 3ZM20.44 12.64c0-3.46-1.84-5.07-4.3-5.07-1.98 0-2.87 1.09-3.37 1.86V8.5H9.39c.04.62 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.9-1.38 1.95-1.38 1.38 0 1.93 1.04 1.93 2.58V20h3.38v-7.36Z" />
+                        </svg>
+                      )
+                    }
+                    {
+                      link.id === 'instagram' && (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                          <circle cx="12" cy="12" r="3.75" />
+                          <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+                        </svg>
+                      )
+                    }
+                    {
+                      link.id === 'whatsapp' && (
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.04 2.5a9.45 9.45 0 0 0-8.1 14.3L2.5 21.5l4.84-1.28a9.44 9.44 0 1 0 4.7-17.72Zm0 17.16a7.74 7.74 0 0 1-3.94-1.08l-.28-.16-2.87.76.76-2.8-.18-.3a7.74 7.74 0 1 1 6.51 3.58Zm4.24-5.8c-.23-.12-1.35-.67-1.56-.74-.2-.08-.35-.12-.49.12-.15.23-.57.74-.7.9-.13.15-.27.17-.5.06-.23-.12-.96-.35-1.84-1.12-.68-.6-1.15-1.34-1.28-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.27.35-.4.12-.14.15-.23.23-.39.08-.15.04-.29-.02-.4-.06-.12-.49-1.18-.67-1.61-.18-.43-.36-.37-.49-.38h-.42c-.15 0-.39.06-.6.29-.2.23-.78.76-.78 1.86s.8 2.17.92 2.33c.12.15 1.57 2.4 3.8 3.36.53.23.95.37 1.27.48.53.17 1.01.14 1.4.09.42-.06 1.35-.55 1.54-1.07.19-.53.19-.98.13-1.08-.06-.09-.21-.15-.44-.27Z" />
+                        </svg>
+                      )
+                    }
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <form
+        class="card contact-form"
+        action={mailtoAction}
+        method="post"
+        enctype="text/plain"
+      >
+        <div class="contact-form__fields">
+          <label class="contact-form__field">
+            <span>{t('contact.form.name')}</span>
+            <input type="text" name="name" placeholder={t('contact.form.namePlaceholder')} required />
+          </label>
+
+          <label class="contact-form__field">
+            <span>{t('contact.form.email')}</span>
+            <input type="email" name="email" placeholder={t('contact.form.emailPlaceholder')} required />
+          </label>
+
+          <label class="contact-form__field">
+            <span>{t('contact.form.subject')}</span>
+            <input type="text" name="subject" placeholder={t('contact.form.subjectPlaceholder')} />
+          </label>
+
+          <label class="contact-form__field contact-form__field--full">
+            <span>{t('contact.form.message')}</span>
+            <textarea name="message" rows="6" placeholder={t('contact.form.messagePlaceholder')} required></textarea>
+          </label>
+        </div>
+
+        <button class="button button--primary" type="submit">{t('contact.form.submit')}</button>
+      </form>
     </div>
   </div>
 </section>
