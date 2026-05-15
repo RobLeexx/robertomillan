@@ -49,7 +49,7 @@ export const ui = {
     'experience.highlightsLabel': 'Highlights',
     'experience.stackLabel': 'Technologies',
     'projects.eyebrow': 'Projects',
-    'projects.title': 'Main Projects',
+    'projects.title': 'Main projects',
     'projects.stackLabel': 'Project technologies',
     'projects.linksLabel': 'Project links',
     'projects.playVideo': 'Play project video',

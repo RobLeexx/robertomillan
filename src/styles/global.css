@@ -477,6 +477,12 @@ h2 {
   font-family: var(--font-heading);
 }
 
+#experience h2,
+#projects h2 {
+  margin-inline: auto;
+  text-align: center;
+}
+
 h3 {
   font-size: 1.2rem;
   line-height: 1.3;
