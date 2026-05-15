@@ -26,6 +26,28 @@ const initialSection = experienceSections[0];
       data-experience-toggle
       data-initial-section={initialSection.id}
     >
+      <div class="experience-toggle__mobile-nav" aria-label={t('experience.navLabel')}>
+        <button
+          class="experience-toggle__arrow"
+          type="button"
+          aria-label={t('experience.previous')}
+          data-experience-prev
+        >
+          <span aria-hidden="true">&lt;</span>
+        </button>
+
+        <p class="experience-toggle__current" data-experience-current>{initialSection.navLabel}</p>
+
+        <button
+          class="experience-toggle__arrow"
+          type="button"
+          aria-label={t('experience.next')}
+          data-experience-next
+        >
+          <span aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+
       <div
         class="experience-toggle__tabs"
         role="tablist"

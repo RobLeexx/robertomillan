@@ -44,6 +44,8 @@ export const ui = {
     'experience.subtitle':
       'A compact view of the technical areas where I build and ship software.',
     'experience.navLabel': 'Experience specialties',
+    'experience.previous': 'Previous experience specialty',
+    'experience.next': 'Next experience specialty',
     'experience.highlightsLabel': 'Highlights',
     'experience.stackLabel': 'Technologies',
     'projects.eyebrow': 'Projects',
@@ -124,6 +126,8 @@ export const ui = {
     'experience.subtitle':
       'Una vista compacta de las \u00e1reas t\u00e9cnicas donde construyo y entrego software.',
     'experience.navLabel': 'Especialidades de experiencia',
+    'experience.previous': 'Especialidad anterior',
+    'experience.next': 'Siguiente especialidad',
     'experience.highlightsLabel': 'Aspectos clave',
     'experience.stackLabel': 'Tecnolog\u00edas',
     'projects.eyebrow': 'Proyectos',
