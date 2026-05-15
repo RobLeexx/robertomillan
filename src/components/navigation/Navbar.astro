@@ -3,6 +3,8 @@ import ThemeControl from '../animations/ThemeControl.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import NavLinks from './NavLinks.astro';
 import { getLocalizedPath, type Lang, useTranslations } from '../../i18n/utils';
+import englishCv from '../../../static/cv/RobertoMillanCVenglish.pdf';
+import spanishCv from '../../../static/cv/RobertoMillanCVspanish.pdf';
 
 interface Props {
   lang: Lang;
@@ -12,11 +14,15 @@ interface Props {
 const { lang, currentPath } = Astro.props;
 const t = useTranslations(lang);
 const homePath = getLocalizedPath(lang, '/');
+const cvHref = lang === 'es' ? spanishCv : englishCv;
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-brand" href={`${homePath}#home`}>Roberto Millán</a>
+    <div class="site-brand-group">
+      <a class="site-brand" href={`${homePath}#home`}>Roberto Millán</a>
+      <a class="site-cv-link" href={cvHref} download>{t('nav.downloadCv')}</a>
+    </div>
 
     <div class="site-theme">
       <ThemeControl
