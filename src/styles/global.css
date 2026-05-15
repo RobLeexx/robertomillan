@@ -529,6 +529,18 @@ h4 {
   margin-top: 1rem;
 }
 
+.about__intro,
+.about__copy {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.about__intro h2,
+.about__intro .lead {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .projects-grid,
 .contact-grid {
   display: grid;

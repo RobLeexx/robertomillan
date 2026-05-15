@@ -10,10 +10,12 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="about" class="section">
+<section id="about" class="section about">
   <div class="container stack">
-    <SectionHeader title={t('about.title')} />
-    <div class="copy">
+    <div class="about__intro">
+      <SectionHeader title={t('about.title')} />
+    </div>
+    <div class="copy about__copy">
       <p>{t('about.p1')}</p>
       <p>{t('about.p2')}</p>
       <p>{t('about.p3')}</p>
