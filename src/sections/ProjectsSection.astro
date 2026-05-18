@@ -26,6 +26,50 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
   docs: t('projects.link.docs'),
   unityWebgl: t('projects.link.unityWebgl')
 };
+
+const getYoutubeVideoId = (url: string) => {
+  const embedMatch = url.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{6,})/);
+  if (embedMatch?.[1]) {
+    return embedMatch[1];
+  }
+
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([A-Za-z0-9_-]{6,})/);
+  if (shortsMatch?.[1]) {
+    return shortsMatch[1];
+  }
+
+  const watchMatch = url.match(/[?&]v=([A-Za-z0-9_-]{6,})/);
+  if (watchMatch?.[1]) {
+    return watchMatch[1];
+  }
+
+  const shortLinkMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/);
+  return shortLinkMatch?.[1] ?? null;
+};
+
+const getYoutubeWatchUrl = (project: (typeof projects)[number]) => {
+  const youtubeAction = project.actions?.find((action) => action.kind === 'youtube');
+  if (youtubeAction?.href) {
+    return youtubeAction.href;
+  }
+
+  if (!project.videoUrl) {
+    return null;
+  }
+
+  const videoId = getYoutubeVideoId(project.videoUrl);
+  return videoId ? `https://www.youtube.com/watch?v=${videoId}` : null;
+};
+
+const getYoutubeThumbnailUrl = (project: (typeof projects)[number]) => {
+  const sourceUrl = getYoutubeWatchUrl(project) ?? project.videoUrl;
+  if (!sourceUrl) {
+    return null;
+  }
+
+  const videoId = getYoutubeVideoId(sourceUrl);
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null;
+};
 ---
 
 <section id="projects" class="section">
@@ -60,6 +104,8 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                           type="button"
                           data-video-trigger
                           data-video-url={project.videoUrl ?? ''}
+                          data-video-watch-url={getYoutubeWatchUrl(project) ?? ''}
+                          data-video-thumbnail={getYoutubeThumbnailUrl(project) ?? ''}
                           data-video-title={project.title}
                           aria-label={`${t('projects.playVideo')}: ${project.title}`}
                         >
@@ -198,6 +244,22 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
+
+              <div class="video-modal__fallback" data-video-fallback hidden>
+                <img class="video-modal__poster" data-video-poster alt="" loading="lazy" decoding="async" />
+                <div class="video-modal__fallback-copy">
+                  <p class="video-modal__fallback-text">{t('projects.videoFallback')}</p>
+                  <a
+                    class="button button--primary video-modal__fallback-link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    data-video-open-link
+                  >
+                    {t('projects.watchOnYoutube')}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </dialog>

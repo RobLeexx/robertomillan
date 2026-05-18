@@ -43,7 +43,7 @@ const cvHref = lang === 'es' ? spanishCv : englishCv;
     </div>
 
     <details class="site-mobile-menu">
-      <summary class="site-mobile-menu__toggle" aria-label={t('nav.primaryLabel')}>
+      <summary class="site-mobile-menu__toggle" aria-label={t('nav.primaryLabel')} aria-expanded="false" data-mobile-menu-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -67,6 +67,10 @@ const cvHref = lang === 'es' ? spanishCv : englishCv;
           <LanguageSwitcher lang={lang} currentPath={currentPath} label={t('lang.label')} />
         </div>
       </div>
+
+      <script>
+        import '../../scripts/mobile-menu.ts';
+      </script>
     </details>
   </div>
 </header>
