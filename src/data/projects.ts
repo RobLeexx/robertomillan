@@ -3,6 +3,7 @@ import type { ProjectItem } from '../types/content';
 import appImage from '../../static/projects/app.png';
 import ateneaImage from '../../static/projects/atenea.png';
 import canesImage from '../../static/projects/canes.png';
+import cloudflarePortfoliosImage from '../../static/projects/cloudflare.png';
 import crmImage from '../../static/projects/crm.png';
 import gameImage from '../../static/projects/game.png';
 
@@ -23,9 +24,7 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       summary:
         'Production Odoo CRM for a moving company with custom quote logic, contract generation, electronic signature flow, lead ingestion, anti-spam filtering, and Dockerized deployment.',
       stack: ['Odoo 19', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'Spec-Driven Development'],
-      actions: [
-        { kind: 'youtube', href: odooCrmEnglishYoutubeUrl }
-      ],
+      actions: [{ kind: 'youtube', href: odooCrmEnglishYoutubeUrl }],
       videoUrl: odooCrmEnglishVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Odoo CRM project preview',
@@ -92,6 +91,20 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       imageAlt: 'Masitas game preview',
       imageWidth: 962,
       imageHeight: 656
+    },
+    {
+      title: 'Portfolios',
+      summary:
+        'Design, development, and deployment of the following portfolios on Cloudflare, built around a solid user experience, visual direction, and performance aligned with each brand identity.',
+      stack: ['Cloudflare Pages', 'Astro', 'UI Design', 'Brand Identity', 'Performance'],
+      externalLinks: [
+        { label: 'Paula Cuevas - Fotografía de producto', href: 'https://pcwebsite-6l1.pages.dev/' },
+        { label: 'RADE - Consultoría Digital', href: 'https://radebolivia.pages.dev/' }
+      ],
+      imageSrc: cloudflarePortfoliosImage.src,
+      imageAlt: 'Cloudflare portfolios preview',
+      imageWidth: 1600,
+      imageHeight: 1000
     }
   ],
   es: [
@@ -100,9 +113,7 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       summary:
         'CRM productivo en Odoo para una empresa de mudanzas con lógica personalizada de presupuestos, generación de contratos, firma electrónica, entrada de leads, filtrado anti-spam y despliegue con Docker.',
       stack: ['Odoo 19', 'Python', 'PostgreSQL', 'Docker', 'Nginx', 'Spec-Driven Development'],
-      actions: [
-        { kind: 'youtube', href: odooCrmSpanishYoutubeUrl }
-      ],
+      actions: [{ kind: 'youtube', href: odooCrmSpanishYoutubeUrl }],
       videoUrl: odooCrmSpanishVideoUrl,
       imageSrc: crmImage.src,
       imageAlt: 'Vista previa del proyecto Odoo CRM',
@@ -169,6 +180,20 @@ const projectsByLang: Record<Lang, ProjectItem[]> = {
       imageAlt: 'Vista previa del juego Masitas',
       imageWidth: 962,
       imageHeight: 656
+    },
+    {
+      title: 'Portfolios',
+      summary:
+        'Diseño, desarrollo y despliegue de los siguientes portfolios en Cloudfare, siguiendo una experiencia de usuario, estética y optimización sólidas en base a la identidad de la marca.',
+      stack: ['Cloudflare Pages', 'Astro', 'Diseño UI', 'Identidad de Marca', 'Optimización'],
+      externalLinks: [
+        { label: 'Paula Cuevas - Fotografía de producto', href: 'https://pcwebsite-6l1.pages.dev/' },
+        { label: 'RADE - Consultoría Digital', href: 'https://radebolivia.pages.dev/' }
+      ],
+      imageSrc: cloudflarePortfoliosImage.src,
+      imageAlt: 'Vista previa de portfolios en Cloudflare',
+      imageWidth: 1600,
+      imageHeight: 1000
     }
   ]
 };

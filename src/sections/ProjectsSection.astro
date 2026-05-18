@@ -205,6 +205,21 @@ const getYoutubeThumbnailUrl = (project: (typeof projects)[number]) => {
                   </div>
                 )
               }
+              {
+                project.externalLinks && project.externalLinks.length > 0 && (
+                  <ul class="project-card__external-links">
+                    {
+                      project.externalLinks.map((link) => (
+                        <li>
+                          <a href={link.href} target="_blank" rel="noreferrer noopener">
+                            {link.label}
+                          </a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                )
+              }
             </div>
           </article>
         ))

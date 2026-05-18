@@ -21,11 +21,17 @@ export interface ProjectAction {
   href: string;
 }
 
+export interface ProjectExternalLink {
+  label: string;
+  href: string;
+}
+
 export interface ProjectItem {
   title: string;
   summary: string;
   stack: string[];
   actions?: ProjectAction[];
+  externalLinks?: ProjectExternalLink[];
   videoUrl?: string;
   demoUrl?: string;
   imageSrc?: string;

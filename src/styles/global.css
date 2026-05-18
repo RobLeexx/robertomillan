@@ -1025,6 +1025,27 @@ h4 {
   box-shadow: var(--shadow-toolbar);
 }
 
+.project-card__external-links {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+}
+
+.project-card__external-links a {
+  color: var(--color-primary);
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.project-card__external-links a:hover,
+.project-card__external-links a:focus-visible {
+  color: var(--color-primary-strong);
+}
+
 .project-card__link {
   --project-link-hover: var(--color-primary);
   position: relative;
