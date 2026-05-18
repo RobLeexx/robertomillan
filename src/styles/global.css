@@ -1560,16 +1560,30 @@ html.has-dialog-open body {
 
 @media (max-width: 759px) {
   .video-modal {
-    width: min(26rem, 92vw);
+    width: min(24rem, 92vw);
   }
 
   .video-modal__frame {
-    aspect-ratio: 9 / 16;
+    aspect-ratio: auto;
+    min-height: auto;
   }
 
+  .video-modal__frame iframe,
   .video-modal__poster {
-    width: min(100%, 22rem);
-    aspect-ratio: 9 / 16;
+    display: none;
+  }
+
+  .video-modal__fallback {
+    min-height: auto;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .video-modal__fallback-copy {
+    width: 100%;
+  }
+
+  .video-modal__fallback-link {
+    width: 100%;
   }
 
   .hero {

@@ -73,6 +73,11 @@ if (modal && frame && triggers.length > 0) {
       return;
     }
 
+    if (mobileQuery.matches) {
+      window.location.assign(watchUrl);
+      return;
+    }
+
     lastTrigger = trigger;
 
     if (title) {
@@ -82,13 +87,7 @@ if (modal && frame && triggers.length > 0) {
     document.documentElement.classList.add('has-dialog-open');
     modal.showModal();
 
-    const useFallbackOnly = mobileQuery.matches;
-    setFallbackState(trigger, useFallbackOnly);
-
-    if (useFallbackOnly) {
-      clearFrame();
-      return;
-    }
+    setFallbackState(trigger, false);
 
     clearFallbackTimer();
     setEmbedState(true);
