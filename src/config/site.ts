@@ -30,20 +30,20 @@ export const contactLinks: ContactLink[] = [
   },
   {
     id: 'linkedin',
-    href: 'https://www.linkedin.com',
-    value: 'LinkedIn profile',
+    href: 'https://www.linkedin.com/in/roberto-mill%C3%A1n-0780ab289',
+    value: 'www.linkedin.com/in/roberto-mill\u00e1n-0780ab289',
     external: true
   },
   {
     id: 'instagram',
-    href: 'https://www.instagram.com',
+    href: 'https://www.instagram.com/robmillan/',
     value: 'Instagram profile',
     external: true
   },
   {
     id: 'whatsapp',
-    href: 'https://www.whatsapp.com/',
-    value: 'WhatsApp',
+    href: 'https://wa.me/34680920716',
+    value: '+34 680 92 07 16',
     external: true
   }
 ];
