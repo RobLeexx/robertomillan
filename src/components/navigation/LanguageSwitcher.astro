@@ -1,5 +1,4 @@
 ---
-import languageSwitcherScript from '../../scripts/language-switcher.ts?url';
 import { languages } from '../../i18n/ui';
 import { getLocalizedPath, type Lang } from '../../i18n/utils';
 import englishFlag from '../../../static/eng.jpg';
@@ -44,4 +43,6 @@ const languageFlags: Record<Lang, typeof englishFlag> = {
   }
 </nav>
 
-<script is:inline type="module" src={languageSwitcherScript}></script>
+<script>
+  import '../../scripts/language-switcher.ts';
+</script>

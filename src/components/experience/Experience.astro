@@ -1,5 +1,4 @@
 ---
-import experienceToggleScript from '../../scripts/experience-toggle.ts?url';
 import { getExperience } from '../../data/experience';
 import { type Lang, useTranslations } from '../../i18n/utils';
 import ExperiencePanel from './ExperiencePanel.astro';
@@ -88,4 +87,6 @@ const initialSection = experienceSections[0];
   </div>
 </section>
 
-<script is:inline type="module" src={experienceToggleScript}></script>
+<script>
+  import '../../scripts/experience-toggle.ts';
+</script>

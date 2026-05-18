@@ -1,6 +1,4 @@
 ---
-import themeChainScript from '../../scripts/theme-chain.ts?url';
-
 interface Props {
   darkLabel: string;
   lightLabel: string;
@@ -85,4 +83,6 @@ const {
   </button>
 </div>
 
-<script is:inline type="module" src={themeChainScript}></script>
+<script>
+  import '../../scripts/theme-chain.ts';
+</script>

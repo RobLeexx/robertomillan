@@ -2,7 +2,6 @@
 import heroDark from '../../static/hero/dark2.png';
 import heroLight from '../../static/hero/light.png';
 import { type Lang, useTranslations } from '../i18n/utils';
-import heroParallaxScript from '../scripts/hero-parallax.ts?url';
 
 interface Props {
   lang: Lang;
@@ -25,5 +24,7 @@ const t = useTranslations(lang);
       </div>
     </div>
   </div>
-  <script is:inline type="module" src={heroParallaxScript}></script>
+  <script>
+    import '../scripts/hero-parallax.ts';
+  </script>
 </section>

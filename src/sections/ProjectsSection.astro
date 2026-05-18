@@ -3,7 +3,6 @@ import BadgeList from '../components/ui/BadgeList.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import { getProjects } from '../data/projects';
 import { type Lang, useTranslations } from '../i18n/utils';
-import projectVideoModalScript from '../scripts/project-video-modal.ts?url';
 import type { ProjectAction } from '../types/content';
 import unityIcon from '../../static/projects/icons/unity.png';
 
@@ -202,7 +201,9 @@ const actionLabels: Record<ProjectAction['kind'], string> = {
             </div>
           </div>
         </dialog>
-        <script is:inline type="module" src={projectVideoModalScript}></script>
+        <script>
+          import '../scripts/project-video-modal.ts';
+        </script>
       </>
     )
   }
