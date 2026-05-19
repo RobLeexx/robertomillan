@@ -643,6 +643,68 @@ h4 {
   text-align: center;
 }
 
+.about__layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  position: relative;
+}
+
+.about__body {
+  width: 100%;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.about__logo-wrap {
+  --about-logo-shift: 0px;
+  position: relative;
+  justify-self: center;
+  width: clamp(8rem, 34vw, 12rem);
+  transform: translate3d(0, var(--about-logo-shift), 0) rotate(-8deg) scale(1.035);
+  transform-origin: center;
+  will-change: transform;
+  filter: saturate(1.08) brightness(1.08);
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.about__logo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 16% 18%;
+  z-index: -1;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  filter: blur(24px);
+  opacity: 0.78;
+}
+
+.about__logo {
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(0 20px 34px rgb(var(--color-shadow-rgb) / 0.2))
+    drop-shadow(0 0 22px color-mix(in srgb, var(--color-text-inverse) 18%, transparent));
+}
+
+.about__logo--light {
+  width: 74%;
+  margin-inline: auto;
+}
+
+.about__logo--dark {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--dark {
+  display: block;
+}
+
 .projects-grid,
 .contact-grid {
   display: grid;
@@ -1462,6 +1524,23 @@ html.has-dialog-open body {
 }
 
 @media (min-width: 760px) {
+  .about__layout {
+    display: block;
+    min-height: 18rem;
+  }
+
+  .about__logo-wrap {
+    position: absolute;
+    left: clamp(-4rem, -1vw, -1rem);
+    top: 50%;
+    width: clamp(10rem, 18vw, 14rem);
+    transform: translate3d(0, calc(-50% + var(--about-logo-shift)), 0) rotate(-8deg) scale(1.035);
+  }
+
+  .about__body {
+    max-width: 46rem;
+  }
+
   .contact-grid {
     grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 1.08fr);
   }
@@ -1559,6 +1638,10 @@ html.has-dialog-open body {
 }
 
 @media (max-width: 759px) {
+  .about__logo-wrap {
+    margin-bottom: 0.25rem;
+  }
+
   .video-modal {
     width: min(24rem, 92vw);
   }
@@ -1835,7 +1918,8 @@ html.has-dialog-open body {
 
 @media (prefers-reduced-motion: reduce) {
   .hero__panel::before,
-  .hero__title {
+  .hero__title,
+  .about__logo-wrap {
     transform: none;
     will-change: auto;
   }

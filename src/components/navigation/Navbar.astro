@@ -16,13 +16,14 @@ const { lang, currentPath } = Astro.props;
 const t = useTranslations(lang);
 const homePath = getLocalizedPath(lang, '/');
 const cvHref = lang === 'es' ? spanishCv : englishCv;
+const cvFilename = lang === 'es' ? 'RobertoMillanCVspanish.pdf' : 'RobertoMillanCVenglish.pdf';
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
     <div class="site-brand-group">
       <a class="site-brand" href={`${homePath}#home`}>{siteConfig.name}</a>
-      <a class="site-cv-link" href={cvHref} download>{t('nav.downloadCv')}</a>
+      <a class="site-cv-link" href={cvHref} download={cvFilename}>{t('nav.downloadCv')}</a>
     </div>
 
     <div class="site-theme">
@@ -50,7 +51,7 @@ const cvHref = lang === 'es' ? spanishCv : englishCv;
       </summary>
 
       <div class="site-mobile-menu__panel">
-        <a class="site-cv-link site-cv-link--mobile" href={cvHref} download>{t('nav.downloadCv')}</a>
+        <a class="site-cv-link site-cv-link--mobile" href={cvHref} download={cvFilename}>{t('nav.downloadCv')}</a>
 
         <nav class="site-nav site-nav--mobile" aria-label={t('nav.primaryLabel')}>
           <NavLinks basePath={homePath} links="primary" translate={t} />

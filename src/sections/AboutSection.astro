@@ -1,6 +1,8 @@
 ---
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import { type Lang, useTranslations } from '../i18n/utils';
+import reactDark from '../../static/stacks/React-Logo.png';
+import reactLight from '../../static/stacks/react4.png';
 
 interface Props {
   lang: Lang;
@@ -10,16 +12,38 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="about" class="section about">
-  <div class="container stack">
-    <div class="about__intro">
-      <SectionHeader title={t('about.title')} />
+<section id="about" class="section about" data-about-parallax>
+  <div class="container about__layout">
+    <div class="about__logo-wrap" aria-hidden="true" data-about-logo>
+      <img
+        class="about__logo about__logo--light"
+        src={reactLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--dark"
+        src={reactDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
     </div>
-    <div class="copy about__copy">
-      <p>{t('about.p1')}</p>
-      <p>{t('about.p2')}</p>
-      <p>{t('about.p3')}</p>
-      <p>{t('about.p4')}</p>
+
+    <div class="stack about__body">
+      <div class="about__intro">
+        <SectionHeader title={t('about.title')} />
+      </div>
+      <div class="copy about__copy">
+        <p>{t('about.p1')}</p>
+        <p>{t('about.p2')}</p>
+        <p>{t('about.p3')}</p>
+        <p>{t('about.p4')}</p>
+      </div>
     </div>
   </div>
+  <script>
+    import '../scripts/about-react-float.ts';
+  </script>
 </section>
