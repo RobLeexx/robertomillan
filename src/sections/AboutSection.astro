@@ -1,8 +1,22 @@
 ---
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import { type Lang, useTranslations } from '../i18n/utils';
-import reactDark from '../../static/stacks/React-Logo.png';
-import reactLight from '../../static/stacks/react4.png';
+import reactDark from '../../static/stacks/react-dark.png';
+import reactLight from '../../static/stacks/react-light.png';
+import pythonDark from '../../static/stacks/python.png';
+import pythonLight from '../../static/stacks/python3.png';
+import n8nDark from '../../static/stacks/n8n2.png';
+import n8nLight from '../../static/stacks/n8n.png';
+import codexDark from '../../static/stacks/codex2.png';
+import codexLight from '../../static/stacks/codex.png';
+import figmaDark from '../../static/stacks/figma-dark.png';
+import figmaLight from '../../static/stacks/figma-light.png';
+import expoDark from '../../static/stacks/expo-dark.png';
+import expoLight from '../../static/stacks/expo-light.png';
+import dockerDark from '../../static/stacks/docker-dark.png';
+import dockerLight from '../../static/stacks/docker-light.png';
+import djangoDark from '../../static/stacks/django-dark.png';
+import djangoLight from '../../static/stacks/django-light.png';
 
 interface Props {
   lang: Lang;
@@ -14,17 +28,200 @@ const t = useTranslations(lang);
 
 <section id="about" class="section about" data-about-parallax>
   <div class="container about__layout">
-    <div class="about__logo-wrap" aria-hidden="true" data-about-logo>
+    <div
+      class="about__logo-wrap about__logo-wrap--far-left"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-docker-shift"
+      data-about-amplitude-mobile="18"
+      data-about-amplitude-desktop="46"
+      data-about-lerp="0.13"
+    >
       <img
-        class="about__logo about__logo--light"
+        class="about__logo about__logo--docker about__logo--docker-light"
+        src={dockerLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--docker about__logo--docker-dark"
+        src={dockerDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--top-left"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-figma-shift"
+      data-about-amplitude-mobile="18"
+      data-about-amplitude-desktop="48"
+      data-about-lerp="0.13"
+    >
+      <img
+        class="about__logo about__logo--figma about__logo--figma-light"
+        src={figmaLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--figma about__logo--figma-dark"
+        src={figmaDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--left"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-react-shift"
+      data-about-amplitude-mobile="16"
+      data-about-amplitude-desktop="42"
+      data-about-lerp="0.14"
+    >
+      <img
+        class="about__logo about__logo--react about__logo--react-light"
         src={reactLight.src}
         alt=""
         loading="lazy"
         decoding="async"
       />
       <img
-        class="about__logo about__logo--dark"
+        class="about__logo about__logo--react about__logo--react-dark"
         src={reactDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--bottom-left"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-expo-shift"
+      data-about-amplitude-mobile="20"
+      data-about-amplitude-desktop="52"
+      data-about-lerp="0.125"
+    >
+      <img
+        class="about__logo about__logo--expo about__logo--expo-light"
+        src={expoLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--expo about__logo--expo-dark"
+        src={expoDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--right"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-python-shift"
+      data-about-amplitude-mobile="24"
+      data-about-amplitude-desktop="64"
+      data-about-lerp="0.085"
+    >
+      <img
+        class="about__logo about__logo--python about__logo--python-light"
+        src={pythonLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--python about__logo--python-dark"
+        src={pythonDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--mid-right"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-django-shift"
+      data-about-amplitude-mobile="26"
+      data-about-amplitude-desktop="68"
+      data-about-lerp="0.082"
+    >
+      <img
+        class="about__logo about__logo--django about__logo--django-light"
+        src={djangoLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--django about__logo--django-dark"
+        src={djangoDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--far-right"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-n8n-shift"
+      data-about-amplitude-mobile="32"
+      data-about-amplitude-desktop="96"
+      data-about-lerp="0.07"
+    >
+      <img
+        class="about__logo about__logo--n8n about__logo--n8n-light"
+        src={n8nLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--n8n about__logo--n8n-dark"
+        src={n8nDark.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div
+      class="about__logo-wrap about__logo-wrap--bottom-right"
+      aria-hidden="true"
+      data-about-float
+      data-about-shift-var="--about-codex-shift"
+      data-about-amplitude-mobile="36"
+      data-about-amplitude-desktop="108"
+      data-about-lerp="0.068"
+    >
+      <img
+        class="about__logo about__logo--codex about__logo--codex-light"
+        src={codexLight.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="about__logo about__logo--codex about__logo--codex-dark"
+        src={codexDark.src}
         alt=""
         loading="lazy"
         decoding="async"

@@ -1,23 +1,35 @@
 const about = document.querySelector<HTMLElement>('[data-about-parallax]');
-const logo = about?.querySelector<HTMLElement>('[data-about-logo]');
+const logos = about ? Array.from(about.querySelectorAll<HTMLElement>('[data-about-float]')) : [];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobileQuery = window.matchMedia('(max-width: 759px)');
 
-if (about && logo) {
+if (about && logos.length > 0) {
   let frame = 0;
-  let currentY = 0;
-  let targetY = 0;
   let ticking = false;
+  const states = logos.map((logo) => ({
+    logo,
+    shiftVar: logo.dataset.aboutShiftVar || '--about-logo-shift',
+    amplitudeMobile: Number(logo.dataset.aboutAmplitudeMobile || 16),
+    amplitudeDesktop: Number(logo.dataset.aboutAmplitudeDesktop || 42),
+    lerp: Number(logo.dataset.aboutLerp || 0.14),
+    currentY: 0,
+    targetY: 0
+  }));
 
   const clearOffset = () => {
-    currentY = 0;
-    targetY = 0;
-    logo.style.setProperty('--about-logo-shift', '0px');
+    for (const state of states) {
+      state.currentY = 0;
+      state.targetY = 0;
+      state.logo.style.setProperty(state.shiftVar, '0px');
+    }
   };
 
   const computeTarget = () => {
     if (reducedMotion.matches) {
-      targetY = 0;
+      for (const state of states) {
+        state.targetY = 0;
+      }
+
       return;
     }
 
@@ -26,9 +38,11 @@ if (about && logo) {
     const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
     const clamped = Math.max(0, Math.min(1, progress));
     const centered = clamped - 0.5;
-    const amplitude = mobileQuery.matches ? 10 : 28;
 
-    targetY = centered * amplitude;
+    for (const state of states) {
+      const amplitude = mobileQuery.matches ? state.amplitudeMobile : state.amplitudeDesktop;
+      state.targetY = centered * amplitude;
+    }
   };
 
   const render = () => {
@@ -40,10 +54,18 @@ if (about && logo) {
       return;
     }
 
-    currentY += (targetY - currentY) * 0.12;
-    logo.style.setProperty('--about-logo-shift', `${currentY.toFixed(2)}px`);
+    let needsMore = false;
 
-    if (Math.abs(targetY - currentY) > 0.08) {
+    for (const state of states) {
+      state.currentY += (state.targetY - state.currentY) * state.lerp;
+      state.logo.style.setProperty(state.shiftVar, `${state.currentY.toFixed(2)}px`);
+
+      if (Math.abs(state.targetY - state.currentY) > 0.08) {
+        needsMore = true;
+      }
+    }
+
+    if (needsMore) {
       frame = window.requestAnimationFrame(render);
       return;
     }

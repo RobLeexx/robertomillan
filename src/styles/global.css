@@ -650,6 +650,10 @@ h4 {
   position: relative;
 }
 
+.about .container {
+  width: min(var(--container), calc(100% - 1rem));
+}
+
 .about__body {
   width: 100%;
   max-width: 44rem;
@@ -657,16 +661,55 @@ h4 {
 }
 
 .about__logo-wrap {
-  --about-logo-shift: 0px;
+  --about-docker-shift: 0px;
+  --about-figma-shift: 0px;
+  --about-react-shift: 0px;
+  --about-expo-shift: 0px;
+  --about-python-shift: 0px;
+  --about-django-shift: 0px;
+  --about-n8n-shift: 0px;
+  --about-codex-shift: 0px;
   position: relative;
   justify-self: center;
   width: clamp(8rem, 34vw, 12rem);
-  transform: translate3d(0, var(--about-logo-shift), 0) rotate(-8deg) scale(1.035);
   transform-origin: center;
   will-change: transform;
   filter: saturate(1.08) brightness(1.08);
   isolation: isolate;
   pointer-events: none;
+}
+
+.about__logo-wrap--far-left {
+  transform: translate3d(0, var(--about-docker-shift), 0) rotate(-5deg) scale(1.02);
+}
+
+.about__logo-wrap--top-left {
+  transform: translate3d(0, var(--about-figma-shift), 0) rotate(-6deg) scale(1.025);
+}
+
+.about__logo-wrap--left {
+  transform: translate3d(0, var(--about-react-shift), 0) rotate(-8deg) scale(1.035);
+}
+
+.about__logo-wrap--bottom-left {
+  transform: translate3d(0, var(--about-expo-shift), 0) rotate(-4deg) scale(1.02);
+}
+
+.about__logo-wrap--right {
+  transform: translate3d(0, var(--about-python-shift), 0) rotate(7deg) scale(1.04);
+}
+
+.about__logo-wrap--mid-right {
+  transform: translate3d(0, var(--about-django-shift), 0) rotate(4deg) scale(1.025);
+  z-index: 1;
+}
+
+.about__logo-wrap--far-right {
+  transform: translate3d(0, var(--about-n8n-shift), 0) rotate(5deg) scale(1.035);
+}
+
+.about__logo-wrap--bottom-right {
+  transform: translate3d(0, var(--about-codex-shift), 0) rotate(3deg) scale(1.02);
 }
 
 .about__logo-wrap::before {
@@ -688,20 +731,192 @@ h4 {
     drop-shadow(0 0 22px color-mix(in srgb, var(--color-text-inverse) 18%, transparent));
 }
 
-.about__logo--light {
-  width: 74%;
+.about__logo--react {
+  width: 58%;
   margin-inline: auto;
 }
 
-.about__logo--dark {
+.about__logo--react-dark {
   display: none;
 }
 
-:root[data-theme='dark'] .about__logo--light {
+.about__logo--figma {
+  filter:
+    drop-shadow(0 24px 36px rgb(var(--color-shadow-rgb) / 0.22))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--color-text-inverse) 16%, transparent));
+}
+
+.about__logo--figma-light,
+.about__logo--figma-dark {
+  width: 66%;
+  margin-inline: auto;
+}
+
+.about__logo--figma-dark {
   display: none;
 }
 
-:root[data-theme='dark'] .about__logo--dark {
+.about__logo--docker {
+  filter:
+    drop-shadow(0 24px 36px rgb(var(--color-shadow-rgb) / 0.22))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--color-text-inverse) 16%, transparent));
+}
+
+.about__logo--docker-light,
+.about__logo--docker-dark {
+  width: 80%;
+  margin-inline: auto;
+}
+
+.about__logo--docker-dark {
+  display: none;
+}
+
+.about__logo--expo {
+  filter:
+    drop-shadow(0 24px 36px rgb(var(--color-shadow-rgb) / 0.22))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--color-text-inverse) 16%, transparent));
+}
+
+.about__logo--expo-light,
+.about__logo--expo-dark {
+  width: 62%;
+  margin-inline: auto;
+}
+
+.about__logo--expo-dark {
+  display: none;
+}
+
+.about__logo--python {
+  filter:
+    drop-shadow(0 24px 36px rgb(var(--color-shadow-rgb) / 0.22))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--color-text-inverse) 16%, transparent));
+}
+
+.about__logo--python-light {
+  width: 84%;
+  margin-inline: auto;
+}
+
+.about__logo--python-dark {
+  display: none;
+}
+
+.about__logo--django {
+  filter:
+    drop-shadow(0 24px 36px rgb(var(--color-shadow-rgb) / 0.22))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--color-text-inverse) 16%, transparent));
+}
+
+.about__logo--django-light,
+.about__logo--django-dark {
+  width: 54%;
+  margin-inline: auto;
+}
+
+.about__logo--django-dark {
+  display: none;
+}
+
+.about__logo--n8n {
+  filter:
+    drop-shadow(0 26px 40px rgb(var(--color-shadow-rgb) / 0.24))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--color-text-inverse) 18%, transparent));
+}
+
+.about__logo--n8n-light {
+  width: 68%;
+  margin-inline: auto;
+}
+
+.about__logo--n8n-dark {
+  display: none;
+}
+
+.about__logo--n8n-dark,
+.about__logo--n8n-light {
+  width: 68%;
+  margin-inline: auto;
+}
+
+.about__logo--codex {
+  filter:
+    drop-shadow(0 26px 40px rgb(var(--color-shadow-rgb) / 0.24))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--color-text-inverse) 18%, transparent));
+}
+
+.about__logo--codex-light,
+.about__logo--codex-dark {
+  width: 64%;
+  margin-inline: auto;
+}
+
+.about__logo--codex-dark {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--react-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--react-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--docker-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--docker-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--figma-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--figma-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--expo-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--expo-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--python-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--python-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--django-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--django-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--n8n-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--n8n-dark {
+  display: block;
+}
+
+:root[data-theme='dark'] .about__logo--codex-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .about__logo--codex-dark {
   display: block;
 }
 
@@ -1531,10 +1746,64 @@ html.has-dialog-open body {
 
   .about__logo-wrap {
     position: absolute;
-    left: clamp(-4rem, -1vw, -1rem);
+    left: clamp(-5rem, -2vw, -1.5rem);
     top: 50%;
     width: clamp(10rem, 18vw, 14rem);
-    transform: translate3d(0, calc(-50% + var(--about-logo-shift)), 0) rotate(-8deg) scale(1.035);
+  }
+
+  .about__logo-wrap--far-left {
+    left: clamp(-6rem, -5vw, -3rem);
+    top: 40%;
+    width: clamp(7.5rem, 11.5vw, 9.75rem);
+    transform: translate3d(0, calc(-50% + var(--about-docker-shift)), 0) rotate(-5deg) scale(1.02);
+  }
+
+  .about__logo-wrap--top-left {
+    left: clamp(-6rem, -3vw, -2rem);
+    top: 10%;
+    width: clamp(7.5rem, 12vw, 10rem);
+    transform: translate3d(0, calc(-50% + var(--about-figma-shift)), 0) rotate(-6deg) scale(1.025);
+  }
+
+  .about__logo-wrap--left {
+    transform: translate3d(0, calc(-50% + var(--about-react-shift)), 0) rotate(-8deg) scale(1.035);
+  }
+
+  .about__logo-wrap--bottom-left {
+    left: clamp(-5.5rem, -2vw, -1.75rem);
+    top: 90%;
+    width: clamp(7.5rem, 11vw, 9.5rem);
+    transform: translate3d(0, calc(-50% + var(--about-expo-shift)), 0) rotate(-4deg) scale(1.02);
+  }
+
+  .about__logo-wrap--right {
+    left: auto;
+    right: clamp(-4.5rem, -2vw, -1.25rem);
+    transform: translate3d(0, calc(-50% + var(--about-python-shift)), 0) rotate(7deg) scale(1.04);
+  }
+
+  .about__logo-wrap--mid-right {
+    left: auto;
+    right: clamp(-5.75rem, -3vw, -1.75rem);
+    top: 30%;
+    width: clamp(8.5rem, 12vw, 10.75rem);
+    transform: translate3d(0, calc(-50% + var(--about-django-shift)), 0) rotate(4deg) scale(1.025);
+  }
+
+  .about__logo-wrap--far-right {
+    left: auto;
+    right: clamp(-9rem, -5vw, -4rem);
+    top: 10%;
+    width: clamp(8rem, 13vw, 10.75rem);
+    transform: translate3d(0, calc(-50% + var(--about-n8n-shift)), 0) rotate(5deg) scale(1.02);
+  }
+
+  .about__logo-wrap--bottom-right {
+    left: auto;
+    right: clamp(-11rem, -7vw, -5rem);
+    top: 90%;
+    width: clamp(7.5rem, 11vw, 9.75rem);
+    transform: translate3d(0, calc(-50% + var(--about-codex-shift)), 0) rotate(3deg) scale(1.02);
   }
 
   .about__body {
